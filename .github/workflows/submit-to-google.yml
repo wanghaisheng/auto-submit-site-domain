@@ -1,0 +1,25 @@
+name: Submit to Google
+on:
+  schedule:
+    - cron: '0 12 * * *'  # Runs daily at 12:00 UTC
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+      - name: Install dependencies
+        run: |
+          pip install drissionpage requests beautifulsoup4 python-dotenv
+      - name: Fetch domains
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+        run: python cloudflare_fetcher.py
+      - name: Parse sitemaps
+        run: python sitemap_parser.py
+      - name: Submit to Google
+        run: python submit_to_google.py
