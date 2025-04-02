@@ -2,24 +2,52 @@ name: Submit to Google
 on:
   schedule:
     - cron: '0 12 * * *'  # Runs daily at 12:00 UTC
+  workflow_dispatch:  # Allow manual triggering
+
 jobs:
   submit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.8'
+          python-version: '3.10'
+          
       - name: Install dependencies
         run: |
-          pip install drissionpage requests beautifulsoup4 python-dotenv
-      - name: Fetch domains
+          pip install --upgrade pip
+          pip install drissionpage requests beautifulsoup4 python-dotenv lxml
+          
+      - name: Fetch domains from Cloudflare
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+          MAX_URLS_PER_RUN: ${{ secrets.MAX_URLS_PER_RUN || '0' }}
+          REQUEST_DELAY: ${{ secrets.REQUEST_DELAY || '15' }}
+          GOOGLE_SEARCH_LIMIT: ${{ secrets.GOOGLE_SEARCH_LIMIT || '10' }}
+          DRISSIONPAGE_TIMEOUT: ${{ secrets.DRISSIONPAGE_TIMEOUT || '30' }}
         run: python cloudflare_fetcher.py
-      - name: Parse sitemaps
+        
+      - name: Parse sitemaps for URLs
+        env:
+          MAX_URLS_PER_RUN: ${{ secrets.MAX_URLS_PER_RUN || '100' }}
+          REQUEST_DELAY: ${{ secrets.REQUEST_DELAY || '2' }}
         run: python sitemap_parser.py
-      - name: Submit to Google
+        
+      - name: Submit URLs to Google
+        env:
+          REQUEST_DELAY: ${{ secrets.REQUEST_DELAY || '5' }}
+          GOOGLE_SEARCH_LIMIT: ${{ secrets.GOOGLE_SEARCH_LIMIT || '10' }}
+          DRISSIONPAGE_TIMEOUT: ${{ secrets.DRISSIONPAGE_TIMEOUT || '30' }}
         run: python submit_to_google.py
+        
+      - name: Upload logs and results
+        uses: actions/upload-artifact@v3
+        with:
+          name: submission-logs
+          path: |
+            domains.txt
+            domains.json
+            urls.txt
+            submission_log_*.txt

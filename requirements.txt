@@ -1,0 +1,9 @@
+# Core dependencies
+requests>=2.28.1
+python-dotenv>=0.21.0
+beautifulsoup4>=4.11.1
+lxml>=4.9.1
+DrissionPage>=4.0.0
+
+# Optional dependencies
+gzip-reader>=0.1.0  # For handling gzipped sitemaps
