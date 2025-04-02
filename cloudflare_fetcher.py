@@ -3,10 +3,40 @@ import os
 import requests
 import time
 import json
+from pathlib import Path
 
 load_dotenv()  # Load environment variables from .env file
 
+def load_config():
+    """Load configuration from config.json"""
+    config_path = Path('config.json')
+    if config_path.exists():
+        try:
+            with open(config_path, 'r') as f:
+                return json.load(f)
+        except json.JSONDecodeError:
+            print("Error reading config file. Using default configuration.")
+    
+    # Default configuration
+    return {
+        "domain_whitelist": [],
+        "domain_blacklist": [],
+        "use_domain_file": False,
+        "domain_file_path": "domains_list.txt",
+        "url_limit_per_domain": 1000,
+        "submit_not_indexed": True,
+        "submit_sitemap": True,
+        "split_large_domains": False,
+        "max_urls_per_piece": 10000
+    }
+
 def fetch_domains():
+    config = load_config()
+    
+    # Check if we should use domain file instead of Cloudflare API
+    if config.get("use_domain_file", False):
+        return fetch_domains_from_file(config)
+    
     api_token = os.getenv('CLOUDFLARE_API_TOKEN')
     account_id = os.getenv('CLOUDFLARE_ACCOUNT_ID')
     
@@ -91,7 +121,10 @@ def fetch_domains():
     # Convert set to sorted list
     domain_list = sorted(list(all_domains))
     
-    print(f"\nTotal domains and subdomains found: {len(domain_list)}")
+    # Apply domain whitelist/blacklist filtering
+    domain_list = filter_domains(domain_list, config)
+    
+    print(f"\nTotal domains and subdomains found after filtering: {len(domain_list)}")
     
     # Save to file
     with open('domains.txt', 'w') as f:
@@ -104,6 +137,59 @@ def fetch_domains():
     print(f"Domains saved to domains.txt and domains.json")
     
     return domain_list
+
+def fetch_domains_from_file(config):
+    """Fetch domains from a file instead of Cloudflare API"""
+    domain_file = config.get("domain_file_path", "domains_list.txt")
+    
+    try:
+        with open(domain_file, 'r') as f:
+            domains = [line.strip() for line in f if line.strip()]
+        
+        print(f"Loaded {len(domains)} domains from {domain_file}")
+        
+        # Apply domain whitelist/blacklist filtering
+        domains = filter_domains(domains, config)
+        
+        print(f"Total domains after filtering: {len(domains)}")
+        
+        # Save to standard files for compatibility with rest of the pipeline
+        with open('domains.txt', 'w') as f:
+            f.write('\n'.join(domains))
+        
+        with open('domains.json', 'w') as f:
+            json.dump({"domains": domains, "count": len(domains)}, f, indent=2)
+        
+        return domains
+    
+    except Exception as e:
+        print(f"Error reading domain file {domain_file}: {e}")
+        return []
+
+def filter_domains(domains, config):
+    """Filter domains based on whitelist and blacklist"""
+    whitelist = config.get("domain_whitelist", [])
+    blacklist = config.get("domain_blacklist", [])
+    
+    # If whitelist is provided, only keep domains in the whitelist
+    if whitelist:
+        print(f"Applying whitelist filter with {len(whitelist)} domains")
+        filtered_domains = []
+        for domain in domains:
+            if any(domain.endswith(white_domain) for white_domain in whitelist):
+                filtered_domains.append(domain)
+        domains = filtered_domains
+    
+    # Remove domains in the blacklist
+    if blacklist:
+        print(f"Applying blacklist filter with {len(blacklist)} domains")
+        filtered_domains = []
+        for domain in domains:
+            if not any(domain.endswith(black_domain) for black_domain in blacklist):
+                filtered_domains.append(domain)
+        domains = filtered_domains
+    
+    return domains
 
 if __name__ == '__main__':
     fetch_domains()

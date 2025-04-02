@@ -110,18 +110,35 @@ Detailed instructions:
 
 # future plan
 
+submit through google search console api is typically used by competitors,url daily submit a google account can  has limit(for competitor, https://rankweek.com,6.000 pages indexed per month (200/Day)), but use site:operator  to trigger has no limit ,it is our features 
+
 add url count limit inside a domain to submit.
 
 add  more  script ，submit not indexed url through google search console  api  or  use drissionpage to submit inside google search console 
 
 
+read target domains from a file instead of cloudflare api,so we support auto domain reading and manual domain config.
 
-add domain list config, only domain inside config list will be submitted to google search ap
+add domain blacklist config, domain inside config list will not be submitted to google search.
+
+
+
+
+
+add domain list config, only domain inside config list will be submitted to google search.
+
+
+add more supported engines, submit url to bing and other search engines through api or browser.
+
+add support for more domain holder like cloudflare, namecheap, godaddy, etc.
+lifetime update for paid user, add more features and support for paid user.
+
+5.99 USD per month compared to https://rankweek.com/price
 
 
 add sitemap submit inside google search console
 
-add self deploy guide  for paid user
+add self deploy guide  for paid user,paid user can manage themselves and support unlimited domains and urls.
 
 
 add suppor for millions of urls inside a domain, we split urls into 10000 pieces and submit each piece to google search use more than 1 workflows.

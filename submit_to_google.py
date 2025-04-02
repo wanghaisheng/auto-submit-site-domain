@@ -7,6 +7,7 @@ import datetime
 import json
 import re
 from pathlib import Path
+import sys
 
 # Import Google Search Console module
 try:
@@ -19,6 +20,32 @@ except ImportError:
 
 load_dotenv()  # Load environment variables
 
+def load_config():
+    """Load configuration from config.json"""
+    config_path = Path('config.json')
+    if config_path.exists():
+        try:
+            with open(config_path, 'r') as f:
+                return json.load(f)
+        except json.JSONDecodeError:
+            print("Error reading config file. Using default configuration.")
+    
+    # Default configuration
+    return {
+        "domain_whitelist": [],
+        "domain_blacklist": [],
+        "use_domain_file": False,
+        "domain_file_path": "domains_list.txt",
+        "url_limit_per_domain": 1000,
+        "submit_not_indexed": True,
+        "submit_sitemap": True,
+        "split_large_domains": False,
+        "max_urls_per_piece": 10000
+    }
+
+# Load configuration
+config = load_config()
+
 # Get settings from environment variables
 REQUEST_DELAY = int(os.getenv('REQUEST_DELAY', 5))  # Default 5 seconds between submissions
 GOOGLE_SEARCH_LIMIT = int(os.getenv('GOOGLE_SEARCH_LIMIT', 10))  # Default 10 submissions per minute
@@ -26,7 +53,8 @@ DRISSIONPAGE_TIMEOUT = int(os.getenv('DRISSIONPAGE_TIMEOUT', 30))  # Browser tim
 
 # Google Search Console settings
 USE_GSC_API = os.getenv('USE_GSC_API', 'false').lower() == 'true'  # Whether to use Google Search Console API
-SUBMIT_SITEMAP = os.getenv('SUBMIT_SITEMAP', 'false').lower() == 'true'  # Whether to submit sitemap to GSC
+SUBMIT_SITEMAP = os.getenv('SUBMIT_SITEMAP', 'false').lower() == 'true' or config.get("submit_sitemap", False)  # Whether to submit sitemap to GSC
+SUBMIT_NOT_INDEXED = config.get("submit_not_indexed", True)  # Whether to submit not indexed URLs
 
 def get_random_delay(base_delay):
     """Add some randomness to delays to appear more human-like"""

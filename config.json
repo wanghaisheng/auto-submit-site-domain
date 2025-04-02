@@ -1,0 +1,11 @@
+{
+  "domain_whitelist": [],
+  "domain_blacklist": [],
+  "use_domain_file": false,
+  "domain_file_path": "domains_list.txt",
+  "url_limit_per_domain": 1000,
+  "submit_not_indexed": true,
+  "submit_sitemap": true,
+  "split_large_domains": false,
+  "max_urls_per_piece": 10000
+}

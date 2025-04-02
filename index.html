@@ -603,9 +603,13 @@
         </button>
         <ul class="nav-links" id="navLinks">
           <li><a href="#features">Features</a></li>
+          <li><a href="#advanced-features">Advanced Features</a></li>
           <li><a href="#how-it-works">How It Works</a></li>
           <li><a href="#playground">Try It</a></li>
           <li><a href="#comparison">Comparison</a></li>
+          <li><a href="tracker.html">Tracker</a></li>
+          <li><a href="batch.html">Batch Submit</a></li>
+          <li><a href="reports.html">Reports</a></li>
           <li><a href="https://github.com/heytcm/auto-submit-site-domain" class="btn">Get Started</a></li>
         </ul>
       </nav>
@@ -727,12 +731,30 @@
               <select id="submissionMethod">
                 <option value="site">site: Operator (Browser)</option>
                 <option value="gsc">Google Search Console API</option>
+                <option value="gsc_direct">GSC Direct Submission (Coming Soon)</option>
               </select>
             </div>
           </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="sitemapUrl">Sitemap URL (Optional)</label>
+              <input type="text" id="sitemapUrl" placeholder="https://example.com/sitemap.xml">
+            </div>
+            <div class="form-group">
+              <label for="urlLimit">URL Limit Per Domain</label>
+              <input type="number" id="urlLimit" placeholder="100" min="1" max="10000">
+            </div>
+          </div>
           <div class="form-group">
-            <label for="sitemapUrl">Sitemap URL (Optional)</label>
-            <input type="text" id="sitemapUrl" placeholder="https://example.com/sitemap.xml">
+            <label for="submitSitemap">Advanced Options</label>
+            <div style="display: flex; gap: 20px; margin-top: 10px;">
+              <label style="display: flex; align-items: center;">
+                <input type="checkbox" id="submitSitemap" style="margin-right: 8px;"> Submit Sitemap to GSC
+              </label>
+              <label style="display: flex; align-items: center;">
+                <input type="checkbox" id="enterpriseMode" style="margin-right: 8px;"> Enterprise Mode (Millions of URLs)
+              </label>
+            </div>
           </div>
           <button type="submit" class="btn">Simulate Submission</button>
         </form>
@@ -798,8 +820,94 @@
             <td><i class="fas fa-minus"></i> N/A</td>
             <td><i class="fas fa-times times"></i> Proprietary</td>
           </tr>
+          <tr>
+            <td>Domain Filtering</td>
+            <td><i class="fas fa-check check"></i> Configurable allowlists</td>
+            <td><i class="fas fa-minus"></i> Manual selection</td>
+            <td><i class="fas fa-check check"></i> Limited options</td>
+          </tr>
+          <tr>
+            <td>URL Count Limiting</td>
+            <td><i class="fas fa-check check"></i> Per-domain control</td>
+            <td><i class="fas fa-minus"></i> Manual control</td>
+            <td><i class="fas fa-check check"></i> Basic limits</td>
+          </tr>
+          <tr>
+            <td>Enterprise Scale</td>
+            <td><i class="fas fa-check check"></i> Millions of URLs</td>
+            <td><i class="fas fa-times times"></i> Not feasible</td>
+            <td><i class="fas fa-check check"></i> With premium plans</td>
+          </tr>
         </tbody>
       </table>
+    </div>
+  </section>
+
+  <!-- Advanced Features Section -->
+  <section class="features" id="advanced-features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Advanced Features (Coming Soon)</h2>
+        <p>Powerful upcoming capabilities designed for businesses of all sizes</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-filter"></i>
+          </div>
+          <h3>URL Count Limiting</h3>
+          <p>Set maximum URL submission limits per domain to prioritize your most important content and optimize resource usage.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-code-branch"></i>
+          </div>
+          <h3>Advanced GSC Integration</h3>
+          <p>Submit non-indexed URLs directly through Google Search Console API or use browser automation for verified properties.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-list-alt"></i>
+          </div>
+          <h3>Domain Filtering</h3>
+          <p>Configure domain allowlists to ensure only specified domains are submitted to Google Search, perfect for agencies managing multiple clients.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-sitemap"></i>
+          </div>
+          <h3>Sitemap Submission</h3>
+          <p>Automatically submit your sitemaps directly to Google Search Console for more efficient crawling and indexing.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-server"></i>
+          </div>
+          <h3>Self-Deployment Guide</h3>
+          <p>Premium documentation for paid users on how to deploy the tool on your own infrastructure for maximum control and privacy.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-database"></i>
+          </div>
+          <h3>Enterprise-Scale Support</h3>
+          <p>Handle millions of URLs by automatically splitting submissions into manageable batches across multiple workflows for large websites and enterprises.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Results Tracker</h3>
+          <p>Monitor your website's indexing status, track submission history, and get detailed reports on your SEO progress with our comprehensive tracking system.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-tasks"></i>
+          </div>
+          <h3>Batch Submission</h3>
+          <p>Submit multiple URLs at once and schedule automated submissions to improve your website's visibility in Google Search with our powerful batch processing tool.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -888,6 +996,7 @@
           <h3>Quick Links</h3>
           <ul class="footer-links">
             <li><a href="#features">Features</a></li>
+            <li><a href="#advanced-features">Advanced Features</a></li>
             <li><a href="#how-it-works">How It Works</a></li>
             <li><a href="#playground">Try It</a></li>
             <li><a href="#comparison">Comparison</a></li>
@@ -933,6 +1042,9 @@
       const domain = document.getElementById('domain').value;
       const method = document.getElementById('submissionMethod').value;
       const sitemap = document.getElementById('sitemapUrl').value;
+      const urlLimit = document.getElementById('urlLimit').value || '100';
+      const submitSitemap = document.getElementById('submitSitemap').checked;
+      const enterpriseMode = document.getElementById('enterpriseMode').checked;
       
       // Show results area
       const resultArea = document.getElementById('resultArea');
@@ -950,15 +1062,25 @@
           results += '<div class="result-item"><strong>Using site: operator method</strong> - Perfect for small businesses without Search Console access</div>';
           results += '<div class="result-item">Opening Google Search with query: site:' + domain + '</div>';
           results += '<div class="result-item">Simulating browser automation to avoid detection...</div>';
-        } else {
+        } else if (method === 'gsc') {
           results += '<div class="result-item"><strong>Using Google Search Console API</strong> - Recommended for verified site owners</div>';
           results += '<div class="result-item">Authenticating with Google API...</div>';
           results += '<div class="result-item">Preparing direct indexing requests...</div>';
+        } else if (method === 'gsc_direct') {
+          results += '<div class="result-item"><strong>Using GSC Direct Submission</strong> - Advanced feature for verified site owners</div>';
+          results += '<div class="result-item">Authenticating with Google Search Console...</div>';
+          results += '<div class="result-item">Checking for non-indexed URLs...</div>';
+          results += '<div class="result-item">Preparing direct submission requests...</div>';
         }
         
         if (sitemap) {
           results += '<div class="result-item">Parsing sitemap: ' + sitemap + '</div>';
           results += '<div class="result-item">Found 25 URLs in sitemap</div>';
+          
+          if (submitSitemap) {
+            results += '<div class="result-item"><strong>Submitting sitemap directly to Google Search Console</strong></div>';
+          }
+          
           results += '<div class="result-item">Applying smart rate limiting to avoid CAPTCHA challenges...</div>';
         } else {
           results += '<div class="result-item">No sitemap provided, extracting links from homepage</div>';
@@ -966,7 +1088,17 @@
           results += '<div class="result-item">Prioritizing important pages based on link structure...</div>';
         }
         
-        results += '<div class="result-item">Successfully submitted 5 URLs (demo limited to 5)</div>';
+        results += '<div class="result-item">URL limit per domain set to: ' + urlLimit + '</div>';
+        
+        if (enterpriseMode) {
+          results += '<div class="result-item"><strong>Enterprise Mode activated</strong> - Handling large volume of URLs</div>';
+          results += '<div class="result-item">Splitting URLs into batches of 10,000 for efficient processing</div>';
+          results += '<div class="result-item">Distributing workload across multiple workflows...</div>';
+          results += '<div class="result-item">Successfully submitted 5 URLs from first batch (demo limited to 5)</div>';
+        } else {
+          results += '<div class="result-item">Successfully submitted 5 URLs (demo limited to 5)</div>';
+        }
+        
         results += '<div class="result-item"><strong>SEO Impact:</strong> Expect faster indexing within 1-7 days compared to weeks of waiting</div>';
         results += '<div class="result-item"><strong>Submission complete!</strong> In a real scenario, all URLs would be processed automatically on your schedule.</div>';
         

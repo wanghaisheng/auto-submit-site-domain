@@ -5,11 +5,36 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 import time
 import re
+import json
+from pathlib import Path
 
 load_dotenv()  # Load environment variables
 
 MAX_URLS = int(os.getenv('MAX_URLS_PER_RUN', 100))  # Default to 100 if not set
 REQUEST_DELAY = int(os.getenv('REQUEST_DELAY', 2))  # Delay between requests
+
+def load_config():
+    """Load configuration from config.json"""
+    config_path = Path('config.json')
+    if config_path.exists():
+        try:
+            with open(config_path, 'r') as f:
+                return json.load(f)
+        except json.JSONDecodeError:
+            print("Error reading config file. Using default configuration.")
+    
+    # Default configuration
+    return {
+        "domain_whitelist": [],
+        "domain_blacklist": [],
+        "use_domain_file": False,
+        "domain_file_path": "domains_list.txt",
+        "url_limit_per_domain": 1000,
+        "submit_not_indexed": True,
+        "submit_sitemap": True,
+        "split_large_domains": False,
+        "max_urls_per_piece": 10000
+    }
 
 def is_sitemap_url(url):
     """Check if a URL is likely a sitemap based on its name or extension"""
@@ -156,5 +181,105 @@ def parse_sitemaps():
     with open('urls.txt', 'w') as f:
         f.write('\n'.join(urls_list))
 
-if __name__ == '__main__':
-    parse_sitemaps()
+def process_domain(domain):
+    """Process a single domain and return all found URLs"""
+    all_urls = set()
+    
+    try:
+        print(f"Processing domain: {domain}")
+        sitemap_urls = find_sitemap_urls(domain)
+        
+        if not sitemap_urls:
+            print(f"No sitemap found for {domain}, trying homepage for links")
+            # If no sitemap found, try to extract links from homepage
+            try:
+                home_url = f'https://{domain}/'
+                response = requests.get(home_url, timeout=15)
+                if response.status_code == 200:
+                    soup = BeautifulSoup(response.text, 'html.parser')
+                    for a_tag in soup.find_all('a', href=True):
+                        link = a_tag['href']
+                        if link.startswith('http'):
+                            all_urls.add(link)
+                        elif not link.startswith('#') and not link.startswith('javascript:'):
+                            full_url = urljoin(home_url, link)
+                            all_urls.add(full_url)
+            except Exception as e:
+                print(f"Error extracting links from homepage of {domain}: {e}")
+        
+        # Process each found sitemap
+        for sitemap_url in sitemap_urls:
+            print(f"Processing sitemap: {sitemap_url}")
+            extract_urls_from_sitemap(sitemap_url, set(), all_urls)
+            time.sleep(REQUEST_DELAY)
+        
+    except Exception as e:
+        print(f"Error processing {domain}: {e}")
+    
+    return list(all_urls)
+
+if __name__ == "__main__":
+    # Load configuration
+    config = load_config()
+    url_limit_per_domain = config.get("url_limit_per_domain", 1000)
+    split_large_domains = config.get("split_large_domains", False)
+    max_urls_per_piece = config.get("max_urls_per_piece", 10000)
+    
+    # Load domains from file
+    try:
+        with open('domains.txt', 'r') as f:
+            domains = [line.strip() for line in f if line.strip()]
+    except FileNotFoundError:
+        print("domains.txt not found. Please run cloudflare_fetcher.py first.")
+        exit(1)
+    
+    print(f"Loaded {len(domains)} domains from domains.txt")
+    
+    # Process each domain
+    all_urls = []
+    domain_url_map = {}  # Map domains to their URLs for potential splitting
+    
+    for domain in domains:
+        print(f"\nProcessing {domain}...")
+        urls = process_domain(domain)
+        
+        # Apply URL limit per domain if configured
+        if url_limit_per_domain > 0 and len(urls) > url_limit_per_domain:
+            print(f"Limiting URLs for {domain} to {url_limit_per_domain} (from {len(urls)})")
+            urls = urls[:url_limit_per_domain]
+        
+        domain_url_map[domain] = urls
+        all_urls.extend(urls)
+        
+        # Limit total URLs if MAX_URLS is set
+        if MAX_URLS > 0 and len(all_urls) >= MAX_URLS:
+            all_urls = all_urls[:MAX_URLS]
+            print(f"Reached maximum URL limit of {MAX_URLS}. Stopping.")
+            break
+    
+    # Handle large domains splitting if enabled
+    if split_large_domains:
+        large_domains = [domain for domain, urls in domain_url_map.items() if len(urls) > max_urls_per_piece]
+        if large_domains:
+            print(f"\nFound {len(large_domains)} domains with more than {max_urls_per_piece} URLs")
+            print("Splitting large domains into separate files...")
+            
+            for domain in large_domains:
+                urls = domain_url_map[domain]
+                pieces = [urls[i:i+max_urls_per_piece] for i in range(0, len(urls), max_urls_per_piece)]
+                
+                for i, piece in enumerate(pieces):
+                    with open(f'urls_{domain}_{i+1}.txt', 'w') as f:
+                        f.write('\n'.join(piece))
+                    print(f"Saved {len(piece)} URLs for {domain} (part {i+1}) to urls_{domain}_{i+1}.txt")
+    
+    # Save all URLs to file
+    with open('urls.txt', 'w') as f:
+        f.write('\n'.join(all_urls))
+    
+    print(f"\nTotal URLs saved: {len(all_urls)}")
+    print(f"URLs saved to urls.txt")
+    
+    # Also save as JSON for reference
+    with open('urls.json', 'w') as f:
+        json.dump(all_urls, f, indent=2)
