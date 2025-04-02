@@ -43,7 +43,7 @@ jobs:
         run: python submit_to_google.py
         
       - name: Upload logs and results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: submission-logs
           path: |
