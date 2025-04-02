@@ -110,7 +110,7 @@ Detailed instructions:
 
 # future plan
 
-submit through google search console api is typically used by competitors,url daily submit a google account can  has limit(for competitor, https://rankweek.com,6.000 pages indexed per month (200/Day)), but use site:operator  to trigger has no limit ,it is our features 
+submit through google search console api is typically used by competitors,url daily submit a google account can  has limit(for competitor, https://rankweek.com,6.000 pages indexed per month (200/Day)), it do save user labor and time, but use site:operator  to trigger has no limit ,it is our great features as supplement to help boost indexing.in ai ages, anyone can build a site daily, and submit urls to google is starting point and boring to user. 
 
 add url count limit inside a domain to submit.
 
