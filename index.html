@@ -6,127 +6,981 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO Meta Tags -->
-  <meta name="description" content="A mobile simulator designed to demonstrate mobile interface design.">
-  <meta name="keywords" content="mobile, simulator, mobile design, mobile app">
-  <meta name="author" content="Your Name or Company">
+  <meta name="description" content="Boost your website's visibility in Google Search with our automated site submission tool. Perfect for small businesses and indie developers.">
+  <meta name="keywords" content="google indexing, site submission, SEO tool, search console, website visibility, cloudflare, sitemap">
+  <meta name="author" content="Auto Submit Site Domain">
   <meta http-equiv="Content-Language" content="en">
 
   <!-- Canonical Link -->
-  <link rel="canonical" href="https://www.yourwebsite.com/pc-simulator" />
+  <link rel="canonical" href="https://auto-submit-site-domain.github.io" />
 
   <!-- Open Graph for Social Media -->
-  <meta property="og:title" content="PC Simulator">
-  <meta property="og:description" content="A mobile simulator designed to demonstrate mobile interface design.">
-  <meta property="og:image" content="https://www.yourwebsite.com/pc-simulator-image.jpg">
-  <meta property="og:url" content="https://www.yourwebsite.com/pc-simulator">
+  <meta property="og:title" content="Auto Submit Site Domain - Boost Your Website's Visibility">
+  <meta property="og:description" content="Automatically submit your websites to Google Search and improve your SEO with our free GitHub Action tool.">
+  <meta property="og:image" content="https://auto-submit-site-domain.github.io/images/og-image.jpg">
+  <meta property="og:url" content="https://auto-submit-site-domain.github.io">
   <meta property="og:type" content="website">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="PC Simulator">
-  <meta name="twitter:description" content="A mobile simulator designed to demonstrate mobile interface design.">
-  <meta name="twitter:image" content="https://www.yourwebsite.com/pc-simulator-image.jpg">
-  <meta name="twitter:creator" content="@yourtwitterhandle">
+  <meta name="twitter:title" content="Auto Submit Site Domain - Boost Your Website's Visibility">
+  <meta name="twitter:description" content="Automatically submit your websites to Google Search and improve your SEO with our free GitHub Action tool.">
+  <meta name="twitter:image" content="https://auto-submit-site-domain.github.io/images/twitter-card.jpg">
+  <meta name="twitter:creator" content="@autosubmitsite">
 
   <!-- Favicon -->
-  <link rel="icon" href="https://www.yourwebsite.com/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'UA-XXXXX-Y');
-  </script>
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#4285f4">
 
-  <!-- Microsoft Clarity -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y) {
-      window.clarity=window.clarity||function(){(clarity.q=clarity.q||[]).push(arguments)};
-      clarity('set', 'anonymizeIP', true);
-      i=l.createElement('script');i.async=1;i.src=r;i.type='text/javascript';
-      t=l.getElementsByTagName('script')[0];t.parentNode.insertBefore(i,t);
-    })(document,window,'script','https://www.clarity.ms/tag/XXXXXX');
-  </script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <title>PC Simulator</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <title>Auto Submit Site Domain - Boost Your Website's Visibility in Google</title>
 
   <style>
-    /* Global Styles */
-    body {
+    :root {
+      --primary: #4285f4; /* Google Blue */
+      --primary-dark: #3367d6;
+      --secondary: #34a853; /* Google Green */
+      --accent: #fbbc05; /* Google Yellow */
+      --danger: #ea4335; /* Google Red */
+      --light: #f8f9fa;
+      --dark: #202124;
+      --gray: #5f6368;
+      --border-radius: 8px;
+      --box-shadow: 0 4px 6px rgba(32, 33, 36, 0.1);
+    }
+
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+    }
+
+    /* Header & Navigation */
+    header {
+      background-color: white;
+      box-shadow: var(--box-shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    nav {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      height: 100vh;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo i {
+      margin-right: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background-color: var(--primary);
+      color: white;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background-color: white;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(66, 133, 244, 0.1);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4rem 0;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e8eaed 100%);
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-image {
+      flex: 1;
       text-align: center;
     }
 
-    .mobile-container {
-      width: 360px;
-      height: 640px;
-      border: 16px solid black;
-      border-radius: 16px;
-      background-color: #fff;
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      color: var(--gray);
+    }
+
+    /* Features Section */
+    .features {
+      padding: 4rem 0;
+      background-color: white;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      box-shadow: var(--box-shadow);
+      transition: transform 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    /* How It Works Section */
+    .how-it-works {
+      padding: 4rem 0;
+      background-color: var(--light);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      counter-reset: step-counter;
+    }
+
+    .step {
       position: relative;
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: var(--box-shadow);
+      counter-increment: step-counter;
+    }
+
+    .step::before {
+      content: counter(step-counter);
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      width: 40px;
+      height: 40px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50%;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      font-weight: bold;
     }
 
-    .content {
+    /* Comparison Section */
+    .comparison {
+      padding: 4rem 0;
+      background-color: white;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      box-shadow: var(--box-shadow);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #e8eaed;
+    }
+
+    .comparison-table th {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .check {
+      color: var(--secondary);
+    }
+
+    .times {
+      color: var(--danger);
+    }
+
+    /* Pain Points Section */
+    .pain-points {
+      padding: 4rem 0;
+      background-color: var(--light);
+    }
+
+    .pain-points-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .pain-point-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      box-shadow: var(--box-shadow);
+    }
+
+    .pain-point-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .pain-point-icon {
+      font-size: 1.5rem;
+      color: var(--danger);
+      margin-right: 1rem;
+    }
+
+    .solution-icon {
+      font-size: 1.5rem;
+      color: var(--secondary);
+      margin-right: 1rem;
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 4rem 0;
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2,
+    .cta p {
+      color: white;
+    }
+
+    .cta .btn {
+      background-color: white;
+      color: var(--primary);
+      margin-top: 1rem;
+    }
+
+    .cta .btn:hover {
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 3rem 0 1.5rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-column h3 {
+      color: white;
+      margin-bottom: 1.5rem;
       font-size: 1.2rem;
-      color: #333;
     }
 
-    /* Adjustments for PC */
-    @media (min-width: 768px) {
-      .mobile-container {
-        width: 600px;
-        height: 1000px;
-      }
-
-      .content {
-        font-size: 1.5rem;
-      }
+    .footer-links {
+      list-style: none;
     }
 
-    @media (min-width: 1024px) {
-      .mobile-container {
-        width: 800px;
-        height: 1400px;
-      }
-
-      .content {
-        font-size: 1.8rem;
-      }
+    .footer-links li {
+      margin-bottom: 0.5rem;
     }
 
-    /* Additional responsiveness for larger screens */
-    @media (min-width: 1200px) {
-      body {
-        justify-content: flex-start;
+    .footer-links a {
+      color: #bdc1c6;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid #5f6368;
+      color: #bdc1c6;
+      font-size: 0.9rem;
+    }
+
+    .language-switcher {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .language-switcher select {
+      padding: 0.5rem;
+      border-radius: var(--border-radius);
+      border: 1px solid #5f6368;
+      background-color: var(--dark);
+      color: white;
+      margin-left: 0.5rem;
+    }
+
+    /* Playground Section */
+    .playground {
+      padding: 4rem 0;
+      background-color: white;
+    }
+
+    .playground-demo {
+      background-color: var(--light);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: var(--box-shadow);
+      margin-top: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #dadce0;
+      border-radius: var(--border-radius);
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+      margin-bottom: 0;
+    }
+
+    .result-area {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background-color: white;
+      border-radius: var(--border-radius);
+      border: 1px solid #dadce0;
+    }
+
+    .result-title {
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .result-item {
+      padding: 0.75rem;
+      border-bottom: 1px solid #dadce0;
+    }
+
+    .result-item:last-child {
+      border-bottom: none;
+    }
+
+    /* Mobile Responsiveness */
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      color: var(--gray);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
       }
 
-      .mobile-container {
-        margin-top: 50px;
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        box-shadow: 0 4px 6px rgba(32, 33, 36, 0.1);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 999;
+      }
+
+      .nav-links.active {
+        transform: translateY(0);
+      }
+
+      .nav-links li {
+        margin: 1rem 0;
+      }
+
+      .hero-content {
+        flex-direction: column;
+      }
+
+      .hero-text,
+      .hero-image {
+        flex: none;
+        width: 100%;
+      }
+
+      .form-row {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .comparison-table {
+        display: block;
+        overflow-x: auto;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="mobile-container">
-    <div class="content">
-      <p>Mobile Simulator Screen</p>
-      <p>PC Version: Adjusted for larger screens.</p>
+  <!-- Header & Navigation -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo"><i class="fas fa-search"></i> Auto Submit Site Domain</a>
+        <button class="menu-toggle" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#playground">Try It</a></li>
+          <li><a href="#comparison">Comparison</a></li>
+          <li><a href="https://github.com/heytcm/auto-submit-site-domain" class="btn">Get Started</a></li>
+        </ul>
+      </nav>
     </div>
-  </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Boost Your Website's Visibility in Google Search</h1>
+          <p>Automatically submit your domains and URLs to Google Search using the "site:" operator to help with indexing. <strong>Perfect for small businesses and indie developers</strong> who want to improve their SEO without the technical complexity or expensive tools.</p>
+          <p>Stop waiting weeks for Google to find your content - get indexed faster and start driving traffic to your site today!</p>
+          <a href="https://github.com/heytcm/auto-submit-site-domain" class="btn">Get Started with GitHub</a>
+          <a href="#playground" class="btn btn-secondary">Try the Demo</a>
+        </div>
+        <div class="hero-image">
+          <img src="https://via.placeholder.com/600x400?text=Auto+Submit+Tool" alt="Auto Submit Site Domain Tool">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Powerful Features</h2>
+        <p>Everything small businesses and indie developers need to improve website visibility without expensive SEO tools</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-cloud"></i>
+          </div>
+          <h3>Cloudflare Integration</h3>
+          <p>Automatically fetches all domains and subdomains from your Cloudflare account, ensuring comprehensive coverage.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-sitemap"></i>
+          </div>
+          <h3>Intelligent Sitemap Parsing</h3>
+          <p>Extracts URLs from sitemaps, including nested sitemaps and sitemap indexes, with fallback to homepage link extraction.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-tachometer-alt"></i>
+          </div>
+          <h3>Smart Rate Limiting</h3>
+          <p>Implements delays and randomization to avoid triggering CAPTCHAs, ensuring smooth operation.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Detailed Logging</h3>
+          <p>Keeps track of all submissions and their status, providing insights into your indexing progress.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fab fa-google"></i>
+          </div>
+          <h3>Google Search Console Support</h3>
+          <p>Submit URLs directly via Google Search Console API for more efficient indexing (optional feature).</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-robot"></i>
+          </div>
+          <h3>Automated Workflow</h3>
+          <p>Runs as a GitHub Action on a schedule or can be triggered manually, saving you time and effort.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p>Simple, efficient, and automated process designed specifically for small businesses and indie developers</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>Domain Collection</h3>
+          <p>Uses the Cloudflare API to fetch all domains and subdomains in your account, ensuring no site is missed.</p>
+        </div>
+        <div class="step">
+          <h3>URL Extraction</h3>
+          <p>Parses sitemaps for each domain to extract all URLs. If no sitemap is found, it extracts links from the homepage.</p>
+        </div>
+        <div class="step">
+          <h3>Google Submission</h3>
+          <p>Submits each URL to Google using either the "site:" operator through browser automation or direct submission via Google Search Console API.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Playground Section -->
+  <section class="playground" id="playground">
+    <div class="container">
+      <div class="section-header">
+        <h2>Try It Yourself</h2>
+        <p>See how this simple yet powerful tool helps small businesses and indie developers get indexed faster</p>
+      </div>
+      <div class="playground-demo">
+        <form id="demoForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="domain">Domain</label>
+              <input type="text" id="domain" placeholder="example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="submissionMethod">Submission Method</label>
+              <select id="submissionMethod">
+                <option value="site">site: Operator (Browser)</option>
+                <option value="gsc">Google Search Console API</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sitemapUrl">Sitemap URL (Optional)</label>
+            <input type="text" id="sitemapUrl" placeholder="https://example.com/sitemap.xml">
+          </div>
+          <button type="submit" class="btn">Simulate Submission</button>
+        </form>
+
+        <div class="result-area" id="resultArea" style="display: none;">
+          <div class="result-title">Simulation Results</div>
+          <div id="resultContent"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section class="comparison" id="comparison">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Choose Our Tool?</h2>
+        <p>See how we compare to other indexing methods for small businesses and indie developers</p>
+      </div>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Auto Submit Site Domain</th>
+            <th>Manual Submission</th>
+            <th>Paid Indexing Services</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cost</td>
+            <td><i class="fas fa-check check"></i> Free</td>
+            <td><i class="fas fa-check check"></i> Free</td>
+            <td><i class="fas fa-times times"></i> $10-100/month</td>
+          </tr>
+          <tr>
+            <td>Automation</td>
+            <td><i class="fas fa-check check"></i> Fully automated</td>
+            <td><i class="fas fa-times times"></i> Manual work</td>
+            <td><i class="fas fa-check check"></i> Automated</td>
+          </tr>
+          <tr>
+            <td>Cloudflare Integration</td>
+            <td><i class="fas fa-check check"></i> Built-in</td>
+            <td><i class="fas fa-times times"></i> Not available</td>
+            <td><i class="fas fa-times times"></i> Rarely available</td>
+          </tr>
+          <tr>
+            <td>Sitemap Parsing</td>
+            <td><i class="fas fa-check check"></i> Intelligent parsing</td>
+            <td><i class="fas fa-times times"></i> Manual</td>
+            <td><i class="fas fa-check check"></i> Basic parsing</td>
+          </tr>
+          <tr>
+            <td>Google Search Console API</td>
+            <td><i class="fas fa-check check"></i> Optional support</td>
+            <td><i class="fas fa-times times"></i> Manual only</td>
+            <td><i class="fas fa-check check"></i> Sometimes</td>
+          </tr>
+          <tr>
+            <td>Open Source</td>
+            <td><i class="fas fa-check check"></i> 100% open source</td>
+            <td><i class="fas fa-minus"></i> N/A</td>
+            <td><i class="fas fa-times times"></i> Proprietary</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Pain Points Section -->
+  <section class="pain-points" id="pain-points">
+    <div class="container">
+      <div class="section-header">
+        <h2>Common Challenges & Our Solutions</h2>
+        <p>How our tool addresses the most frustrating aspects of website indexing</p>
+      </div>
+      <div class="pain-points-grid">
+        <div class="pain-point-card">
+          <div class="pain-point-header">
+            <div class="pain-point-icon">
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <h3>Time-Consuming Manual Submissions</h3>
+          </div>
+          <p>Manually submitting URLs to Google is tedious and takes valuable time away from your business.</p>
+          <div class="pain-point-header">
+            <div class="solution-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h4>Our Solution</h4>
+          </div>
+          <p>Fully automated GitHub Action that runs on a schedule, freeing up your time for more important tasks.</p>
+        </div>
+        <div class="pain-point-card">
+          <div class="pain-point-header">
+            <div class="pain-point-icon">
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <h3>Missing URLs in Indexing</h3>
+          </div>
+          <p>It's easy to miss important pages when manually submitting URLs, leading to incomplete site indexing.</p>
+          <div class="pain-point-header">
+            <div class="solution-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h4>Our Solution</h4>
+          </div>
+          <p>Comprehensive sitemap parsing and fallback mechanisms ensure all your important pages get submitted.</p>
+        </div>
+        <div class="pain-point-card">
+          <div class="pain-point-header">
+            <div class="pain-point-icon">
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <h3>Google CAPTCHA Challenges</h3>
+          </div>
+          <p>Rapid submissions often trigger CAPTCHA challenges, interrupting your workflow and wasting valuable time for small businesses and indie developers.</p>
+          <div class="pain-point-header">
+            <div class="solution-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h4>Our Solution</h4>
+          </div>
+          <p>Our intelligent rate limiting system with adaptive delays and request randomization prevents triggering CAPTCHAs, ensuring smooth, uninterrupted operation even during large-scale submissions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Improve Your Website's Visibility?</h2>
+      <p>Get started with Auto Submit Site Domain today and watch your pages get indexed faster. <strong>Perfect for small businesses and indie developers with limited SEO budgets!</strong></p>
+      <a href="https://github.com/heytcm/auto-submit-site-domain" class="btn">Fork on GitHub</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Auto Submit Site Domain</h3>
+          <p>A free, open-source tool to help small businesses and indie developers improve their website visibility in Google Search.</p>
+          <div class="social-links">
+            <a href="https://github.com/heytcm/auto-submit-site-domain" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#playground">Try It</a></li>
+            <li><a href="#comparison">Comparison</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="https://github.com/heytcm/auto-submit-site-domain/blob/main/README.md">Documentation</a></li>
+            <li><a href="https://github.com/heytcm/auto-submit-site-domain/issues">Report Issues</a></li>
+            <li><a href="https://github.com/heytcm/auto-submit-site-domain/blob/main/CONTRIBUTING.md">Contribute</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="language-switcher">
+        <span>Language:</span>
+        <select id="languageSelector" data-i18n="language-selector">
+          <option value="en" selected>English</option>
+          <option value="zh">中文</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+        </select>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Auto Submit Site Domain. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile Menu Toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('active');
+    });
+
+    // Demo Form Submission
+    document.getElementById('demoForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const domain = document.getElementById('domain').value;
+      const method = document.getElementById('submissionMethod').value;
+      const sitemap = document.getElementById('sitemapUrl').value;
+      
+      // Show results area
+      const resultArea = document.getElementById('resultArea');
+      const resultContent = document.getElementById('resultContent');
+      resultArea.style.display = 'block';
+      
+      // Simulate processing
+      resultContent.innerHTML = '<div class="result-item">Processing submission for ' + domain + '...</div>';
+      
+      // Simulate API call delay
+      setTimeout(function() {
+        let results = '';
+        
+        if (method === 'site') {
+          results += '<div class="result-item"><strong>Using site: operator method</strong> - Perfect for small businesses without Search Console access</div>';
+          results += '<div class="result-item">Opening Google Search with query: site:' + domain + '</div>';
+          results += '<div class="result-item">Simulating browser automation to avoid detection...</div>';
+        } else {
+          results += '<div class="result-item"><strong>Using Google Search Console API</strong> - Recommended for verified site owners</div>';
+          results += '<div class="result-item">Authenticating with Google API...</div>';
+          results += '<div class="result-item">Preparing direct indexing requests...</div>';
+        }
+        
+        if (sitemap) {
+          results += '<div class="result-item">Parsing sitemap: ' + sitemap + '</div>';
+          results += '<div class="result-item">Found 25 URLs in sitemap</div>';
+          results += '<div class="result-item">Applying smart rate limiting to avoid CAPTCHA challenges...</div>';
+        } else {
+          results += '<div class="result-item">No sitemap provided, extracting links from homepage</div>';
+          results += '<div class="result-item">Found 12 URLs on homepage</div>';
+          results += '<div class="result-item">Prioritizing important pages based on link structure...</div>';
+        }
+        
+        results += '<div class="result-item">Successfully submitted 5 URLs (demo limited to 5)</div>';
+        results += '<div class="result-item"><strong>SEO Impact:</strong> Expect faster indexing within 1-7 days compared to weeks of waiting</div>';
+        results += '<div class="result-item"><strong>Submission complete!</strong> In a real scenario, all URLs would be processed automatically on your schedule.</div>';
+        
+        resultContent.innerHTML = results;
+      }, 2000);
+    });
+
+    // Language Switcher (placeholder for future implementation)
+    document.getElementById('languageSelector').addEventListener('change', function(e) {
+      const language = e.target.value;
+      console.log('Language changed to: ' + language);
+      // In a real implementation, this would load language files and update the UI
+    });
+  </script>
 </body>
 
 </html>

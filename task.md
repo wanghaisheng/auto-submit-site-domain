@@ -2,6 +2,13 @@
 
 This GitHub Action automatically submits your site URLs to Google Search using a cron python job.
 
+
+add   google search console support
+
+
+
+
+
 ## Features
 - Fetches domain list from Cloudflare API
 - Parses URLs from sitemap.xml
