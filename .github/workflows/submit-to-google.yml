@@ -23,6 +23,7 @@ jobs:
       - name: Fetch domains from Cloudflare
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           MAX_URLS_PER_RUN: ${{ secrets.MAX_URLS_PER_RUN || '0' }}
           REQUEST_DELAY: ${{ secrets.REQUEST_DELAY || '15' }}
           GOOGLE_SEARCH_LIMIT: ${{ secrets.GOOGLE_SEARCH_LIMIT || '10' }}

@@ -24,6 +24,7 @@ This tool automatically submits your domains and URLs to Google Search using the
    - Go to your repository Settings > Secrets and variables > Actions
    - Add the following secrets:
      - `CLOUDFLARE_API_TOKEN`: Your Cloudflare API token with read permissions
+     - `CLOUDFLARE_ACCOUNT_ID`: Your Cloudflare Account ID (found in the Cloudflare dashboard URL)
      - Optional: `MAX_URLS_PER_RUN`, `REQUEST_DELAY`, `GOOGLE_SEARCH_LIMIT`, `DRISSIONPAGE_TIMEOUT`
 
 3. **Customize the workflow** (optional):

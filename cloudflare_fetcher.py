@@ -8,6 +8,7 @@ load_dotenv()  # Load environment variables from .env file
 
 def fetch_domains():
     api_token = os.getenv('CLOUDFLARE_API_TOKEN')
+    account_id = os.getenv('CLOUDFLARE_ACCOUNT_ID')
     
     if not api_token:
         raise ValueError("Missing Cloudflare API token in .env file")
@@ -25,9 +26,19 @@ def fetch_domains():
     print("Fetching zones from Cloudflare account...")
     
     while True:
-        zones_url = f'https://api.cloudflare.com/client/v4/zones?page={page}&per_page={per_page}'
-        response = requests.get(zones_url, headers=headers)
-        response.raise_for_status()
+        # Include account_id in the request if available
+        if account_id:
+            zones_url = f'https://api.cloudflare.com/client/v4/zones?page={page}&per_page={per_page}&account.id={account_id}'
+        else:
+            zones_url = f'https://api.cloudflare.com/client/v4/zones?page={page}&per_page={per_page}'
+            
+        try:
+            response = requests.get(zones_url, headers=headers)
+            response.raise_for_status()
+        except requests.exceptions.HTTPError as e:
+            print(f"Error fetching zones: {e}")
+            print(f"Response content: {e.response.text if hasattr(e, 'response') else 'No response content'}")
+            raise
         
         result = response.json()
         zones = result['result']
