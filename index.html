@@ -57,6 +57,7 @@
   <link rel="stylesheet" href="css/enhanced-pricing.css">
   <link rel="stylesheet" href="css/testimonials.css">
   <link rel="stylesheet" href="css/enhanced-faq.css">
+  <link rel="stylesheet" href="css/faq.css">
   <link rel="stylesheet" href="css/cta.css">
   <link rel="stylesheet" href="css/playground.css">
   <link rel="stylesheet" href="css/github-integration.css">
@@ -1207,54 +1208,7 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3>rankdaily</h3>
-          <p>A free, open-source tool to help small businesses and indie developers improve their website visibility in Google Search.</p>
-          <div class="social-links">
-            <a href="https://github.com/wanghaisheng/auto-submit-site-domain" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-          </div>
-        </div>
-        <div class="footer-column">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="#features">Features</a></li>
-            <li><a href="#advanced-features">Advanced Features</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#playground">Try It</a></li>
-            <li><a href="#comparison">Comparison</a></li>
-          </ul>
-        </div>
-        <div class="footer-column">
-          <h3>Resources</h3>
-          <ul class="footer-links">
-            <li><a href="https://github.com/wanghaisheng/auto-submit-site-domain/blob/main/README.md">Documentation</a></li>
-            <li><a href="https://github.com/wanghaisheng/auto-submit-site-domain/issues">Report Issues</a></li>
-            <li><a href="https://github.com/wanghaisheng/auto-submit-site-domain/blob/main/CONTRIBUTING.md">Contribute</a></li>
-            <li><a href="https://github.com/wanghaisheng/auto-submit-site-domain/blob/main/LICENSE">License</a></li>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms of Service</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="language-switcher">
-        <span>Language:</span>
-        <select id="languageSelector" data-i18n="language-selector">
-          <option value="en" selected>English</option>
-          <option value="zh">中文</option>
-          <option value="es">Español</option>
-          <option value="fr">Français</option>
-        </select>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2023 rankdaily. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+
 
   <!-- JavaScript Files -->
   <script>
@@ -1870,6 +1824,120 @@ ${limitMessage}
     </div>
   </section>
 
+  <!-- FAQ Section -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Get answers to common questions about our indexing service</p>
+      </div>
+      <div class="faq-container">
+        <div class="faq-search">
+          <input type="text" id="faqSearch" placeholder="Search for questions...">
+          <i class="fas fa-search"></i>
+        </div>
+        
+        <div class="faq-categories">
+          <div class="faq-category active" data-category="all">All</div>
+          <div class="faq-category" data-category="general">General</div>
+          <div class="faq-category" data-category="pricing">Pricing</div>
+          <div class="faq-category" data-category="technical">Technical</div>
+          <div class="faq-category" data-category="integration">Integration</div>
+        </div>
+        
+        <div class="faq-items">
+          <!-- General Questions -->
+          <div class="faq-item" data-category="general">
+            <div class="faq-question">What is rankdaily?</div>
+            <div class="faq-answer">
+              <p>rankdaily is a GitHub workflow-based SEO agent that runs daily jobs to boost your website's visibility in Google Search. It automatically submits your website URLs to Google for faster indexing, helping small businesses and indie developers improve their search engine presence without expensive SEO tools.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item" data-category="general">
+            <div class="faq-question">How does rankdaily differ from other indexing services?</div>
+            <div class="faq-answer">
+              <p>Unlike other indexing services that rely solely on Google Search Console API with daily limits, rankdaily uses a dual-approach strategy: it combines GSC API with the "site:" operator method, which has no limits. This provides a great supplement to boost indexing efficiency. Additionally, rankdaily is 100% open source, offers Cloudflare integration, and provides configurable cron schedules for daily job automation.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item new" data-category="general">
+            <div class="faq-question">Do I need technical knowledge to use rankdaily?</div>
+            <div class="faq-answer">
+              <p>No, rankdaily is designed to be user-friendly for everyone, regardless of technical expertise. Our tool provides a simple interface and automated workflows that handle the technical aspects for you. For those who want more control, advanced options are available but not required.</p>
+            </div>
+          </div>
+          
+          <!-- Pricing Questions -->
+          <div class="faq-item" data-category="pricing">
+            <div class="faq-question">Is rankdaily free to use?</div>
+            <div class="faq-answer">
+              <p>Yes, rankdaily offers a free plan that allows manual submissions of up to 5 domains and 100 URLs per domain in each session. For automated submissions with cron scheduling and additional features, we offer affordable paid plans starting at just $9.99/month.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item" data-category="pricing">
+            <div class="faq-question">What's included in the paid plans?</div>
+            <div class="faq-answer">
+              <p>Our paid plans include automated daily submissions, higher URL limits, priority support, advanced features like Google Search Console API integration, and enterprise-scale capabilities for handling millions of URLs. Each plan is designed to meet different needs, from small businesses to large enterprises.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item" data-category="pricing">
+            <div class="faq-question">Do you offer refunds?</div>
+            <div class="faq-answer">
+              <p>Yes, we offer a 30-day money-back guarantee on all paid plans. If you're not satisfied with our service for any reason, you can request a full refund within 30 days of your purchase, no questions asked.</p>
+            </div>
+          </div>
+          
+          <!-- Technical Questions -->
+          <div class="faq-item" data-category="technical">
+            <div class="faq-question">How does the "site:" operator method work?</div>
+            <div class="faq-answer">
+              <p>The "site:" operator method uses browser automation to submit URLs to Google using the "site:" search operator. This method bypasses the daily limits imposed by the Google Search Console API and can help get your pages indexed faster. Our tool handles all the technical aspects of this process automatically.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item" data-category="technical">
+            <div class="faq-question">Does rankdaily work with any website platform?</div>
+            <div class="faq-answer">
+              <p>Yes, rankdaily works with any website platform, including WordPress, Shopify, Wix, custom-built sites, and more. As long as your website has a sitemap or accessible URLs, our tool can submit them to Google for indexing.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item new" data-category="technical">
+            <div class="faq-question">How does the Cloudflare integration work?</div>
+            <div class="faq-answer">
+              <p>Our Cloudflare integration automatically fetches all domains and subdomains from your Cloudflare account, ensuring comprehensive coverage. This eliminates the need to manually add each domain, saving you time and ensuring no site is missed. The integration uses the Cloudflare API to securely access your domain information.</p>
+            </div>
+          </div>
+          
+          <!-- Integration Questions -->
+          <div class="faq-item" data-category="integration">
+            <div class="faq-question">How do I set up rankdaily with GitHub Actions?</div>
+            <div class="faq-answer">
+              <p>Setting up rankdaily with GitHub Actions is simple. After subscribing to a plan, you'll receive instructions to add our GitHub Action to your repository. This involves creating a workflow file (.yml) that specifies when and how the indexing job should run. Our documentation provides step-by-step guidance, and our support team is available to help if needed.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item" data-category="integration">
+            <div class="faq-question">Can I use rankdaily without GitHub?</div>
+            <div class="faq-answer">
+              <p>Yes, you can use rankdaily without GitHub. While our automated workflows are optimized for GitHub Actions, we also offer alternative deployment options, including direct API access and standalone scripts that can be run on any server or hosting environment.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item" data-category="integration">
+            <div class="faq-question">Do I need a Google account to use rankdaily?</div>
+            <div class="faq-answer">
+              <p>For the basic "site:" operator method, you don't need a Google account. However, to use the Google Search Console API integration (available in paid plans), you'll need a Google account with access to Google Search Console for your domains.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact Us Section -->
   <section class="contact" id="contact">
     <div class="container">
@@ -1947,7 +2015,116 @@ ${limitMessage}
       // Reset the form
       this.reset();
     });
+    
+    // FAQ functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // FAQ accordion functionality
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      if (faqQuestions.length > 0) {
+        faqQuestions.forEach(question => {
+          question.addEventListener('click', function() {
+            const faqItem = question.parentElement;
+            faqItem.classList.toggle('active');
+          });
+        });
+      }
+      
+      // FAQ search functionality
+      const faqSearch = document.getElementById('faqSearch');
+      if (faqSearch) {
+        faqSearch.addEventListener('input', function() {
+          const searchTerm = this.value.toLowerCase();
+          const faqItems = document.querySelectorAll('.faq-item');
+          
+          faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question').textContent.toLowerCase();
+            const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+            
+            if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      }
+      
+      // FAQ category filtering
+      const faqCategories = document.querySelectorAll('.faq-category');
+      if (faqCategories.length > 0) {
+        faqCategories.forEach(category => {
+          category.addEventListener('click', function() {
+            // Remove active class from all categories
+            faqCategories.forEach(cat => cat.classList.remove('active'));
+            
+            // Add active class to clicked category
+            this.classList.add('active');
+            
+            const selectedCategory = this.getAttribute('data-category');
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+              if (selectedCategory === 'all' || item.getAttribute('data-category') === selectedCategory) {
+                item.style.display = 'block';
+              } else {
+                item.style.display = 'none';
+              }
+            });
+          });
+        });
+      }
+    });
   </script>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>rankdaily</h3>
+          <p>A free, open-source tool to help small businesses and indie developers improve their website visibility in Google Search.</p>
+          <div class="social-links">
+            <a href="https://github.com/wanghaisheng/auto-submit-site-domain" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#advanced-features">Advanced Features</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#playground">Try It</a></li>
+            <li><a href="#comparison">Comparison</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="https://github.com/wanghaisheng/auto-submit-site-domain/blob/main/README.md">Documentation</a></li>
+            <li><a href="https://github.com/wanghaisheng/auto-submit-site-domain/issues">Report Issues</a></li>
+            <li><a href="https://github.com/wanghaisheng/auto-submit-site-domain/blob/main/CONTRIBUTING.md">Contribute</a></li>
+            <li><a href="https://github.com/wanghaisheng/auto-submit-site-domain/blob/main/LICENSE">License</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="language-switcher">
+        <span>Language:</span>
+        <select id="languageSelector" data-i18n="language-selector">
+          <option value="en" selected>English</option>
+          <option value="zh">中文</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+        </select>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 rankdaily. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 
 </html>
