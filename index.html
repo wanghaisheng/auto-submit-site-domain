@@ -68,6 +68,10 @@
   <link rel="stylesheet" href="css/contact.css">
   <link rel="stylesheet" href="css/search-engines.css">
   <link rel="stylesheet" href="css/tabs.css">
+  <link rel="stylesheet" href="css/filters.css">
+  
+  <!-- JavaScript Files -->
+  <script src="js/filters.js" defer></script>
 </head>
 
 <body>
@@ -383,6 +387,76 @@
                   <input type="number" id="urlLimit" placeholder="Max: 100" value="100" min="1" max="10000">
                 </div>
               </div>
+              
+              <!-- Filter Toggle Button -->
+              <button type="button" class="filter-toggle" id="domainFilterToggle">
+                <i class="fas fa-filter"></i> Show Filters
+              </button>
+              
+              <!-- Filter Section -->
+              <div class="filter-section" id="domainFilterSection">
+                <div class="filter-group">
+                  <h4>URL Pattern Filters</h4>
+                  <div class="filter-options">
+                    <input type="text" class="filter-input" id="domainUrlPattern" placeholder="Filter URLs by pattern (e.g., /blog/*)">
+                  </div>
+                </div>
+                
+                <div class="filter-group">
+                  <h4>Content Type Filters</h4>
+                  <div class="filter-options">
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="domainIncludePages" checked>
+                      <label for="domainIncludePages">Pages</label>
+                    </div>
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="domainIncludePosts" checked>
+                      <label for="domainIncludePosts">Posts</label>
+                    </div>
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="domainIncludeProducts" checked>
+                      <label for="domainIncludeProducts">Products</label>
+                    </div>
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="domainIncludeCategories" checked>
+                      <label for="domainIncludeCategories">Categories</label>
+                    </div>
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="domainIncludeTags" checked>
+                      <label for="domainIncludeTags">Tags</label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="filter-group">
+                  <h4>Date Range Filter</h4>
+                  <div class="date-range">
+                    <input type="date" id="domainStartDate" placeholder="Start Date">
+                    <span>to</span>
+                    <input type="date" id="domainEndDate" placeholder="End Date">
+                  </div>
+                </div>
+                
+                <div class="filter-group">
+                  <h4>Priority Filters</h4>
+                  <div class="filter-options">
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="domainPriorityNew" checked>
+                      <label for="domainPriorityNew">New Content First</label>
+                    </div>
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="domainPriorityPopular">
+                      <label for="domainPriorityPopular">Popular Content First</label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="filter-actions">
+                  <button type="button" class="reset-filters" id="domainResetFilters">Reset Filters</button>
+                  <button type="button" class="apply-filters" id="domainApplyFilters">Apply Filters</button>
+                </div>
+              </div>
+              
               <div class="form-group">
                 <label for="submitSitemap">Advanced Options</label>
                 <div style="display: flex; gap: 20px; margin-top: 10px;">
@@ -440,6 +514,76 @@
                   </label>
                 </div>
               </div>
+              
+              <!-- Filter Toggle Button -->
+              <button type="button" class="filter-toggle" id="sitemapFilterToggle">
+                <i class="fas fa-filter"></i> Show Filters
+              </button>
+              
+              <!-- Filter Section -->
+              <div class="filter-section" id="sitemapFilterSection">
+                <div class="filter-group">
+                  <h4>URL Pattern Filters</h4>
+                  <div class="filter-options">
+                    <input type="text" class="filter-input" id="sitemapUrlPattern" placeholder="Filter URLs by pattern (e.g., /blog/*)">
+                  </div>
+                </div>
+                
+                <div class="filter-group">
+                  <h4>Content Type Filters</h4>
+                  <div class="filter-options">
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="sitemapIncludePages" checked>
+                      <label for="sitemapIncludePages">Pages</label>
+                    </div>
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="sitemapIncludePosts" checked>
+                      <label for="sitemapIncludePosts">Posts</label>
+                    </div>
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="sitemapIncludeProducts" checked>
+                      <label for="sitemapIncludeProducts">Products</label>
+                    </div>
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="sitemapIncludeMedia" checked>
+                      <label for="sitemapIncludeMedia">Media</label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="filter-group">
+                  <h4>Last Modified Filter</h4>
+                  <div class="date-range">
+                    <input type="date" id="sitemapModifiedAfter" placeholder="Modified After">
+                    <span>to</span>
+                    <input type="date" id="sitemapModifiedBefore" placeholder="Modified Before">
+                  </div>
+                </div>
+                
+                <div class="filter-group">
+                  <h4>Priority Filters</h4>
+                  <div class="filter-options">
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="sitemapPriorityHigh" checked>
+                      <label for="sitemapPriorityHigh">High Priority (0.8-1.0)</label>
+                    </div>
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="sitemapPriorityMedium" checked>
+                      <label for="sitemapPriorityMedium">Medium Priority (0.4-0.7)</label>
+                    </div>
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="sitemapPriorityLow" checked>
+                      <label for="sitemapPriorityLow">Low Priority (0.0-0.3)</label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="filter-actions">
+                  <button type="button" class="reset-filters" id="sitemapResetFilters">Reset Filters</button>
+                  <button type="button" class="apply-filters" id="sitemapApplyFilters">Apply Filters</button>
+                </div>
+              </div>
+              
               <button type="submit" class="btn">Parse & Submit Sitemap</button>
             </form>
           </div>
@@ -475,6 +619,63 @@
                   <label style="display: flex; align-items: center;">
                     <input type="checkbox" id="fileEnterpriseMode" style="margin-right: 8px;"> Enterprise Mode
                   </label>
+                </div>
+              </div>
+              
+              <!-- Filter Toggle Button -->
+              <button type="button" class="filter-toggle" id="fileFilterToggle">
+                <i class="fas fa-filter"></i> Show Filters
+              </button>
+              
+              <!-- Filter Section -->
+              <div class="filter-section" id="fileFilterSection">
+                <div class="filter-group">
+                  <h4>URL Pattern Filters</h4>
+                  <div class="filter-options">
+                    <input type="text" class="filter-input" id="fileUrlPattern" placeholder="Filter URLs by pattern (e.g., /blog/*)">
+                  </div>
+                </div>
+                
+                <div class="filter-group">
+                  <h4>URL Type Filters</h4>
+                  <div class="filter-options">
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="fileIncludeHttp" checked>
+                      <label for="fileIncludeHttp">HTTP URLs</label>
+                    </div>
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="fileIncludeHttps" checked>
+                      <label for="fileIncludeHttps">HTTPS URLs</label>
+                    </div>
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="fileExcludeParams" checked>
+                      <label for="fileExcludeParams">Exclude URLs with Parameters</label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="filter-group">
+                  <h4>Domain Filters</h4>
+                  <div class="filter-options">
+                    <input type="text" class="filter-input" id="fileIncludeDomains" placeholder="Include only these domains (comma separated)">
+                    <input type="text" class="filter-input" id="fileExcludeDomains" placeholder="Exclude these domains (comma separated)" style="margin-top: 10px;">
+                  </div>
+                </div>
+                
+                <div class="filter-group">
+                  <h4>Line Number Filters</h4>
+                  <div class="filter-options">
+                    <div class="date-range">
+                      <input type="number" id="fileStartLine" placeholder="Start Line" min="1">
+                      <span>to</span>
+                      <input type="number" id="fileEndLine" placeholder="End Line" min="1">
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="filter-actions">
+                  <button type="button" class="reset-filters" id="fileResetFilters">Reset Filters</button>
+                  <button type="button" class="apply-filters" id="fileApplyFilters">Apply Filters</button>
                 </div>
               </div>
               <button type="submit" class="btn">Upload & Submit</button>
@@ -519,6 +720,84 @@
                   </label>
                 </div>
               </div>
+              
+              <!-- Filter Toggle Button -->
+              <button type="button" class="filter-toggle" id="cloudflareFilterToggle">
+                <i class="fas fa-filter"></i> Show Filters
+              </button>
+              
+              <!-- Filter Section -->
+              <div class="filter-section" id="cloudflareFilterSection">
+                <div class="filter-group">
+                  <h4>URL Pattern Filters</h4>
+                  <div class="filter-options">
+                    <input type="text" class="filter-input" id="cloudflareUrlPattern" placeholder="Filter URLs by pattern (e.g., /blog/*)">
+                  </div>
+                </div>
+                
+                <div class="filter-group">
+                  <h4>Content Type Filters</h4>
+                  <div class="filter-options">
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="cloudflareIncludePages" checked>
+                      <label for="cloudflareIncludePages">Pages</label>
+                    </div>
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="cloudflareIncludePosts" checked>
+                      <label for="cloudflareIncludePosts">Posts</label>
+                    </div>
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="cloudflareIncludeProducts" checked>
+                      <label for="cloudflareIncludeProducts">Products</label>
+                    </div>
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="cloudflareIncludeCategories" checked>
+                      <label for="cloudflareIncludeCategories">Categories</label>
+                    </div>
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="cloudflareIncludeTags" checked>
+                      <label for="cloudflareIncludeTags">Tags</label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="filter-group">
+                  <h4>Domain Filters</h4>
+                  <div class="filter-options">
+                    <input type="text" class="filter-input" id="cloudflareIncludeDomains" placeholder="Include only these domains (comma separated)">
+                    <input type="text" class="filter-input" id="cloudflareExcludeDomains" placeholder="Exclude these domains (comma separated)" style="margin-top: 10px;">
+                  </div>
+                </div>
+                
+                <div class="filter-group">
+                  <h4>Date Range Filter</h4>
+                  <div class="date-range">
+                    <input type="date" id="cloudflareStartDate" placeholder="Start Date">
+                    <span>to</span>
+                    <input type="date" id="cloudflareEndDate" placeholder="End Date">
+                  </div>
+                </div>
+                
+                <div class="filter-group">
+                  <h4>Priority Filters</h4>
+                  <div class="filter-options">
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="cloudflarePriorityNew" checked>
+                      <label for="cloudflarePriorityNew">New Content First</label>
+                    </div>
+                    <div class="filter-checkbox">
+                      <input type="checkbox" id="cloudflarePriorityPopular">
+                      <label for="cloudflarePriorityPopular">Popular Content First</label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="filter-actions">
+                  <button type="button" class="reset-filters" id="cloudflareResetFilters">Reset Filters</button>
+                  <button type="button" class="apply-filters" id="cloudflareApplyFilters">Apply Filters</button>
+                </div>
+              </div>
+              
               <button type="submit" class="btn">Fetch & Submit</button>
             </form>
           </div>
