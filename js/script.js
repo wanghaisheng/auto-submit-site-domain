@@ -135,19 +135,42 @@ const RankDaily = {
 
   initPricingToggle: function() {
     // Pricing toggle functionality
-    const pricingToggle = document.querySelector('.pricing-toggle input');
-    if (pricingToggle) {
-      pricingToggle.addEventListener('change', function() {
-        const isYearly = this.checked;
-        const monthlyPrices = document.querySelectorAll('.amount.monthly');
-        const yearlyPrices = document.querySelectorAll('.amount.yearly');
+    const pricingToggleContainer = document.querySelector('.pricing-toggle-container');
+    const pricingToggleSwitch = document.querySelector('.pricing-toggle-switch');
+    const pricingLabels = document.querySelectorAll('.pricing-toggle-label');
+    
+    if (pricingToggleSwitch) {
+      pricingToggleSwitch.addEventListener('click', function() {
+        // Toggle yearly class
+        pricingToggleContainer.classList.toggle('yearly');
         
-        monthlyPrices.forEach(price => {
-          price.style.display = isYearly ? 'none' : 'block';
+        // Update active label
+        pricingLabels.forEach(label => {
+          label.classList.toggle('active');
         });
         
-        yearlyPrices.forEach(price => {
-          price.style.display = isYearly ? 'block' : 'none';
+        // Update prices
+        const isYearly = pricingToggleContainer.classList.contains('yearly');
+        const planPrices = document.querySelectorAll('.plan-price');
+        
+        planPrices.forEach(price => {
+          const currentPrice = price.textContent;
+          if (currentPrice.includes('/month')) {
+            // Switch to yearly
+            if (isYearly) {
+              const monthlyPrice = parseFloat(currentPrice.replace(/[^0-9.]/g, ''));
+              const yearlyPrice = Math.round(monthlyPrice * 12 * 0.8); // 20% discount
+              price.innerHTML = `$${yearlyPrice}<span>/year</span>`;
+            }
+          } else if (currentPrice.includes('/year')) {
+            // Switch to monthly
+            if (!isYearly) {
+              const yearlyPrice = parseFloat(currentPrice.replace(/[^0-9.]/g, ''));
+              const monthlyPrice = Math.round((yearlyPrice / 12) / 0.8 * 10) / 10; // Reverse 20% discount
+              price.innerHTML = `$${monthlyPrice}<span>/month</span>`;
+            }
+          }
+          // Skip one-time prices that don't have /month or /year
         });
       });
     }

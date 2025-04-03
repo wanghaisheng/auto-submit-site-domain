@@ -232,18 +232,18 @@ def submit_via_gsc_api(urls, index_db, log_file):
 def submit_via_browser(urls, index_db, log_file):
     """Submit URLs to Google using DrissionPage browser"""
     # Configure browser options
-    co = ChromiumOptions()
-    co.set_argument('--disable-gpu')
-    co.set_argument('--disable-dev-shm-usage')
-    co.set_argument('--no-sandbox')
-    co.set_argument('--disable-extensions')
-    co.set_argument('--disable-infobars')
-    co.set_argument('--disable-notifications')
+    # co = ChromiumOptions()
+    # co.set_argument('--disable-gpu')
+    # co.set_argument('--disable-dev-shm-usage')
+    # co.set_argument('--no-sandbox')
+    # co.set_argument('--disable-extensions')
+    # co.set_argument('--disable-infobars')
+    # co.set_argument('--disable-notifications')
     
-    co.set_argument('--disable-popup-blocking')
-    co.set_argument('--disable-blink-features=AutomationControlled')
-    co.set_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36')
-    co.set_timeouts(base=DRISSIONPAGE_TIMEOUT)
+    # co.set_argument('--disable-popup-blocking')
+    # co.set_argument('--disable-blink-features=AutomationControlled')
+    # co.set_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36')
+    # co.set_timeouts(base=DRISSIONPAGE_TIMEOUT)
     
     # Initialize browser
     # page = ChromiumPage(co)
