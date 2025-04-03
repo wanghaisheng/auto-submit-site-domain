@@ -10,7 +10,8 @@ from pathlib import Path
 
 load_dotenv()  # Load environment variables
 
-MAX_URLS = int(os.getenv('MAX_URLS_PER_RUN', 100))  # Default to 100 if not set
+# Default to 100 if not set - this will be used as the total URL limit across all domains
+TOTAL_URL_LIMIT = int(os.getenv('TOTAL_URL_LIMIT', 10000))  
 REQUEST_DELAY = int(os.getenv('REQUEST_DELAY', 2))  # Delay between requests
 
 def load_config():
@@ -30,6 +31,7 @@ def load_config():
         "use_domain_file": False,
         "domain_file_path": "domains_list.txt",
         "url_limit_per_domain": 1000,
+        "total_url_limit": 10000,  # New parameter for total URL limit across all domains
         "submit_not_indexed": True,
         "submit_sitemap": True,
         "split_large_domains": False,
@@ -129,15 +131,27 @@ def find_sitemap_urls(domain):
     return found_sitemaps
 
 def parse_sitemaps():
+    # Load configuration
+    config = load_config()
+    url_limit_per_domain = config.get("url_limit_per_domain", 1000)
+    total_url_limit = config.get("total_url_limit", TOTAL_URL_LIMIT)
+    
     with open('domains.txt', 'r') as f:
         domains = [line.strip() for line in f.readlines()]
     
-    all_urls = set()
+    all_urls = []
+    domain_url_map = {}  # Map domains to their URLs
     processed_domains = 0
     
     for domain in domains:
+        # Check if we've already reached the total URL limit
+        if total_url_limit > 0 and len(all_urls) >= total_url_limit:
+            print(f"Reached total URL limit of {total_url_limit}. Stopping.")
+            break
+            
         try:
             print(f"Processing domain: {domain}")
+            domain_urls = set()
             sitemap_urls = find_sitemap_urls(domain)
             
             if not sitemap_urls:
@@ -151,18 +165,46 @@ def parse_sitemaps():
                         for a_tag in soup.find_all('a', href=True):
                             link = a_tag['href']
                             if link.startswith('http'):
-                                all_urls.add(link)
+                                domain_urls.add(link)
                             elif not link.startswith('#') and not link.startswith('javascript:'):
                                 full_url = urljoin(home_url, link)
-                                all_urls.add(full_url)
+                                domain_urls.add(full_url)
                 except Exception as e:
                     print(f"Error extracting links from homepage of {domain}: {e}")
             
             # Process each found sitemap
             for sitemap_url in sitemap_urls:
                 print(f"Processing sitemap: {sitemap_url}")
-                extract_urls_from_sitemap(sitemap_url, set(), all_urls)
+                extract_urls_from_sitemap(sitemap_url, set(), domain_urls)
                 time.sleep(REQUEST_DELAY)
+            
+            # Apply URL limit per domain if configured
+            domain_urls_list = list(domain_urls)
+            if url_limit_per_domain > 0 and len(domain_urls_list) > url_limit_per_domain:
+                print(f"Limiting URLs for {domain} to {url_limit_per_domain} (from {len(domain_urls_list)})")
+                domain_urls_list = domain_urls_list[:url_limit_per_domain]
+            
+            domain_url_map[domain] = domain_urls_list
+            
+            # Add URLs to all_urls, respecting the total URL limit
+            if total_url_limit > 0:
+                # Calculate how many more URLs we can add without exceeding the limit
+                remaining_capacity = total_url_limit - len(all_urls)
+                if remaining_capacity <= 0:
+                    # We've already reached the limit
+                    continue
+                elif len(domain_urls_list) > remaining_capacity:
+                    # We can only add some of the URLs from this domain
+                    print(f"Adding {remaining_capacity} of {len(domain_urls_list)} URLs from {domain} to reach total limit of {total_url_limit}")
+                    all_urls.extend(domain_urls_list[:remaining_capacity])
+                    print(f"Reached total URL limit of {total_url_limit}. Stopping.")
+                    break
+                else:
+                    # We can add all URLs from this domain
+                    all_urls.extend(domain_urls_list)
+            else:
+                # No total URL limit, add all URLs
+                all_urls.extend(domain_urls_list)
             
             processed_domains += 1
             print(f"Processed {processed_domains}/{len(domains)} domains, found {len(all_urls)} URLs so far")
@@ -170,16 +212,11 @@ def parse_sitemaps():
         except Exception as e:
             print(f"Error processing {domain}: {e}")
     
-    # Convert to list and limit to configured maximum
-    urls_list = list(all_urls)
-    if MAX_URLS > 0:
-        urls_list = urls_list[:MAX_URLS]
-    
-    print(f"Total unique URLs found: {len(all_urls)}")
-    print(f"Saving {len(urls_list)} URLs to file")
+    print(f"Total URLs found: {len(all_urls)}")
+    print(f"Saving {len(all_urls)} URLs to file")
     
     with open('urls.txt', 'w') as f:
-        f.write('\n'.join(urls_list))
+        f.write('\n'.join(all_urls))
 
 def process_domain(domain):
     """Process a single domain and return all found URLs"""
@@ -222,6 +259,7 @@ if __name__ == "__main__":
     # Load configuration
     config = load_config()
     url_limit_per_domain = config.get("url_limit_per_domain", 1000)
+    total_url_limit = config.get("total_url_limit", TOTAL_URL_LIMIT)  # Get total URL limit from config or use env var
     split_large_domains = config.get("split_large_domains", False)
     max_urls_per_piece = config.get("max_urls_per_piece", 10000)
     
@@ -240,6 +278,11 @@ if __name__ == "__main__":
     domain_url_map = {}  # Map domains to their URLs for potential splitting
     
     for domain in domains:
+        # Check if we've already reached the total URL limit
+        if total_url_limit > 0 and len(all_urls) >= total_url_limit:
+            print(f"Reached total URL limit of {total_url_limit}. Stopping.")
+            break
+            
         print(f"\nProcessing {domain}...")
         urls = process_domain(domain)
         
@@ -249,13 +292,26 @@ if __name__ == "__main__":
             urls = urls[:url_limit_per_domain]
         
         domain_url_map[domain] = urls
-        all_urls.extend(urls)
         
-        # Limit total URLs if MAX_URLS is set
-        if MAX_URLS > 0 and len(all_urls) >= MAX_URLS:
-            all_urls = all_urls[:MAX_URLS]
-            print(f"Reached maximum URL limit of {MAX_URLS}. Stopping.")
-            break
+        # Add URLs to all_urls, respecting the total URL limit
+        if total_url_limit > 0:
+            # Calculate how many more URLs we can add without exceeding the limit
+            remaining_capacity = total_url_limit - len(all_urls)
+            if remaining_capacity <= 0:
+                # We've already reached the limit
+                continue
+            elif len(urls) > remaining_capacity:
+                # We can only add some of the URLs from this domain
+                print(f"Adding {remaining_capacity} of {len(urls)} URLs from {domain} to reach total limit of {total_url_limit}")
+                all_urls.extend(urls[:remaining_capacity])
+                print(f"Reached total URL limit of {total_url_limit}. Stopping.")
+                break
+            else:
+                # We can add all URLs from this domain
+                all_urls.extend(urls)
+        else:
+            # No total URL limit, add all URLs
+            all_urls.extend(urls)
     
     # Handle large domains splitting if enabled
     if split_large_domains:

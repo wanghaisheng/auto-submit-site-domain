@@ -67,6 +67,7 @@
   <link rel="stylesheet" href="css/domain-providers.css">
   <link rel="stylesheet" href="css/contact.css">
   <link rel="stylesheet" href="css/search-engines.css">
+  <link rel="stylesheet" href="css/tabs.css">
 </head>
 
 <body>
@@ -345,44 +346,183 @@
         <p>Use our free playground to manually submit your website URLs to Google for faster indexing - no account required!</p>
       </div>
       <div class="playground-demo">
-        <form id="demoForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="domain">Domain</label>
-              <input type="text" id="domain" placeholder="example.com" required>
-            </div>
-            <div class="form-group">
-              <label for="submissionMethod">Submission Method</label>
-              <select id="submissionMethod">
-                <option value="site">site: Operator (Browser)</option>
-                <option value="gsc">Google Search Console API</option>
-                <option value="gsc_direct">GSC Direct Submission (Coming Soon)</option>
-              </select>
-            </div>
+        <!-- Tab Navigation -->
+        <div class="submission-tabs">
+          <button class="tab-btn active" data-tab="domain-tab">Start from Domain</button>
+          <button class="tab-btn" data-tab="sitemap-tab">Start from Sitemap URL</button>
+          <button class="tab-btn" data-tab="file-tab">Start from Local File</button>
+          <button class="tab-btn" data-tab="cloudflare-tab">Start from Cloudflare</button>
+        </div>
+        
+        <!-- Tab Content -->
+        <div class="tab-content">
+          <!-- Domain Tab -->
+          <div id="domain-tab" class="tab-pane active">
+            <form id="domainForm" class="submission-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="domain">Domain</label>
+                  <input type="text" id="domain" placeholder="example.com" required>
+                </div>
+                <div class="form-group">
+                  <label for="submissionMethod">Submission Method</label>
+                  <select id="submissionMethod">
+                    <option value="site">site: Operator (Browser)</option>
+                    <option value="gsc">Google Search Console API</option>
+                    <option value="gsc_direct">GSC Direct Submission (Coming Soon)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="sitemapUrl">Sitemap URL (Optional)</label>
+                  <input type="text" id="sitemapUrl" placeholder="https://example.com/sitemap.xml">
+                </div>
+                <div class="form-group">
+                  <label for="urlLimit">URL Limit Per Domain (Max 100 for Free Plan)</label>
+                  <input type="number" id="urlLimit" placeholder="Max: 100" value="100" min="1" max="10000">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="submitSitemap">Advanced Options</label>
+                <div style="display: flex; gap: 20px; margin-top: 10px;">
+                  <label style="display: flex; align-items: center;">
+                    <input type="checkbox" id="submitSitemap" style="margin-right: 8px;"> Submit Sitemap to GSC
+                  </label>
+                  <label style="display: flex; align-items: center;">
+                    <input type="checkbox" id="enterpriseMode" style="margin-right: 8px;"> Enterprise Mode (Millions of URLs)
+                  </label>
+                </div>
+              </div>
+              <button type="submit" class="btn">Simulate Submission</button>
+            </form>
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="sitemapUrl">Sitemap URL (Optional)</label>
-              <input type="text" id="sitemapUrl" placeholder="https://example.com/sitemap.xml">
-            </div>
-            <div class="form-group">
-              <label for="urlLimit">URL Limit Per Domain (Max 100 for Free Plan)</label>
-              <input type="number" id="urlLimit" placeholder="Max: 100" value="100" min="1" max="10000">
-            </div>
+          
+          <!-- Sitemap Tab -->
+          <div id="sitemap-tab" class="tab-pane">
+            <form id="sitemapForm" class="submission-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="sitemapUrlDirect">Sitemap URL</label>
+                  <input type="url" id="sitemapUrlDirect" placeholder="https://example.com/sitemap.xml" required>
+                </div>
+                <div class="form-group">
+                  <label for="sitemapSubmissionMethod">Submission Method</label>
+                  <select id="sitemapSubmissionMethod">
+                    <option value="site">site: Operator (Browser)</option>
+                    <option value="gsc">Google Search Console API</option>
+                    <option value="gsc_direct">GSC Direct Submission (Coming Soon)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="sitemapUrlLimit">URL Limit (Max 100 for Free Plan)</label>
+                  <input type="number" id="sitemapUrlLimit" placeholder="Max: 100" value="100" min="1" max="10000">
+                </div>
+                <div class="form-group">
+                  <label for="sitemapParsingDepth">Parsing Depth</label>
+                  <select id="sitemapParsingDepth">
+                    <option value="1">Level 1 (Main Sitemap Only)</option>
+                    <option value="2" selected>Level 2 (Include Nested Sitemaps)</option>
+                    <option value="3">Level 3 (Deep Parsing)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Advanced Options</label>
+                <div style="display: flex; gap: 20px; margin-top: 10px;">
+                  <label style="display: flex; align-items: center;">
+                    <input type="checkbox" id="submitSitemapToGSC" style="margin-right: 8px;"> Submit Sitemap to GSC
+                  </label>
+                  <label style="display: flex; align-items: center;">
+                    <input type="checkbox" id="sitemapEnterpriseMode" style="margin-right: 8px;"> Enterprise Mode
+                  </label>
+                </div>
+              </div>
+              <button type="submit" class="btn">Parse & Submit Sitemap</button>
+            </form>
           </div>
-          <div class="form-group">
-            <label for="submitSitemap">Advanced Options</label>
-            <div style="display: flex; gap: 20px; margin-top: 10px;">
-              <label style="display: flex; align-items: center;">
-                <input type="checkbox" id="submitSitemap" style="margin-right: 8px;"> Submit Sitemap to GSC
-              </label>
-              <label style="display: flex; align-items: center;">
-                <input type="checkbox" id="enterpriseMode" style="margin-right: 8px;"> Enterprise Mode (Millions of URLs)
-              </label>
-            </div>
+          
+          <!-- Local File Tab -->
+          <div id="file-tab" class="tab-pane">
+            <form id="fileForm" class="submission-form">
+              <div class="form-group">
+                <label for="urlsFile">Upload URLs File</label>
+                <input type="file" id="urlsFile" accept=".txt,.csv,.json" required>
+                <p class="form-note">Accepted formats: .txt (one URL per line), .csv, or .json</p>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fileSubmissionMethod">Submission Method</label>
+                  <select id="fileSubmissionMethod">
+                    <option value="site">site: Operator (Browser)</option>
+                    <option value="gsc">Google Search Console API</option>
+                    <option value="gsc_direct">GSC Direct Submission (Coming Soon)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="fileUrlLimit">URL Limit (Max 100 for Free Plan)</label>
+                  <input type="number" id="fileUrlLimit" placeholder="Max: 100" value="100" min="1" max="10000">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Advanced Options</label>
+                <div style="display: flex; gap: 20px; margin-top: 10px;">
+                  <label style="display: flex; align-items: center;">
+                    <input type="checkbox" id="validateUrls" style="margin-right: 8px;" checked> Validate URLs
+                  </label>
+                  <label style="display: flex; align-items: center;">
+                    <input type="checkbox" id="fileEnterpriseMode" style="margin-right: 8px;"> Enterprise Mode
+                  </label>
+                </div>
+              </div>
+              <button type="submit" class="btn">Upload & Submit</button>
+            </form>
           </div>
-          <button type="submit" class="btn">Simulate Submission</button>
-        </form>
+          
+          <!-- Cloudflare Tab -->
+          <div id="cloudflare-tab" class="tab-pane">
+            <form id="cloudflareForm" class="submission-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="cloudflareApiToken">Cloudflare API Token</label>
+                  <input type="password" id="cloudflareApiToken" placeholder="Your Cloudflare API Token" required>
+                </div>
+                <div class="form-group">
+                  <label for="cloudflareAccountId">Account ID (Optional)</label>
+                  <input type="text" id="cloudflareAccountId" placeholder="Your Cloudflare Account ID">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="cloudflareSubmissionMethod">Submission Method</label>
+                  <select id="cloudflareSubmissionMethod">
+                    <option value="site">site: Operator (Browser)</option>
+                    <option value="gsc">Google Search Console API</option>
+                    <option value="gsc_direct">GSC Direct Submission (Coming Soon)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="cloudflareUrlLimit">URL Limit Per Domain (Max 100 for Free Plan)</label>
+                  <input type="number" id="cloudflareUrlLimit" placeholder="Max: 100" value="100" min="1" max="10000">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Advanced Options</label>
+                <div style="display: flex; gap: 20px; margin-top: 10px;">
+                  <label style="display: flex; align-items: center;">
+                    <input type="checkbox" id="includeSubdomains" style="margin-right: 8px;" checked> Include Subdomains
+                  </label>
+                  <label style="display: flex; align-items: center;">
+                    <input type="checkbox" id="cloudflareEnterpriseMode" style="margin-right: 8px;"> Enterprise Mode
+                  </label>
+                </div>
+              </div>
+              <button type="submit" class="btn">Fetch & Submit</button>
+            </form>
+          </div>
+        </div>
 
         <div class="free-plan-info">
           <p><i class="fas fa-info-circle"></i> <strong>Free Plan Limitations:</strong> Manual submissions are limited to 5 domains and 100 URLs per domain in each session. For automated submissions with cron scheduling, <a href="#pricing">upgrade to a paid plan</a>.</p>
@@ -2215,6 +2355,9 @@ ${limitMessage}
       </div>
     </div>
   </footer>
+  
+  <!-- Tab functionality script -->
+  <script src="js/tabs.js"></script>
 </body>
 
 </html>
