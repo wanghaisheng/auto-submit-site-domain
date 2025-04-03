@@ -1,0 +1,194 @@
+{
+  "nav": {
+    "features": "功能特点",
+    "how_it_works": "工作原理",
+    "pricing": "价格方案",
+    "faq": "常见问题",
+    "documentation": "文档",
+    "blog": "博客",
+    "contact": "联系我们",
+    "sign_in": "登录",
+    "get_started": "开始使用"
+  },
+  "hero": {
+    "title": "让您的内容<span class='text-gradient'>被谷歌收录</span>速度提升5倍",
+    "subtitle": "不再需要等待数周让谷歌找到您的内容。我们的自动化工具直接将您的网页提交到谷歌索引，提高可见性并为您的内容带来更多自然流量。",
+    "feature1": "无限URL提交",
+    "feature2": "适用于任何网站平台",
+    "feature3": "无需技术知识",
+    "cta_primary": "立即开始索引",
+    "cta_secondary": "查看价格",
+    "trust_text": "全球超过12,500个网站的信任选择"
+  },
+  "features": {
+    "title": "强大功能",
+    "subtitle": "使用我们的综合工具套件自动化谷歌索引",
+    "cloudflare": {
+      "title": "Cloudflare集成",
+      "description": "通过API集成自动从您的Cloudflare账户获取所有域名"
+    },
+    "sitemap": {
+      "title": "站点地图解析",
+      "description": "智能提取和验证您的sitemap.xml文件中的URL"
+    },
+    "dual_submission": {
+      "title": "双重提交方法",
+      "description": "通过\"site:\"运算符和Google Search Console API提交，确保最大覆盖范围"
+    },
+    "batch": {
+      "title": "大规模支持",
+      "description": "将数百万URL分割成可管理的10,000个URL批次进行处理"
+    }
+  },
+  "github": {
+    "title": "简单GitHub集成",
+    "subtitle": "几分钟内设置自动每日提交",
+    "description": "我们的工具作为GitHub Action运行，根据您定义的计划自动将您的URL提交到Google搜索。",
+    "step1": {
+      "title": "添加仓库密钥",
+      "description": "将您的Cloudflare API令牌和区域ID添加为仓库密钥"
+    },
+    "step2": {
+      "title": "创建工作流文件",
+      "description": "将工作流YAML文件添加到您的仓库"
+    },
+    "step3": {
+      "title": "设置计划",
+      "description": "使用cron语法配置您首选的提交计划"
+    },
+    "copy_button": "复制工作流YAML"
+  },
+  "pricing": {
+    "title": "简单透明的价格",
+    "subtitle": "选择最适合您需求的方案",
+    "monthly": "月付",
+    "yearly": "年付",
+    "save": "节省20%",
+    "per_month": "每月",
+    "per_month_billed_yearly": "每月，按年计费",
+    "forever": "永久免费",
+    "popular": "最受欢迎",
+    "free": {
+      "name": "免费",
+      "description": "小型网站的基本索引",
+      "feature1": "每月100个URL",
+      "feature2": "单域名支持",
+      "feature3": "\"site:\"运算符方法",
+      "feature4_disabled": "Search Console API访问",
+      "cta": "开始使用"
+    },
+    "pro": {
+      "name": "专业版",
+      "description": "成长中网站的高级索引",
+      "feature1": "无限URL",
+      "feature2": "最多5个域名",
+      "feature3": "两种提交方法",
+      "feature4": "终身更新",
+      "feature5": "自部署指南",
+      "cta": "获取专业版"
+    },
+    "business": {
+      "name": "企业版",
+      "description": "企业级索引解决方案",
+      "feature1": "无限URL",
+      "feature2": "无限域名",
+      "feature3": "优先处理",
+      "feature4": "终身更新",
+      "feature5": "高级支持",
+      "cta": "获取企业版"
+    }
+  },
+  "comparison": {
+    "title": "我们的比较",
+    "subtitle": "看看我们的解决方案如何与竞争对手相比",
+    "feature": "功能",
+    "manual": "手动提交",
+    "our_tool": "Auto Submit Site",
+    "rankweek": "RankWeek",
+    "competitors": "其他工具",
+    "monthly_price": "月费",
+    "submission_methods": "提交方法",
+    "url_limit": "URL限制",
+    "domain_limit": "域名支持",
+    "batch_processing": "批量处理",
+    "cloudflare": "Cloudflare集成",
+    "self_deployment": "自部署",
+    "unlimited": "无限",
+    "limited": "有限",
+    "dual_methods": "双重方法",
+    "single_method": "单一方法",
+    "up_to_unlimited": "最多无限",
+    "indexing_speed": "索引速度"
+  },
+  "painPoints": {
+    "title": "常见挑战及我们的解决方案",
+    "subtitle": "我们了解获取内容索引的挫折",
+    "solution": "我们的解决方案",
+    "slow_indexing": {
+      "title": "索引速度慢",
+      "pain": "等待数周让Google自然发现并索引您的内容",
+      "solution": "直接提交，将索引时间从数周缩短至数天"
+    },
+    "manual_work": {
+      "title": "手动提交负担",
+      "pain": "花费数小时手动向Google提交URL",
+      "solution": "完全自动化的GitHub Action为您处理一切"
+    },
+    "rate_limits": {
+      "title": "API速率限制",
+      "pain": "提交多个URL时达到API速率限制",
+      "solution": "智能批处理，内置速率限制和重试逻辑"
+    },
+    "expensive": {
+      "title": "昂贵的替代品",
+      "pain": "其他索引工具对基本功能收取高价",
+      "solution": "实惠的价格，每月仅5.99美元起，提供更多功能"
+    }
+  },
+  "playground": {
+    "title": "立即尝试",
+    "subtitle": "通过这个互动演示查看我们的工具如何工作",
+    "demo_title": "站点提交工具",
+    "domain": "域名：",
+    "method": "提交方法：",
+    "method_site": "\"site:\"运算符",
+    "method_api": "Search Console API",
+    "method_both": "两种方法",
+    "sitemap": "站点地图URL（可选）：",
+    "url_limit": "URL限制：",
+    "submit_sitemap": "同时将站点地图提交到Google Search Console",
+    "enterprise_mode": "启用企业模式（适用于多个域名）",
+    "submit_button": "提交域名",
+    "results": "结果："
+  },
+  "faq": {
+    "title": "常见问题",
+    "subtitle": "获取关于我们索引服务的常见问题解答",
+    "q1": {
+      "question": "RankDaily 具体是如何工作的？",
+      "answer": "RankDaily 使用API和专门算法的组合将您的网页直接提交到Google的索引系统。我们同时利用\"site:\"运算符方法和通过Google Search Console API直接提交，以确保最大覆盖范围和速度。"
+    },
+    "q2": {
+      "question": "我的内容多快会被索引？",
+      "answer": "大多数提交的URL在24-48小时内被索引，相比自然爬取通常需要1-4周。然而，索引速度可能根据您网站的权威性和内容质量而有所不同。我们的数据显示平均索引时间提高了5倍。"
+    },
+    "q3": {
+      "question": "我需要技术知识才能使用吗？",
+      "answer": "完全不需要。我们用户友好的仪表板使您只需点击几下即可轻松提交和监控您的URL。只需粘贴您的URL或连接您的网站地图，我们的系统会处理其余部分。无需编码或SEO专业知识。"
+    },
+    "q4": {
+      "question": "这与手动提交URL有何不同？",
+      "answer": "手动提交既耗时又有限。我们的自动化方法允许您按计划提交数千个URL，跟踪索引状态，并使用多种提交方法来最大化成功率。"
+    },
+    "q5": {
+      "question": "这会帮助我的SEO和排名吗？",
+      "answer": "更快的索引并不直接提高排名，但它确保您的内容更快地出现在搜索结果中。这意味着您可以更快地开始获得流量并建立参与度指标，间接支持您的SEO工作。"
+    }
+  },
+  "footer": {
+    "copyright": "© 2023 Auto Submit Site Domain. 保留所有权利。",
+    "terms": "条款",
+    "privacy": "隐私",
+    "language": "语言："
+  }
+} 

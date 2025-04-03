@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="500px" viewBox="0 0 800 500" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Auto Submit Site in Action</title>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="gradient1">
+            <stop stop-color="#4158D0" offset="0%"></stop>
+            <stop stop-color="#C850C0" offset="46.35%"></stop>
+            <stop stop-color="#FFCC70" offset="100%"></stop>
+        </linearGradient>
+        <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="4" dy="4" stdDeviation="5" flood-opacity="0.3"/>
+        </filter>
+    </defs>
+    <g id="auto-submit-illustration" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <!-- Background -->
+        <rect id="background" fill="#F5F7FA" x="0" y="0" width="800" height="500" rx="20"></rect>
+        
+        <!-- Website elements -->
+        <g id="website" transform="translate(100, 80)" filter="url(#shadow)">
+            <rect id="website-bg" fill="white" x="0" y="0" width="280" height="200" rx="10"></rect>
+            <rect id="website-header" fill="#E9ECEF" x="0" y="0" width="280" height="30" rx="10 10 0 0"></rect>
+            <circle id="close-btn" fill="#FF6B6B" cx="15" cy="15" r="5"></circle>
+            <circle id="minimize-btn" fill="#FFD93D" cx="35" cy="15" r="5"></circle>
+            <circle id="maximize-btn" fill="#6BCB77" cx="55" cy="15" r="5"></circle>
+            
+            <!-- Website content -->
+            <rect id="website-nav" fill="#4D89FF" x="10" y="40" width="260" height="20" rx="4"></rect>
+            <rect id="website-hero" fill="#E9ECEF" x="10" y="70" width="260" height="60" rx="4"></rect>
+            <rect id="website-content1" fill="#CED4DA" x="10" y="140" width="120" height="10" rx="2"></rect>
+            <rect id="website-content2" fill="#CED4DA" x="10" y="160" width="260" height="10" rx="2"></rect>
+            <rect id="website-content3" fill="#CED4DA" x="10" y="180" width="180" height="10" rx="2"></rect>
+        </g>
+        
+        <!-- Auto Submit Tool -->
+        <g id="auto-submit-tool" transform="translate(450, 80)" filter="url(#shadow)">
+            <rect id="tool-bg" fill="white" x="0" y="0" width="250" height="200" rx="10"></rect>
+            <rect id="tool-header" fill="#6C63FF" x="0" y="0" width="250" height="40" rx="10 10 0 0"></rect>
+            <text id="tool-title" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="white" x="62" y="25">
+                Auto Submit
+            </text>
+            
+            <!-- Tool content -->
+            <rect id="url-input" fill="#F8F9FA" x="20" y="60" width="210" height="30" rx="4" stroke="#CED4DA" stroke-width="1"></rect>
+            <text id="url-text" font-family="Arial, sans-serif" font-size="12" fill="#6C757D" x="30" y="78">
+                https://example.com
+            </text>
+            
+            <rect id="submit-button" fill="#6C63FF" x="20" y="100" width="210" height="35" rx="6"></rect>
+            <text id="button-text" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="white" x="90" y="123">
+                Submit
+            </text>
+            
+            <rect id="status-area" fill="#E9ECEF" x="20" y="150" width="210" height="30" rx="4"></rect>
+            <text id="status-text" font-family="Arial, sans-serif" font-size="12" fill="#212529" x="63" y="168">
+                Processing...
+            </text>
+        </g>
+        
+        <!-- Animated arrows representing submissions -->
+        <g id="submission-arrows">
+            <!-- Arrow to Google -->
+            <path id="arrow1" fill="#4285F4" d="M400,180 L420,180 L420,120 L435,120 L410,90 L385,120 L400,120 Z" opacity="0.8">
+                <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite" />
+                <animate attributeName="transform" values="translate(0,0); translate(0,-10); translate(0,0)" dur="2s" repeatCount="indefinite" />
+            </path>
+            
+            <!-- Arrow to Bing -->
+            <path id="arrow2" fill="#008373" d="M400,180 L420,180 L420,240 L435,240 L410,270 L385,240 L400,240 Z" opacity="0.8">
+                <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2.3s" repeatCount="indefinite" />
+                <animate attributeName="transform" values="translate(0,0); translate(0,10); translate(0,0)" dur="2.3s" repeatCount="indefinite" />
+            </path>
+            
+            <!-- Arrow to Yandex -->
+            <path id="arrow3" fill="#FC3F1D" d="M450,200 L460,220 L500,200 L510,220 L540,180 L500,140 L490,160 Z" opacity="0.6">
+                <animate attributeName="opacity" values="0.6;0.2;0.6" dur="1.8s" repeatCount="indefinite" />
+                <animate attributeName="transform" values="translate(0,0); translate(10,0); translate(0,0)" dur="1.8s" repeatCount="indefinite" />
+            </path>
+        </g>
+        
+        <!-- Search engines -->
+        <g id="search-engines">
+            <!-- Google -->
+            <g id="google" transform="translate(170, 350)" filter="url(#shadow)">
+                <circle id="google-bg" fill="white" cx="40" cy="40" r="40"></circle>
+                <g id="google-logo" transform="translate(15, 15)">
+                    <path d="M49.982,20.324 L26,20.324 L26,29.49 L39.823,29.49 C38.952,34.443 34.762,37.723 26,37.723 C18.267,37.723 11.091,31.113 11.091,22.5 C11.091,13.887 18.267,7.277 26,7.277 C30.552,7.277 33.969,9.008 36.453,11.321 L43.356,5.034 C38.759,0.807 33.057,-1.159 26,-1.159 C13.504,-1.159 2.182,9.462 2.182,22.5 C2.182,35.538 13.504,46.16 26,46.16 C37.495,46.16 48.927,37.677 48.927,22.5 C48.927,21.747 49.036,20.96 49.982,20.324 Z" id="Path" fill="#4285F4"></path>
+                    <path d="M26,29.49 L39.823,29.49 C38.952,34.443 34.762,37.723 26,37.723 C18.267,37.723 11.091,31.113 11.091,22.5 C11.091,13.887 18.267,7.277 26,7.277 C30.552,7.277 33.969,9.008 36.453,11.321" id="Path-2" fill="#EA4335"></path>
+                </g>
+            </g>
+            
+            <!-- Bing -->
+            <g id="bing" transform="translate(370, 350)" filter="url(#shadow)">
+                <circle id="bing-bg" fill="white" cx="40" cy="40" r="40"></circle>
+                <g id="bing-logo" transform="translate(20, 15)">
+                    <path d="M10,0 L10,48.452 L25.819,40.377 L40,51.497 L40,33.345 L10,0 Z" id="Path-3" fill="#008373"></path>
+                </g>
+            </g>
+            
+            <!-- Yandex -->
+            <g id="yandex" transform="translate(570, 350)" filter="url(#shadow)">
+                <circle id="yandex-bg" fill="white" cx="40" cy="40" r="40"></circle>
+                <g id="yandex-logo" transform="translate(25, 15)">
+                    <path d="M13.429,0 L18.143,0 C18.143,5.97 25.429,6.716 25.429,16.418 C25.429,22.388 23.571,24.627 17.429,31.343 L30,50 L24.286,50 L13.429,32.836 L13.429,50 L8.714,50 L8.714,0 L13.429,0 Z" id="Path-4" fill="#FC3F1D"></path>
+                </g>
+            </g>
+        </g>
+        
+        <!-- Status indicators -->
+        <g id="status-indicators">
+            <g id="google-indicator" transform="translate(230, 330)">
+                <circle id="google-status" fill="#4CAF50" cx="10" cy="10" r="6">
+                    <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                </circle>
+            </g>
+            
+            <g id="bing-indicator" transform="translate(430, 330)">
+                <circle id="bing-status" fill="#FFC107" cx="10" cy="10" r="6">
+                    <animate attributeName="r" values="6;8;6" dur="2.3s" repeatCount="indefinite" />
+                </circle>
+            </g>
+            
+            <g id="yandex-indicator" transform="translate(630, 330)">
+                <circle id="yandex-status" fill="#4CAF50" cx="10" cy="10" r="6">
+                    <animate attributeName="r" values="6;8;6" dur="1.8s" repeatCount="indefinite" />
+                </circle>
+            </g>
+        </g>
+        
+        <!-- Title -->
+        <text id="title" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#333333" x="228" y="40">
+            Auto Submit Site Domain in Action
+        </text>
+        
+        <!-- Legend -->
+        <g id="legend" transform="translate(310, 430)">
+            <rect id="legend-bg" fill="white" x="0" y="0" width="180" height="50" rx="6" filter="url(#shadow)"></rect>
+            
+            <circle id="circle1" fill="#4CAF50" cx="15" cy="15" r="6"></circle>
+            <text id="legend-text1" font-family="Arial, sans-serif" font-size="12" fill="#333333" x="30" y="19">
+                Submitted
+            </text>
+            
+            <circle id="circle2" fill="#FFC107" cx="15" cy="35" r="6"></circle>
+            <text id="legend-text2" font-family="Arial, sans-serif" font-size="12" fill="#333333" x="30" y="39">
+                Processing
+            </text>
+        </g>
+    </g>
+</svg> 

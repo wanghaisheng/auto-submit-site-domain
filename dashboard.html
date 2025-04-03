@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Auto Submit Site Domain</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/favicon.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/footer.css">
+
+  <style>
+    /* Basic dashboard styles */
+    .dashboard-wrapper {
+      display: flex;
+      min-height: calc(100vh - 140px);
+    }
+    
+    .dashboard-sidebar {
+      width: 250px;
+      background-color: var(--light);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 2rem 0;
+    }
+    
+    .dashboard-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .dashboard-menu li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .dashboard-menu a {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      color: var(--dark);
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .dashboard-menu a:hover,
+    .dashboard-menu a.active {
+      background-color: rgba(66, 133, 244, 0.1);
+      color: var(--primary);
+      border-left: 3px solid var(--primary);
+    }
+    
+    .dashboard-menu i {
+      width: 20px;
+      text-align: center;
+      color: var(--primary);
+    }
+    
+    .dashboard-content {
+      flex: 1;
+      padding: 2rem;
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .user-welcome {
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .welcome-message h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .welcome-message p {
+      color: var(--gray);
+    }
+    
+    .user-actions button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: var(--border-radius);
+      padding: 0.7rem 1.5rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .user-actions button:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    /* Mobile Responsiveness */
+    @media (max-width: 992px) {
+      .dashboard-wrapper {
+        flex-direction: column;
+      }
+      
+      .dashboard-sidebar {
+        width: 100%;
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        height: calc(100% - 60px);
+        z-index: 900;
+        transition: left 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      .dashboard-sidebar.active {
+        left: 0;
+      }
+      
+      .dashboard-content {
+        width: 100%;
+        margin-top: 20px;
+        padding: 1rem;
+      }
+      
+      .user-welcome {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      
+      .menu-toggle {
+        display: block;
+        z-index: 1000;
+      }
+      
+      header .menu-toggle i.fa-times {
+        color: var(--primary);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header & Navigation -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="index.html" class="logo"><i class="fas fa-search"></i> Auto Submit Site Domain</a>
+        <button class="menu-toggle" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-auth">
+          <div class="user-profile">
+            <div class="user-avatar">
+              <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User Avatar">
+            </div>
+            <span class="user-name">John Doe</span>
+            <i class="fas fa-caret-down"></i>
+            <div class="dropdown-menu">
+              <a href="#profile" class="dropdown-item">
+                <i class="fas fa-user"></i> Profile
+              </a>
+              <a href="#settings" class="dropdown-item">
+                <i class="fas fa-cog"></i> Settings
+              </a>
+              <a href="#billing" class="dropdown-item">
+                <i class="fas fa-credit-card"></i> Billing
+              </a>
+              <a href="index.html" class="dropdown-item">
+                <i class="fas fa-sign-out-alt"></i> Log Out
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="dashboard-wrapper">
+    <div class="dashboard-sidebar">
+      <ul class="dashboard-menu">
+        <li><a href="#overview" class="tab-link active" data-tab="overview"><i class="fas fa-tachometer-alt"></i> Overview</a></li>
+        <li><a href="#domains" class="tab-link" data-tab="domains"><i class="fas fa-globe"></i> Domains</a></li>
+        <li><a href="#submissions" class="tab-link" data-tab="submissions"><i class="fas fa-paper-plane"></i> Submissions</a></li>
+        <li><a href="#reports" class="tab-link" data-tab="reports"><i class="fas fa-chart-bar"></i> Reports</a></li>
+        <li><a href="#schedule" class="tab-link" data-tab="schedule"><i class="fas fa-calendar-alt"></i> Schedule</a></li>
+        <li><a href="#settings" class="tab-link" data-tab="settings"><i class="fas fa-cog"></i> Settings</a></li>
+      </ul>
+    </div>
+    
+    <div class="dashboard-content">
+      <div class="user-welcome">
+        <div class="welcome-message">
+          <h1>Welcome, John</h1>
+          <p>Here's what's happening with your sites today</p>
+        </div>
+        <div class="user-actions">
+          <button><i class="fas fa-plus"></i> Add New Domain</button>
+        </div>
+      </div>
+      
+      <div id="overview" class="tab-content active">
+        <iframe src="tabs/overview.html" width="100%" height="600" frameborder="0"></iframe>
+      </div>
+      
+      <div id="domains" class="tab-content">
+        <h2>Your Domains</h2>
+        <p>Manage your verified domains here.</p>
+      </div>
+      
+      <div id="submissions" class="tab-content">
+        <h2>Submissions</h2>
+        <p>Review your submission history.</p>
+      </div>
+      
+      <div id="reports" class="tab-content">
+        <iframe src="tabs/reports.html" width="100%" height="600" frameborder="0"></iframe>
+      </div>
+      
+      <div id="schedule" class="tab-content">
+        <iframe src="tabs/schedule.html" width="100%" height="600" frameborder="0"></iframe>
+      </div>
+      
+      <div id="settings" class="tab-content">
+        <iframe src="tabs/settings.html" width="100%" height="600" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2023 Auto Submit Site Domain. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Tab Navigation
+      const tabLinks = document.querySelectorAll('.tab-link');
+      const tabContents = document.querySelectorAll('.tab-content');
+      
+      tabLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Remove active class from all links
+          tabLinks.forEach(link => link.classList.remove('active'));
+          
+          // Add active class to clicked link
+          this.classList.add('active');
+          
+          // Hide all tab contents
+          tabContents.forEach(content => content.classList.remove('active'));
+          
+          // Show corresponding tab content
+          const tabId = this.dataset.tab;
+          document.getElementById(tabId).classList.add('active');
+        });
+      });
+      
+      // Mobile menu toggle
+      const menuToggle = document.getElementById('menuToggle');
+      if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+          document.querySelector('.dashboard-sidebar').classList.toggle('active');
+          
+          // Toggle icon between bars and close
+          const icon = this.querySelector('i');
+          if (icon.classList.contains('fa-bars')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+          } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+          }
+        });
+      }
+      
+      // Close sidebar when clicking a tab on mobile
+      if (window.innerWidth <= 992) {
+        tabLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            document.querySelector('.dashboard-sidebar').classList.remove('active');
+            
+            // Reset menu icon
+            const icon = menuToggle.querySelector('i');
+            if (icon.classList.contains('fa-times')) {
+              icon.classList.remove('fa-times');
+              icon.classList.add('fa-bars');
+            }
+          });
+        });
+      }
+      
+      // Dropdown functionality
+      const userProfile = document.querySelector('.user-profile');
+      if (userProfile) {
+        userProfile.addEventListener('click', function() {
+          this.querySelector('.dropdown-menu').classList.toggle('active');
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

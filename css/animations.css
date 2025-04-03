@@ -1,0 +1,263 @@
+/* Animations and Visual Enhancements */
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Fade In Left Animation */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Fade In Right Animation */
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Floating Animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Gradient Text Animation */
+@keyframes gradientText {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Shine Effect */
+@keyframes shine {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-20px); }
+  60% { transform: translateY(-10px); }
+}
+
+/* Apply animations to sections */
+.hero-content h1, .section-header h2 {
+  background: linear-gradient(90deg, var(--dark) 0%, var(--primary) 50%, var(--primary-dark) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientText 5s ease infinite;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-image img {
+  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+}
+
+.feature-card, .process-step, .waitlist-form {
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.feature-card:hover, .process-step:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+  transform: rotate(30deg);
+  animation: shine 3s infinite linear;
+}
+
+/* Enhanced section transitions */
+section {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero section should be visible immediately */
+section.hero {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animated background patterns */
+.animated-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Animated icons */
+.animated-icon {
+  transition: all 0.3s ease;
+}
+
+.feature-icon:hover i, .benefit-item:hover i {
+  animation: bounce 1s ease;
+}
+
+/* Enhanced card hover effect */
+.enhanced-card-hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+/* Enhanced card hover effects */
+.enhanced-card-hover {
+  transition: all 0.4s ease;
+}
+
+.enhanced-card-hover:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Animated icons */
+.animated-icon {
+  transition: all 0.3s ease;
+}
+
+.animated-icon:hover {
+  transform: scale(1.2) rotate(5deg);
+  color: var(--primary);
+}
+
+/* Fade-in section animation */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered animation for feature cards */
+.features-grid .feature-card {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.features-grid.animated .feature-card {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.features-grid.animated .feature-card:nth-child(1) { transition-delay: 0.1s; }
+.features-grid.animated .feature-card:nth-child(2) { transition-delay: 0.2s; }
+.features-grid.animated .feature-card:nth-child(3) { transition-delay: 0.3s; }
+.features-grid.animated .feature-card:nth-child(4) { transition-delay: 0.4s; }
+.features-grid.animated .feature-card:nth-child(5) { transition-delay: 0.5s; }
+.features-grid.animated .feature-card:nth-child(6) { transition-delay: 0.6s; }
+
+/* Animated buttons */
+.btn {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Animated comparison table */
+.comparison-table tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.comparison-table tbody tr:hover {
+  background-color: rgba(66, 133, 244, 0.05);
+}
+
+/* Animated waitlist benefits */
+.waitlist-benefits .benefit-item {
+  transition: all 0.3s ease;
+}
+
+.waitlist-benefits .benefit-item:hover {
+  transform: translateX(5px);
+  color: var(--primary);
+}
+
+/* Scroll reveal animations */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-left.is-visible,
+.reveal-right.is-visible,
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translate(0);
+}

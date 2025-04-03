@@ -7,5 +7,9 @@
   "submit_not_indexed": true,
   "submit_sitemap": true,
   "split_large_domains": false,
-  "max_urls_per_piece": 10000
+  "max_urls_per_piece": 10000,
+  "license_key": "",
+  "subscription_plan": "free",
+  "enable_cloudflare_worker": false,
+  "cloudflare_worker_url": "https://auto-submit.your-worker.workers.dev"
 }

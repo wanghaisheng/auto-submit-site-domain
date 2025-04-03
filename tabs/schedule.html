@@ -1,0 +1,72 @@
+<div class="dashboard-header">
+  <h1>定时任务</h1>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">创建定时任务</h2>
+  </div>
+  <form id="create-task-form">
+    <div class="form-group">
+      <label for="task-name">任务名称</label>
+      <input type="text" id="task-name" placeholder="输入任务名称">
+    </div>
+    
+    <div class="form-group">
+      <label for="task-type">任务类型</label>
+      <select id="task-type">
+        <option value="">选择任务类型</option>
+        <option value="URL_SUBMISSION">URL提交</option>
+        <option value="SITEMAP_SUBMISSION">站点地图提交</option>
+        <option value="INDEX_CHECK">索引检查</option>
+        <option value="REPORT_GENERATION">报告生成</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="task-schedule">执行计划</label>
+      <select id="task-schedule">
+        <option value="">选择执行频率</option>
+        <option value="daily">每天</option>
+        <option value="weekly">每周</option>
+        <option value="monthly">每月</option>
+        <option value="custom">自定义</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="task-domain">选择域名</label>
+      <select id="task-domain">
+        <option value="all">所有已验证域名</option>
+        <option value="example.com">example.com</option>
+        <option value="anothersite.com">anothersite.com</option>
+      </select>
+    </div>
+    
+    <button type="submit" class="btn">创建任务</button>
+  </form>
+</div>
+
+<div class="dashboard-section">
+  <h2>定时任务列表</h2>
+  <div id="schedule-tasks" class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>任务名称</th>
+          <th>类型</th>
+          <th>执行计划</th>
+          <th>上次执行</th>
+          <th>下次执行</th>
+          <th>状态</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="7" class="text-center">暂无定时任务</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> 

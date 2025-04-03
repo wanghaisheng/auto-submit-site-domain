@@ -1,0 +1,105 @@
+{
+  "nav": {
+    "features": "Características",
+    "how_it_works": "Cómo Funciona",
+    "pricing": "Precios",
+    "faq": "Preguntas Frecuentes",
+    "documentation": "Documentación",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "sign_in": "Iniciar Sesión",
+    "get_started": "Comenzar"
+  },
+  "hero": {
+    "title": "Mejora la <span class='text-gradient'>Visibilidad</span> de tu Sitio Web en Google",
+    "subtitle": "No más esperas de semanas para que Google encuentre tu contenido. Nuestra herramienta automatizada envía tus páginas directamente al índice de Google, mejorando la visibilidad y generando más tráfico orgánico.",
+    "feature1": "Envíos ilimitados de URLs",
+    "feature2": "Funciona con cualquier plataforma web",
+    "feature3": "No requiere conocimientos técnicos",
+    "cta_primary": "Comienza a Indexar",
+    "cta_secondary": "Ver Precios",
+    "trust_text": "Utilizado por más de 12,500 sitios web en todo el mundo"
+  },
+  "features": {
+    "title": "Potentes Características",
+    "subtitle": "Automatiza la indexación en Google con nuestro completo conjunto de herramientas",
+    "cloudflare": {
+      "title": "Integración con Cloudflare",
+      "description": "Obtén automáticamente todos los dominios de tu cuenta Cloudflare mediante integración API"
+    },
+    "sitemap": {
+      "title": "Análisis de Sitemaps",
+      "description": "Extrae y valida URLs de tus archivos sitemap.xml de manera inteligente"
+    },
+    "dual_submission": {
+      "title": "Métodos Duales de Envío",
+      "description": "Envía mediante el operador \"site:\" y la API de Google Search Console para máxima cobertura"
+    },
+    "batch": {
+      "title": "Soporte a Gran Escala",
+      "description": "Procesa millones de URLs dividiéndolas en lotes manejables de 10,000 URLs"
+    }
+  },
+  "pricing": {
+    "title": "Precios Simples y Transparentes",
+    "subtitle": "Elige el plan que mejor se adapte a tus necesidades",
+    "monthly": "Mensual",
+    "yearly": "Anual",
+    "save": "Ahorra 20%",
+    "per_month": "por mes",
+    "per_month_billed_yearly": "por mes, facturado anualmente",
+    "forever": "Gratis por Siempre",
+    "popular": "Más Popular",
+    "free": {
+      "name": "Gratis",
+      "description": "Indexación básica para sitios pequeños",
+      "feature1": "100 URLs por mes",
+      "feature2": "Soporte para un solo dominio",
+      "feature3": "Método del operador \"site:\"",
+      "feature4_disabled": "Acceso a la API de Search Console",
+      "cta": "Comenzar"
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "Indexación avanzada para sitios en crecimiento",
+      "feature1": "URLs ilimitadas",
+      "feature2": "Hasta 5 dominios",
+      "feature3": "Ambos métodos de envío",
+      "feature4": "Actualizaciones de por vida",
+      "feature5": "Guía de auto-implementación",
+      "cta": "Obtener Pro"
+    },
+    "business": {
+      "name": "Empresarial",
+      "description": "Solución de indexación nivel empresarial",
+      "feature1": "URLs ilimitadas",
+      "feature2": "Dominios ilimitados",
+      "feature3": "Procesamiento prioritario",
+      "feature4": "Actualizaciones de por vida",
+      "feature5": "Soporte premium",
+      "cta": "Obtener Empresarial"
+    }
+  },
+  "playground": {
+    "title": "Pruébalo Ahora",
+    "subtitle": "Observa cómo funciona nuestra herramienta con esta demo interactiva",
+    "demo_title": "Herramienta de Envío de Sitio",
+    "domain": "Dominio:",
+    "method": "Método de Envío:",
+    "method_site": "Operador \"site:\"",
+    "method_api": "API de Search Console",
+    "method_both": "Ambos métodos",
+    "sitemap": "URL del Sitemap (opcional):",
+    "url_limit": "Límite de URLs:",
+    "submit_sitemap": "También enviar sitemap a Google Search Console",
+    "enterprise_mode": "Activar modo empresarial (para múltiples dominios)",
+    "submit_button": "Enviar Dominio",
+    "results": "Resultados:"
+  },
+  "footer": {
+    "copyright": "© 2023 Auto Submit Site Domain. Todos los derechos reservados.",
+    "terms": "Términos",
+    "privacy": "Privacidad",
+    "language": "Idioma:"
+  }
+} 

@@ -1,0 +1,105 @@
+{
+  "nav": {
+    "features": "Fonctionnalités",
+    "how_it_works": "Comment ça marche",
+    "pricing": "Tarifs",
+    "faq": "FAQ",
+    "documentation": "Documentation",
+    "blog": "Blog",
+    "contact": "Contact",
+    "sign_in": "Connexion",
+    "get_started": "Commencer"
+  },
+  "hero": {
+    "title": "Améliorez la <span class='text-gradient'>Visibilité</span> de votre Site Web sur Google",
+    "subtitle": "Ne perdez plus des semaines à attendre que Google trouve votre contenu. Notre outil automatisé soumet directement vos pages à l'index de Google, améliorant ainsi la visibilité et générant plus de trafic organique.",
+    "feature1": "Soumissions d'URL illimitées",
+    "feature2": "Compatible avec toutes les plateformes web",
+    "feature3": "Aucune connaissance technique requise",
+    "cta_primary": "Commencer l'indexation",
+    "cta_secondary": "Voir les tarifs",
+    "trust_text": "Utilisé par plus de 12 500 sites web dans le monde"
+  },
+  "features": {
+    "title": "Fonctionnalités Puissantes",
+    "subtitle": "Automatisez l'indexation Google avec notre ensemble d'outils complet",
+    "cloudflare": {
+      "title": "Intégration Cloudflare",
+      "description": "Récupérez automatiquement tous les domaines de votre compte Cloudflare grâce à l'intégration API"
+    },
+    "sitemap": {
+      "title": "Analyse de Sitemap",
+      "description": "Extrayez et validez intelligemment les URLs de vos fichiers sitemap.xml"
+    },
+    "dual_submission": {
+      "title": "Méthodes de Soumission Duales",
+      "description": "Soumettez via l'opérateur \"site:\" et l'API Google Search Console pour une couverture maximale"
+    },
+    "batch": {
+      "title": "Support à Grande Échelle",
+      "description": "Traitez des millions d'URLs en les divisant en lots gérables de 10 000 URLs"
+    }
+  },
+  "pricing": {
+    "title": "Tarification Simple et Transparente",
+    "subtitle": "Choisissez le forfait qui convient le mieux à vos besoins",
+    "monthly": "Mensuel",
+    "yearly": "Annuel",
+    "save": "Économisez 20%",
+    "per_month": "par mois",
+    "per_month_billed_yearly": "par mois, facturé annuellement",
+    "forever": "Gratuit à vie",
+    "popular": "Le plus populaire",
+    "free": {
+      "name": "Gratuit",
+      "description": "Indexation de base pour les petits sites",
+      "feature1": "100 URLs par mois",
+      "feature2": "Support d'un seul domaine",
+      "feature3": "Méthode opérateur \"site:\"",
+      "feature4_disabled": "Accès API Search Console",
+      "cta": "Commencer"
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "Indexation avancée pour les sites en croissance",
+      "feature1": "URLs illimitées",
+      "feature2": "Jusqu'à 5 domaines",
+      "feature3": "Les deux méthodes de soumission",
+      "feature4": "Mises à jour à vie",
+      "feature5": "Guide d'auto-déploiement",
+      "cta": "Obtenir Pro"
+    },
+    "business": {
+      "name": "Business",
+      "description": "Solution d'indexation de niveau entreprise",
+      "feature1": "URLs illimitées",
+      "feature2": "Domaines illimités",
+      "feature3": "Traitement prioritaire",
+      "feature4": "Mises à jour à vie",
+      "feature5": "Support premium",
+      "cta": "Obtenir Business"
+    }
+  },
+  "playground": {
+    "title": "Essayez Maintenant",
+    "subtitle": "Découvrez comment fonctionne notre outil avec cette démo interactive",
+    "demo_title": "Outil de Soumission de Site",
+    "domain": "Domaine :",
+    "method": "Méthode de Soumission :",
+    "method_site": "Opérateur \"site:\"",
+    "method_api": "API Search Console",
+    "method_both": "Les deux méthodes",
+    "sitemap": "URL du Sitemap (optionnel) :",
+    "url_limit": "Limite d'URLs :",
+    "submit_sitemap": "Soumettre également le sitemap à Google Search Console",
+    "enterprise_mode": "Activer le mode entreprise (pour plusieurs domaines)",
+    "submit_button": "Soumettre le Domaine",
+    "results": "Résultats :"
+  },
+  "footer": {
+    "copyright": "© 2023 Auto Submit Site Domain. Tous droits réservés.",
+    "terms": "Conditions",
+    "privacy": "Confidentialité",
+    "language": "Langue :"
+  }
+} 

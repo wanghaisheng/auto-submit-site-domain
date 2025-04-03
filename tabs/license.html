@@ -1,0 +1,90 @@
+<div class="dashboard-header">
+  <h1>许可证管理</h1>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">当前许可证</h2>
+  </div>
+  <div class="license-info">
+    <div class="form-group">
+      <label>许可证密钥</label>
+      <div class="license-key-container">
+        <input type="text" value="ASSD-1234-5678-ABCD" readonly>
+        <button class="btn">
+          <i class="fas fa-copy"></i>
+        </button>
+      </div>
+    </div>
+    <div class="license-details">
+      <div class="license-detail">
+        <span>许可证类型:</span>
+        <strong>企业版</strong>
+      </div>
+      <div class="license-detail">
+        <span>状态:</span>
+        <strong class="text-success">有效</strong>
+      </div>
+      <div class="license-detail">
+        <span>到期日期:</span>
+        <strong>2024-06-15</strong>
+      </div>
+      <div class="license-detail">
+        <span>允许域名数:</span>
+        <strong>无限制</strong>
+      </div>
+      <div class="license-detail">
+        <span>每日URL提交限制:</span>
+        <strong>100,000</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">激活新许可证</h2>
+  </div>
+  <form>
+    <div class="form-group">
+      <label for="new-license">新许可证密钥</label>
+      <input type="text" id="new-license" placeholder="输入新的许可证密钥">
+    </div>
+    <button type="submit" class="btn">激活许可证</button>
+  </form>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">许可证历史</h2>
+  </div>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>许可证密钥</th>
+          <th>激活日期</th>
+          <th>到期日期</th>
+          <th>类型</th>
+          <th>状态</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ASSD-1234-5678-ABCD</td>
+          <td>2023-06-15</td>
+          <td>2024-06-15</td>
+          <td>企业版</td>
+          <td><span class="badge success">当前激活</span></td>
+        </tr>
+        <tr>
+          <td>PREV-9876-5432-EFGH</td>
+          <td>2022-06-15</td>
+          <td>2023-06-15</td>
+          <td>专业版</td>
+          <td><span class="badge warning">已过期</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> 

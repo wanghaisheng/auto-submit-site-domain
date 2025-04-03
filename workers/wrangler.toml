@@ -1,0 +1,15 @@
+name = "auto-submit-site-auth"
+type = "javascript"
+account_id = "" # Your Cloudflare account ID
+workers_dev = true
+compatibility_date = "2023-06-01"
+
+[vars]
+HASH_SECRET = "change_this_to_a_secure_value_in_production"
+
+# Define KV namespace binding
+# You'll need to create this in the Cloudflare dashboard
+# or using Wrangler CLI
+[[kv_namespaces]]
+binding = "AUTH_USERS"
+id = "" # Your KV namespace ID 

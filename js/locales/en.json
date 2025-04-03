@@ -1,0 +1,262 @@
+{
+  "nav": {
+    "features": "Features",
+    "join_waitlist": "Join Waitlist",
+    "advanced_features": "Advanced Features",
+    "how_it_works": "How It Works",
+    "dual_approach": "Dual-Approach",
+    "try_it": "Try It",
+    "comparison": "Comparison",
+    "pricing": "Pricing",
+    "tracker": "Tracker",
+    "batch_submit": "Batch Submit",
+    "reports": "Reports",
+    "get_started": "Get Started"
+  },
+  "hero": {
+    "title": "Boost Your Website's <span class='text-gradient'>Visibility</span> in Google Search",
+    "subtitle": "No more waiting weeks for Google to find your content. Our automated tool directly submits your pages to Google's index, improving visibility and driving more organic traffic to your content.",
+    "feature1": "Unlimited URL Submissions",
+    "feature2": "Works with Any Website Platform",
+    "feature3": "No Technical Knowledge Required",
+    "cta_primary": "Start Indexing Now",
+    "cta_secondary": "View Pricing",
+    "trust_text": "Trusted by over 12,500 websites worldwide"
+  },
+  "whyChoose": {
+    "title": "Why Choose RankDaily?",
+    "subtitle": "Our powerful indexing solution offers unique advantages that other tools simply can't match",
+    "feature1": {
+      "title": "Faster Indexing",
+      "description": "Get your content indexed by Google 5-10 times faster than waiting for natural crawling, giving you a crucial competitive edge."
+    },
+    "feature2": {
+      "title": "Unlimited Submissions",
+      "description": "Unlike competitors who only use GSC API (limited to 200 URLs/day), our dual approach allows virtually unlimited URL submissions daily."
+    },
+    "feature3": {
+      "title": "Smart Automation",
+      "description": "Set it once and forget it! Automatic crawling and submission on your schedule means zero manual work required."
+    },
+    "feature4": {
+      "title": "No Rate Limits",
+      "description": "Our proprietary technology avoids CAPTCHAs and rate limits that plague other tools, ensuring reliable indexing at scale."
+    },
+    "feature5": {
+      "title": "Performance Analytics",
+      "description": "Detailed reports and insights show you exactly which URLs were submitted, indexed, and how your content is performing."
+    },
+    "feature6": {
+      "title": "Multi-Platform Support",
+      "description": "Works with any CMS or website platform - WordPress, Shopify, custom sites, and more - with no plugins required."
+    },
+    "stats": {
+      "stat1": {
+        "number": "94%",
+        "text": "Faster indexing compared to natural crawling"
+      },
+      "stat2": {
+        "number": "1M+",
+        "text": "URLs successfully indexed for our users"
+      },
+      "stat3": {
+        "number": "12,500+",
+        "text": "Active users across 70+ countries"
+      },
+      "stat4": {
+        "number": "4.9/5",
+        "text": "Average customer satisfaction rating"
+      }
+    }
+  },
+  "howItWorks": {
+    "title": "How RankDaily Works",
+    "subtitle": "Get your content indexed in three simple steps",
+    "step1": {
+      "title": "Connect Your Website",
+      "description": "Sign up and connect your domain through our simple verification process. No technical setup required."
+    },
+    "step2": {
+      "title": "Submit Your Content",
+      "description": "Add URLs manually, upload in bulk, or connect your sitemap for automatic discovery of new content."
+    },
+    "step3": {
+      "title": "Watch Your Content Get Indexed",
+      "description": "Our system automatically submits your URLs to Google using our proprietary dual-approach method for faster indexing."
+    },
+    "cta": {
+      "text": "Ready to get your content indexed faster?",
+      "button": "Start Now"
+    }
+  },
+  "pricing": {
+    "title": "Simple, Transparent Pricing",
+    "subtitle": "Choose the plan that works best for your needs",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "save": "Save 20%",
+    "per_month": "per month",
+    "per_month_billed_yearly": "per month, billed yearly",
+    "forever": "Forever Free",
+    "popular": "Most Popular",
+    "free": {
+      "name": "Free",
+      "description": "Basic indexing for small sites",
+      "feature1": "100 URLs per month",
+      "feature2": "Single domain support",
+      "feature3": "\"site:\" operator method",
+      "feature4_disabled": "Search Console API access",
+      "cta": "Get Started"
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "Advanced indexing for growing sites",
+      "feature1": "Unlimited URLs",
+      "feature2": "Up to 5 domains",
+      "feature3": "Both submission methods",
+      "feature4": "Lifetime updates",
+      "feature5": "Self-deployment guide",
+      "cta": "Get Pro"
+    },
+    "business": {
+      "name": "Business",
+      "description": "Enterprise-grade indexing solution",
+      "feature1": "Unlimited URLs",
+      "feature2": "Unlimited domains",
+      "feature3": "Priority processing",
+      "feature4": "Lifetime updates",
+      "feature5": "Premium support",
+      "cta": "Get Business"
+    },
+    "guarantee": "30-day money-back guarantee. No questions asked."
+  },
+  "testimonials": {
+    "title": "What Our Customers Say",
+    "subtitle": "Join thousands of satisfied website owners who've improved their Google visibility",
+    "testimonial1": {
+      "text": "Within days of using RankDaily, our new blog posts started appearing in Google search results. Before, it would take weeks. The impact on our traffic has been incredible.",
+      "author": "Sarah Johnson",
+      "position": "Marketing Director, TechBlog.com"
+    },
+    "testimonial2": {
+      "text": "As an e-commerce site with thousands of products, getting everything indexed was a nightmare. RankDaily solved this problem completely. Our product pages now get indexed almost immediately after publication.",
+      "author": "David Chen",
+      "position": "CEO, FashionHub"
+    },
+    "testimonial3": {
+      "text": "We manage 50+ client websites, and keeping all their content properly indexed was a full-time job. Now with RankDaily, it's completely automated. A game-changer for our agency.",
+      "author": "Maria Rodriguez",
+      "position": "SEO Manager, Digital Growth Agency"
+    },
+    "brands": "Trusted by companies of all sizes"
+  },
+  "cta": {
+    "title": "Ready to accelerate your Google indexing?",
+    "subtitle": "Join over 12,500 websites that are already getting indexed faster with RankDaily",
+    "feature1": "5x faster indexing",
+    "feature2": "30-day money-back guarantee",
+    "feature3": "24/7 customer support",
+    "primary_button": "Get Started Free",
+    "secondary_button": "View Pricing Plans"
+  },
+  "footer": {
+    "about": "Accelerate your Google indexing with our smart automation tools. Get your content indexed faster and improve your SEO performance.",
+    "product": "Product",
+    "resources": "Resources",
+    "company": "Company",
+    "newsletter": "Newsletter",
+    "newsletter_desc": "Get the latest updates and SEO tips",
+    "email_placeholder": "Your email",
+    "subscribe": "Subscribe",
+    "documentation": "Documentation",
+    "blog": "Blog",
+    "guides": "Guides",
+    "support": "Support",
+    "about_us": "About Us",
+    "careers": "Careers",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "© 2023 RankDaily. All rights reserved.",
+    "language": "Language:"
+  },
+  "roadmap": {
+    "title": "Future Plans & Roadmap",
+    "subtitle": "Exciting upcoming features and already implemented capabilities to make our tool even more powerful",
+    "api_integration": {
+      "title": "Google Search Console API Integration",
+      "description": "Direct submission via GSC API for faster indexing - already implemented and available to all users!"
+    },
+    "domain_management": {
+      "title": "Enhanced Domain Management",
+      "description": "URL limits per domain, blacklist/whitelist configuration, and more flexible domain handling - now available!"
+    },
+    "batch_processing": {
+      "title": "Large-Scale URL Processing",
+      "description": "Support for millions of URLs by splitting into manageable batches - fully implemented!"
+    },
+    "multi_search": {
+      "title": "Multi-Search Engine Support",
+      "description": "Expanding beyond Google to include Bing, Yahoo, and other search engines for comprehensive coverage."
+    },
+    "providers": {
+      "title": "Additional Domain Provider Support",
+      "description": "Integration with Namecheap, GoDaddy, and more domain providers beyond Cloudflare."
+    },
+    "analytics": {
+      "title": "Advanced Analytics Dashboard",
+      "description": "Comprehensive reporting on indexing status, performance metrics, and optimization recommendations."
+    }
+  },
+  "advantages": {
+    "title": "Our Advantages and Credibility",
+    "subtitle": "What sets RankDaily apart from other indexing solutions",
+    "speed": {
+      "title": "Lightning Fast Indexing",
+      "description": "Our proprietary technology gets your pages indexed in Google up to 5x faster than waiting for natural crawling."
+    },
+    "unlimited": {
+      "title": "No Usage Limits",
+      "description": "Unlike other tools with daily caps, our solution offers unlimited URL submissions to maximize your indexing potential."
+    },
+    "monitoring": {
+      "title": "24/7 Monitoring",
+      "description": "Continuous monitoring ensures your content gets indexed promptly and stays in the Google index."
+    },
+    "analytics": {
+      "title": "Detailed Analytics",
+      "description": "Track your indexing performance with comprehensive reports showing exactly which URLs were successfully indexed."
+    },
+    "support": {
+      "title": "Expert Support",
+      "description": "Our technical team is available around the clock to help with any indexing challenges you might face."
+    },
+    "integrations": {
+      "title": "Seamless Integrations",
+      "description": "Works with any CMS or website platform including WordPress, Shopify, Wix, and custom solutions."
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Get answers to common questions about our indexing service",
+    "q1": {
+      "question": "How exactly does Auto Submit Site work?",
+      "answer": "Auto Submit Site uses a combination of APIs and specialized algorithms to submit your webpages directly to Google's indexing system. We leverage both the \"site:\" operator method and direct submission via Google Search Console API to ensure maximum coverage and speed."
+    },
+    "q2": {
+      "question": "How quickly will my content be indexed?",
+      "answer": "Most submitted URLs are indexed within 24-48 hours, compared to 1-4 weeks for natural crawling. However, indexing speed may vary depending on your site's authority and content quality. Our data shows an average 5x improvement in indexing time."
+    },
+    "q3": {
+      "question": "Do I need technical knowledge to use this?",
+      "answer": "Not at all. Our user-friendly dashboard makes it easy to submit and monitor your URLs with just a few clicks. Simply paste your URLs or connect your sitemap, and our system handles the rest. No coding or SEO expertise required."
+    },
+    "q4": {
+      "question": "How is this different from manually submitting URLs?",
+      "answer": "Manual submission is time-consuming and limited. Our automated approach allows you to submit thousands of URLs on a scheduled basis, tracks indexing status, and uses multiple submission methods to maximize success rates."
+    },
+    "q5": {
+      "question": "Will this help my SEO and rankings?",
+      "answer": "Faster indexing doesn't directly improve rankings, but it ensures your content appears in search results sooner. This means you can start gaining traffic and building engagement metrics faster, indirectly supporting your SEO efforts."
+    }
+  }
+} 

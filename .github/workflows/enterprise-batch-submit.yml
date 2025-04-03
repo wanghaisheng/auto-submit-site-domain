@@ -1,0 +1,126 @@
+name: Enterprise Batch URL Submission
+
+on:
+  repository_dispatch:
+    types: [url_submission]
+  workflow_dispatch:
+    inputs:
+      batch_type:
+        description: 'Type of batch (url_batch or domain_batch)'
+        required: true
+        default: 'url_batch'
+      urls:
+        description: 'JSON array of URLs to process (for url_batch)'
+        required: false
+      domains:
+        description: 'JSON array of domains to process (for domain_batch)'
+        required: false
+      license_key:
+        description: 'Enterprise license key'
+        required: true
+
+jobs:
+  process-batch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install drissionpage requests beautifulsoup4 python-dotenv lxml google-api-python-client google-auth-httplib2 google-auth-oauthlib gzip-reader
+      
+      - name: Create directories for logs and reports
+        run: |
+          mkdir -p logs
+          mkdir -p reports
+          
+      - name: Verify enterprise subscription
+        id: verify_subscription
+        env:
+          LICENSE_KEY: ${{ github.event.client_payload.license_key || inputs.license_key }}
+        run: |
+          echo "Verifying enterprise subscription..."
+          python -c "from subscription_verifier import SubscriptionVerifier; verifier = SubscriptionVerifier(); print(f'Is enterprise: {verifier.is_enterprise_plan()}')" || echo "Subscription verification failed"
+          # Verify it's an enterprise plan
+          IS_ENTERPRISE=$(python -c "from subscription_verifier import SubscriptionVerifier; verifier = SubscriptionVerifier(); print(verifier.is_enterprise_plan())")
+          if [ "$IS_ENTERPRISE" != "True" ]; then
+            echo "::error::This workflow requires an enterprise subscription"
+            exit 1
+          fi
+          echo "Enterprise subscription verified!"
+      
+      - name: Process URL batch
+        if: ${{ github.event.client_payload.type == 'url_batch' || inputs.batch_type == 'url_batch' }}
+        env:
+          BATCH_INDEX: ${{ github.event.client_payload.batch_index || '1' }}
+          TOTAL_BATCHES: ${{ github.event.client_payload.total_batches || '1' }}
+          LICENSE_KEY: ${{ github.event.client_payload.license_key || inputs.license_key }}
+          REQUEST_DELAY: ${{ secrets.REQUEST_DELAY || '5' }}
+          DRISSIONPAGE_TIMEOUT: ${{ secrets.DRISSIONPAGE_TIMEOUT || '30' }}
+        run: |
+          echo "Processing URL batch $BATCH_INDEX of $TOTAL_BATCHES"
+          
+          # Create temporary URL file from the payload
+          if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            echo "${{ toJson(github.event.client_payload.urls) }}" > batch_urls.json
+            python -c "import json; urls = json.load(open('batch_urls.json')); open('urls.txt', 'w').write('\n'.join(urls))"
+          else
+            echo "${{ inputs.urls }}" > batch_urls.json
+            python -c "import json; urls = json.load(open('batch_urls.json')); open('urls.txt', 'w').write('\n'.join(urls))"
+          fi
+          
+          # Count URLs
+          URL_COUNT=$(wc -l < urls.txt)
+          echo "Processing $URL_COUNT URLs in this batch"
+          
+          # Submit URLs to search engines
+          python submit_to_google.py
+          
+          # Log completion
+          echo "Completed batch $BATCH_INDEX of $TOTAL_BATCHES"
+      
+      - name: Process domain batch
+        if: ${{ github.event.client_payload.type == 'domain_batch' || inputs.batch_type == 'domain_batch' }}
+        env:
+          BATCH_INDEX: ${{ github.event.client_payload.batch_index || '1' }}
+          TOTAL_BATCHES: ${{ github.event.client_payload.total_batches || '1' }}
+          LICENSE_KEY: ${{ github.event.client_payload.license_key || inputs.license_key }}
+          REQUEST_DELAY: ${{ secrets.REQUEST_DELAY || '5' }}
+          DRISSIONPAGE_TIMEOUT: ${{ secrets.DRISSIONPAGE_TIMEOUT || '30' }}
+        run: |
+          echo "Processing domain batch $BATCH_INDEX of $TOTAL_BATCHES"
+          
+          # Create temporary domain file from the payload
+          if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            echo "${{ toJson(github.event.client_payload.domains) }}" > batch_domains.json
+            python -c "import json; domains = json.load(open('batch_domains.json')); open('domains.txt', 'w').write('\n'.join(domains))"
+          else
+            echo "${{ inputs.domains }}" > batch_domains.json
+            python -c "import json; domains = json.load(open('batch_domains.json')); open('domains.txt', 'w').write('\n'.join(domains))"
+          fi
+          
+          # Count domains
+          DOMAIN_COUNT=$(wc -l < domains.txt)
+          echo "Processing $DOMAIN_COUNT domains in this batch"
+          
+          # Parse sitemaps for URLs
+          python sitemap_parser.py
+          
+          # Submit URLs to search engines
+          python submit_to_google.py
+          
+          # Log completion
+          echo "Completed batch $BATCH_INDEX of $TOTAL_BATCHES"
+      
+      - name: Upload logs
+        uses: actions/upload-artifact@v3
+        with:
+          name: submission-logs-batch-${{ github.event.client_payload.batch_index || '1' }}
+          path: logs/
+          retention-days: 7

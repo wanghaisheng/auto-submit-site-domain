@@ -1,9 +1,6 @@
 # GitHub Action to Submit "site:{url}" to Google Search
 
-This GitHub Action automatically submits your site URLs to Google Search using a cron python job.
-
-
-add   google search console support
+This GitHub Action automatically submits your site URLs to Google Search using a cron python job. It supports both the "site:" operator method through browser automation and direct submission via the Google Search Console API.
 
 
 
@@ -88,14 +85,14 @@ I'll help you create a more detailed task breakdown based on your existing `task
 ## Task Breakdown
 
 ### 1. Cloudflare Domain Fetcher
-- [ ] Create `cloudflare_fetcher.py` to:
+- [x] Create `cloudflare_fetcher.py` to:
   - Authenticate with Cloudflare API
   - List all domains in zone
   - Filter active domains (status: 'active')
   - Output domain list to `domains.txt`
 
 ### 2. Sitemap Parser
-- [ ] Create `sitemap_parser.py` to:
+- [x] Create `sitemap_parser.py` to:
   - Read domains from `domains.txt`
   - For each domain:
     - Fetch `sitemap.xml`
@@ -104,7 +101,7 @@ I'll help you create a more detailed task breakdown based on your existing `task
     - Output to `urls.txt`
 
 ### 3. Google Submission Script
-- [ ] Create `submit_to_google.py` to:
+- [x] Create `submit_to_google.py` to:
   - Initialize DrissionPage browser
   - Read URLs from `urls.txt`
   - For each URL:
@@ -113,7 +110,7 @@ I'll help you create a more detailed task breakdown based on your existing `task
     - Log successful submissions
 
 ### 4. GitHub Action Workflow
-- [ ] Finalize `.github/workflows/submit-to-google.yml`:
+- [x] Finalize `.github/workflows/submit-to-google.yml`:
   - Set proper cron schedule
   - Add error handling
   - Configure artifact storage for logs
@@ -154,25 +151,27 @@ auto-submit-site-domain/
 ```
 
 ## Next Steps
-1. Create initial Python scripts
-2. Test each component separately
-3. Integrate into full workflow
+1. ✅ Create initial Python scripts
+2. ✅ Test each component separately
+3. ✅ Integrate into full workflow
+4. Add more comprehensive documentation
+5. Implement additional features from the Future Plans section
 
-## Future Plans
+## Implemented Features
 
-- **Google Search Console API Integration**: While competitors typically use GSC API with daily limits (e.g., RankWeek offers 6,000 pages indexed per month/200 per day), our tool uses the "site:" operator method which has no limits, providing a great supplement to boost indexing.
+- **Google Search Console API Integration**: Implemented in `google_search_console.py` and integrated with `submit_to_google.py`. This provides an alternative submission method to the "site:" operator approach.
 
 - **Domain Management Improvements**:
-  - Add URL count limit per domain
-  - Add domain blacklist configuration
-  - Add domain whitelist configuration
-  - Support reading target domains from a file instead of Cloudflare API
+  - ✅ Add URL count limit per domain (implemented in config.json)
+  - ✅ Add domain blacklist configuration (implemented in config.json)
+  - ✅ Add domain whitelist configuration (implemented in config.json)
+  - ✅ Support reading target domains from a file instead of Cloudflare API (implemented in cloudflare_fetcher.py)
 
 - **Advanced Submission Features**:
-  - Submit non-indexed URLs through Google Search Console API
-  - Use DrissionPage to submit inside Google Search Console
-  - Add sitemap submission to Google Search Console
-  - Support for millions of URLs by splitting into 10,000-piece batches across multiple workflows
+  - ✅ Submit non-indexed URLs through Google Search Console API (implemented in google_search_console.py)
+  - ✅ Use DrissionPage to submit inside Google Search Console (implemented in submit_to_google.py)
+  - ✅ Add sitemap submission to Google Search Console (implemented in submit_to_google.py)
+  - ✅ Support for millions of URLs by splitting into 10,000-piece batches (implemented in config.json with max_urls_per_piece)
 
 - **Expanded Search Engine Support**:
   - Add submission to Bing and other search engines via API or browser automation

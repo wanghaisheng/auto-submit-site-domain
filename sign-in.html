@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Sign in to your Auto Submit Site Domain account to manage your website indexing">
+  <meta name="keywords" content="sign in, login, auto submit, website indexing, account access">
+  <meta name="author" content="Auto Submit Site Domain">
+  <meta http-equiv="Content-Language" content="en">
+
+  <!-- Canonical Link -->
+  <link rel="canonical" href="https://rankdaily.shopconna.com/sign-in.html" />
+
+  <!-- Open Graph for Social Media -->
+  <meta property="og:title" content="Sign In - Auto Submit Site Domain">
+  <meta property="og:description" content="Sign in to your Auto Submit Site Domain account to manage your website indexing">
+  <meta property="og:image" content="https://rankdaily.shopconna.com/images/og-image.jpg">
+  <meta property="og:url" content="https://rankdaily.shopconna.com/sign-in.html">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sign In - Auto Submit Site Domain">
+  <meta name="twitter:description" content="Sign in to your Auto Submit Site Domain account to manage your website indexing">
+  <meta name="twitter:image" content="https://rankdaily.shopconna.com/images/twitter-card.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/favicon.svg">
+
+  <title>Sign In - Auto Submit Site Domain</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    .signin-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 400px);
+    }
+    
+    .signin-form-container {
+      width: 100%;
+      max-width: 450px;
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 40px;
+      box-shadow: var(--box-shadow);
+    }
+    
+    .signin-logo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .signin-logo i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    .form-title {
+      color: var(--dark);
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      text-align: center;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--dark);
+      font-weight: 500;
+    }
+    
+    .form-group input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    
+    .form-group input:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+    
+    .form-group .password-container {
+      position: relative;
+    }
+    
+    .form-group .toggle-password {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: var(--gray);
+    }
+    
+    .form-actions {
+      margin-top: 30px;
+    }
+    
+    .form-actions .btn {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+    }
+    
+    .form-footer {
+      margin-top: 20px;
+      text-align: center;
+      color: var(--gray);
+    }
+    
+    .forgot-password {
+      text-align: right;
+      margin-top: 5px;
+    }
+    
+    .forgot-password a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
+    
+    .form-footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    
+    .form-footer a:hover {
+      text-decoration: underline;
+    }
+    
+    .form-message {
+      padding: 10px 15px;
+      margin-bottom: 20px;
+      border-radius: var(--border-radius);
+      display: none;
+    }
+    
+    .form-message.error {
+      background-color: rgba(220, 53, 69, 0.1);
+      color: #dc3545;
+      border: 1px solid rgba(220, 53, 69, 0.2);
+    }
+    
+    .form-message.success {
+      background-color: rgba(40, 167, 69, 0.1);
+      color: #28a745;
+      border: 1px solid rgba(40, 167, 69, 0.2);
+    }
+    
+    .signin-divider {
+      display: flex;
+      align-items: center;
+      margin: 25px 0;
+    }
+    
+    .signin-divider::before,
+    .signin-divider::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .signin-divider span {
+      margin: 0 10px;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    
+    .social-signin {
+      margin: 20px 0;
+    }
+    
+    .social-signin .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      background-color: white;
+      color: var(--dark);
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    
+    .social-signin .btn i {
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+    
+    .social-signin .btn:hover {
+      background-color: #f5f5f5;
+    }
+    
+    .social-signin .google-btn i {
+      color: #DB4437;
+    }
+    
+    .social-signin .github-btn i {
+      color: #333;
+    }
+    
+    @media (max-width: 576px) {
+      .signin-form-container {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="container">
+        <a href="index.html" class="logo"><i class="fas fa-search"></i> Auto Submit Site Domain</a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#how-it-works">How It Works</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+        </ul>
+        <div class="nav-auth">
+          <a href="sign-in.html" id="signInBtn" class="sign-in-btn">Sign In</a>
+        </div>
+        <div class="mobile-menu-toggle" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="signin-container">
+      <div class="signin-form-container">
+        <div class="signin-logo">
+          <i class="fas fa-search"></i>
+        </div>
+        
+        <h2 class="form-title">Sign In to Your Account</h2>
+        
+        <div id="signinMessage" class="form-message"></div>
+        
+        <form id="signinForm">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-container">
+              <input type="password" id="password" name="password" placeholder="Enter your password" required>
+              <span class="toggle-password" onclick="togglePasswordVisibility('password')">
+                <i class="fas fa-eye"></i>
+              </span>
+            </div>
+            <div class="forgot-password">
+              <a href="forgot-password.html">Forgot Password?</a>
+            </div>
+          </div>
+          
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Sign In</button>
+          </div>
+          
+          <div class="signin-divider">
+            <span>OR</span>
+          </div>
+          
+          <div class="social-signin">
+            <button type="button" class="btn google-btn">
+              <i class="fab fa-google"></i> Sign in with Google
+            </button>
+            <button type="button" class="btn github-btn">
+              <i class="fab fa-github"></i> Sign in with GitHub
+            </button>
+          </div>
+          
+          <div class="form-footer">
+            <p>Don't have an account? <a href="sign-up.html">Sign Up</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Auto Submit Site Domain</h3>
+          <p>Boost your website's visibility in search engines by automatically submitting your pages to Google.</p>
+          <div class="social-links">
+            <a href="https://github.com/heytcm/auto-submit-site-domain" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="https://github.com/heytcm/auto-submit-site-domain/blob/main/README.md">Documentation</a></li>
+            <li><a href="https://github.com/heytcm/auto-submit-site-domain/issues">Report Issues</a></li>
+            <li><a href="https://github.com/heytcm/auto-submit-site-domain/blob/main/CONTRIBUTING.md">Contribute</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="language-switcher">
+        <span>Language:</span>
+        <select id="languageSelector" data-i18n="language-selector">
+          <option value="en" selected>English</option>
+          <option value="zh">中文</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+        </select>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Auto Submit Site Domain. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript Files -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu toggle
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+      
+      menuToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        
+        // Toggle menu icon between bars and close
+        const icon = menuToggle.querySelector('i');
+        if (icon.classList.contains('fa-bars')) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-times');
+        } else {
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
+      });
+      
+      // Sign in form handling
+      const signinForm = document.getElementById('signinForm');
+      const signinMessage = document.getElementById('signinMessage');
+      
+      if (signinForm) {
+        signinForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          const email = document.getElementById('email').value.trim();
+          const password = document.getElementById('password').value;
+          
+          // Simple validation
+          if (!email || !password) {
+            showMessage('Please fill in all fields', 'error');
+            return;
+          }
+          
+          // Call the login API endpoint
+          fetch('https://rankdaily.shopconna.com/workers/auth/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              email: email,
+              password: password
+            })
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              showMessage('Login successful! Redirecting to dashboard...', 'success');
+              
+              // Store the token
+              localStorage.setItem('authToken', data.token);
+              
+              // Redirect to dashboard
+              setTimeout(() => {
+                window.location.href = 'dashboard.html';
+              }, 1500);
+            } else {
+              showMessage(data.message || 'Login failed. Please check your credentials.', 'error');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            showMessage('An error occurred. Please try again later.', 'error');
+          });
+        });
+      }
+      
+      // Social sign in buttons (placeholders for future implementation)
+      const googleBtn = document.querySelector('.google-btn');
+      const githubBtn = document.querySelector('.github-btn');
+      
+      if (googleBtn) {
+        googleBtn.addEventListener('click', function() {
+          showMessage('Google sign in is not yet implemented', 'error');
+        });
+      }
+      
+      if (githubBtn) {
+        githubBtn.addEventListener('click', function() {
+          showMessage('GitHub sign in is not yet implemented', 'error');
+        });
+      }
+      
+      function showMessage(message, type) {
+        signinMessage.textContent = message;
+        signinMessage.className = 'form-message ' + type;
+        signinMessage.style.display = 'block';
+      }
+    });
+    
+    // Toggle password visibility
+    function togglePasswordVisibility(inputId) {
+      const passwordInput = document.getElementById(inputId);
+      const toggleIcon = passwordInput.nextElementSibling.querySelector('i');
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+      }
+    }
+  </script>
+</body>
+
+</html> 

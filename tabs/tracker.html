@@ -1,0 +1,106 @@
+<div class="dashboard-header">
+  <h1>索引跟踪</h1>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">索引状态查询</h2>
+  </div>
+  <form id="index-check-form">
+    <div class="form-group">
+      <label for="check-url">输入URL</label>
+      <input type="text" id="check-url" placeholder="https://example.com/page">
+    </div>
+    <button type="submit" class="btn">检查索引状态</button>
+  </form>
+</div>
+
+<div class="dashboard-section">
+  <h2>索引状态概览</h2>
+  
+  <div class="stats-grid">
+    <div class="stat-card">
+      <i class="fas fa-check-circle"></i>
+      <h3>987</h3>
+      <p>已索引URL</p>
+    </div>
+    <div class="stat-card">
+      <i class="fas fa-clock"></i>
+      <h3>124</h3>
+      <p>待处理URL</p>
+    </div>
+    <div class="stat-card">
+      <i class="fas fa-exclamation-triangle"></i>
+      <h3>23</h3>
+      <p>索引失败</p>
+    </div>
+    <div class="stat-card">
+      <i class="fas fa-tachometer-alt"></i>
+      <h3>2.3天</h3>
+      <p>平均索引时间</p>
+    </div>
+  </div>
+  
+  <div class="chart-container">
+    <canvas id="indexing-status-chart"></canvas>
+  </div>
+</div>
+
+<div class="dashboard-section">
+  <h2>最近检查的URL</h2>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>URL</th>
+          <th>检查日期</th>
+          <th>索引状态</th>
+          <th>首次提交</th>
+          <th>首次索引</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>https://example.com/page1</td>
+          <td>2023-06-15</td>
+          <td><span class="badge success">已索引</span></td>
+          <td>2023-06-10</td>
+          <td>2023-06-12</td>
+          <td>
+            <button class="btn btn-sm btn-outline">
+              <i class="fas fa-redo"></i> 重新检查
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>https://example.com/page2</td>
+          <td>2023-06-15</td>
+          <td><span class="badge warning">处理中</span></td>
+          <td>2023-06-14</td>
+          <td>-</td>
+          <td>
+            <button class="btn btn-sm btn-outline">
+              <i class="fas fa-redo"></i> 重新检查
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>https://example.com/page3</td>
+          <td>2023-06-14</td>
+          <td><span class="badge danger">未索引</span></td>
+          <td>2023-06-01</td>
+          <td>-</td>
+          <td>
+            <button class="btn btn-sm btn-outline">
+              <i class="fas fa-redo"></i> 重新检查
+            </button>
+            <button class="btn btn-sm btn-secondary">
+              <i class="fas fa-rocket"></i> 重新提交
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> 

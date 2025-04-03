@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Sign up for Auto Submit Site Domain - Create an account to boost your website's visibility in Google">
+  <meta name="keywords" content="sign up, create account, auto submit, website indexing, seo tools">
+  <meta name="author" content="Auto Submit Site Domain">
+  <meta http-equiv="Content-Language" content="en">
+
+  <!-- Canonical Link -->
+  <link rel="canonical" href="https://rankdaily.shopconna.com/sign-up.html" />
+
+  <!-- Open Graph for Social Media -->
+  <meta property="og:title" content="Sign Up - Auto Submit Site Domain">
+  <meta property="og:description" content="Create an account to automatically submit your website URLs to Google for faster indexing">
+  <meta property="og:image" content="https://rankdaily.shopconna.com/images/og-image.jpg">
+  <meta property="og:url" content="https://rankdaily.shopconna.com/sign-up.html">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sign Up - Auto Submit Site Domain">
+  <meta name="twitter:description" content="Create an account to automatically submit your website URLs to Google for faster indexing">
+  <meta name="twitter:image" content="https://rankdaily.shopconna.com/images/twitter-card.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/favicon.svg">
+
+  <title>Sign Up - Auto Submit Site Domain</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    .signup-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .signup-content {
+      flex: 1;
+      min-width: 300px;
+      padding-right: 40px;
+    }
+    
+    .signup-form-container {
+      flex: 1;
+      min-width: 300px;
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 40px;
+      box-shadow: var(--box-shadow);
+    }
+    
+    .signup-content h1 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    
+    .signup-content p {
+      color: var(--gray);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    
+    .benefits-list {
+      margin: 20px 0;
+    }
+    
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+    
+    .benefit-icon {
+      color: var(--primary);
+      margin-right: 15px;
+      font-size: 1.2rem;
+      padding-top: 3px;
+    }
+    
+    .benefit-text {
+      color: var(--gray);
+      line-height: 1.5;
+    }
+    
+    .form-title {
+      color: var(--dark);
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--dark);
+      font-weight: 500;
+    }
+    
+    .form-group input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    
+    .form-group input:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+    
+    .form-group .password-container {
+      position: relative;
+    }
+    
+    .form-group .toggle-password {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: var(--gray);
+    }
+    
+    .form-actions {
+      margin-top: 30px;
+    }
+    
+    .form-actions .btn {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+    }
+    
+    .form-footer {
+      margin-top: 20px;
+      text-align: center;
+      color: var(--gray);
+    }
+    
+    .form-footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    
+    .form-footer a:hover {
+      text-decoration: underline;
+    }
+    
+    .form-message {
+      padding: 10px 15px;
+      margin-bottom: 20px;
+      border-radius: var(--border-radius);
+      display: none;
+    }
+    
+    .form-message.error {
+      background-color: rgba(220, 53, 69, 0.1);
+      color: #dc3545;
+      border: 1px solid rgba(220, 53, 69, 0.2);
+    }
+    
+    .form-message.success {
+      background-color: rgba(40, 167, 69, 0.1);
+      color: #28a745;
+      border: 1px solid rgba(40, 167, 69, 0.2);
+    }
+    
+    @media (max-width: 992px) {
+      .signup-container {
+        flex-direction: column;
+      }
+      
+      .signup-content {
+        padding-right: 0;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+      
+      .benefit-item {
+        text-align: left;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .signup-form-container {
+        padding: 30px 20px;
+      }
+      
+      .signup-content h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="container">
+        <a href="index.html" class="logo"><i class="fas fa-search"></i> Auto Submit Site Domain</a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#how-it-works">How It Works</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+        </ul>
+        <div class="nav-auth">
+          <a href="sign-in.html" id="signInBtn" class="sign-in-btn">Sign In</a>
+        </div>
+        <div class="mobile-menu-toggle" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="signup-container">
+      <div class="signup-content">
+        <h1>Get Started with Auto Submit Site Domain</h1>
+        <p>Create your account today and start getting your website pages indexed faster in Google. Our automated system helps you improve your website's visibility without complex technical setup.</p>
+        
+        <div class="benefits-list">
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="benefit-text">
+              Automatically submit your site URLs to Google for faster indexing
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="benefit-text">
+              Cloudflare integration to fetch all your domains automatically
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="benefit-text">
+              Track indexing status with detailed reports and insights
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="benefit-text">
+              Schedule regular submissions to keep your content fresh in search engines
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="benefit-text">
+              Improve your SEO rankings with faster indexing of your important pages
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="signup-form-container">
+        <h2 class="form-title">Create an Account</h2>
+        
+        <div id="signupMessage" class="form-message"></div>
+        
+        <form id="signupForm">
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-container">
+              <input type="password" id="password" name="password" placeholder="Create a password" required>
+              <span class="toggle-password" onclick="togglePasswordVisibility('password')">
+                <i class="fas fa-eye"></i>
+              </span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <div class="password-container">
+              <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+              <span class="toggle-password" onclick="togglePasswordVisibility('confirmPassword')">
+                <i class="fas fa-eye"></i>
+              </span>
+            </div>
+          </div>
+          
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Create Account</button>
+          </div>
+          
+          <div class="form-footer">
+            <p>Already have an account? <a href="sign-in.html">Sign In</a></p>
+            <p class="terms-agreement">By creating an account, you agree to our <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Auto Submit Site Domain</h3>
+          <p>Boost your website's visibility in search engines by automatically submitting your pages to Google.</p>
+          <div class="social-links">
+            <a href="https://github.com/heytcm/auto-submit-site-domain" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="https://github.com/heytcm/auto-submit-site-domain/blob/main/README.md">Documentation</a></li>
+            <li><a href="https://github.com/heytcm/auto-submit-site-domain/issues">Report Issues</a></li>
+            <li><a href="https://github.com/heytcm/auto-submit-site-domain/blob/main/CONTRIBUTING.md">Contribute</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="language-switcher">
+        <span>Language:</span>
+        <select id="languageSelector" data-i18n="language-selector">
+          <option value="en" selected>English</option>
+          <option value="zh">中文</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+        </select>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Auto Submit Site Domain. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript Files -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu toggle
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+      
+      menuToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        
+        // Toggle menu icon between bars and close
+        const icon = menuToggle.querySelector('i');
+        if (icon.classList.contains('fa-bars')) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-times');
+        } else {
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
+      });
+      
+      // Sign up form handling
+      const signupForm = document.getElementById('signupForm');
+      const signupMessage = document.getElementById('signupMessage');
+      
+      if (signupForm) {
+        signupForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          const fullName = document.getElementById('fullName').value.trim();
+          const email = document.getElementById('email').value.trim();
+          const password = document.getElementById('password').value;
+          const confirmPassword = document.getElementById('confirmPassword').value;
+          
+          // Simple validation
+          if (!fullName || !email || !password || !confirmPassword) {
+            showMessage('Please fill in all fields', 'error');
+            return;
+          }
+          
+          if (password !== confirmPassword) {
+            showMessage('Passwords do not match', 'error');
+            return;
+          }
+          
+          if (password.length < 8) {
+            showMessage('Password must be at least 8 characters long', 'error');
+            return;
+          }
+          
+          // Call the registration API endpoint
+          fetch('https://rankdaily.shopconna.com/workers/auth/register', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              name: fullName,
+              email: email,
+              password: password
+            })
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              showMessage('Account created successfully! Redirecting to login...', 'success');
+              setTimeout(() => {
+                window.location.href = 'sign-in.html';
+              }, 2000);
+            } else {
+              showMessage(data.message || 'Registration failed. Please try again.', 'error');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            showMessage('An error occurred. Please try again later.', 'error');
+          });
+        });
+      }
+      
+      function showMessage(message, type) {
+        signupMessage.textContent = message;
+        signupMessage.className = 'form-message ' + type;
+        signupMessage.style.display = 'block';
+      }
+    });
+    
+    // Toggle password visibility
+    function togglePasswordVisibility(inputId) {
+      const passwordInput = document.getElementById(inputId);
+      const toggleIcon = passwordInput.nextElementSibling.querySelector('i');
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+      }
+    }
+  </script>
+</body>
+
+</html> 

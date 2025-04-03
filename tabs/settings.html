@@ -1,0 +1,72 @@
+<div class="dashboard-header">
+  <h1>设置</h1>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">账户设置</h2>
+  </div>
+  <form id="account-settings-form">
+    <div class="form-group">
+      <label for="user-name">用户名</label>
+      <input type="text" id="user-name" value="当前用户">
+    </div>
+    
+    <div class="form-group">
+      <label for="user-email">电子邮箱</label>
+      <input type="email" id="user-email" value="user@example.com">
+    </div>
+    
+    <div class="form-group">
+      <label for="user-password">密码</label>
+      <input type="password" id="user-password" value="********">
+    </div>
+    
+    <button type="submit" class="btn">保存设置</button>
+  </form>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">通知设置</h2>
+  </div>
+  <form id="notification-settings-form">
+    <div class="form-group checkbox-group">
+      <input type="checkbox" id="email-notifications" checked>
+      <label for="email-notifications">接收电子邮件通知</label>
+    </div>
+    
+    <div class="form-group checkbox-group">
+      <input type="checkbox" id="success-notifications" checked>
+      <label for="success-notifications">成功提交通知</label>
+    </div>
+    
+    <div class="form-group checkbox-group">
+      <input type="checkbox" id="error-notifications" checked>
+      <label for="error-notifications">错误通知</label>
+    </div>
+    
+    <div class="form-group checkbox-group">
+      <input type="checkbox" id="index-notifications" checked>
+      <label for="index-notifications">索引状态变更通知</label>
+    </div>
+    
+    <button type="submit" class="btn">保存设置</button>
+  </form>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">API设置</h2>
+  </div>
+  <div class="form-group">
+    <label>API密钥</label>
+    <div class="license-key-container">
+      <input type="text" value="api_12345678abcdefgh" readonly>
+      <button class="btn">
+        <i class="fas fa-copy"></i>
+      </button>
+    </div>
+  </div>
+  <button class="btn btn-outline">重新生成API密钥</button>
+</div> 

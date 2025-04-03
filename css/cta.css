@@ -1,0 +1,219 @@
+/* CTA Section */
+:root {
+  --white: #fff;
+  --primary: #4285f4;
+  --primary-dark: #3367d6;
+  --secondary: #34a853;
+  --accent: #fbbc05;
+  --dark: #202124;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+}
+
+.cta {
+  padding: 8rem 0;
+  background: transparent;
+  color: var(--dark);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add decorative elements */
+.cta::before,
+.cta::after {
+  content: '';
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: rgba(66, 133, 244, 0.05);
+  animation: pulse 8s infinite alternate ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.05;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0.1;
+  }
+}
+
+.cta::before {
+  top: -150px;
+  left: -150px;
+  animation-delay: 0s;
+}
+
+.cta::after {
+  bottom: -150px;
+  right: -150px;
+  animation-delay: 2s;
+}
+
+.cta-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  transform: translateY(0);
+  transition: transform 0.5s ease;
+}
+
+.cta-container:hover {
+  transform: translateY(-5px);
+}
+
+.cta h2 {
+  font-size: 3.25rem;
+  margin-bottom: var(--spacing-lg);
+  color: var(--dark);
+  font-weight: 800;
+  line-height: 1.2;
+  position: relative;
+  display: inline-block;
+}
+
+.cta h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 2px;
+}
+
+.cta p {
+  font-size: 1.3rem;
+  margin: var(--spacing-xl) auto;
+  color: var(--gray);
+  line-height: 1.7;
+  max-width: 90%;
+  letter-spacing: 0.01em;
+}
+
+.cta strong {
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  color: var(--primary);
+}
+
+.cta-animated-text {
+  position: relative;
+  display: inline-block;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  margin-top: var(--spacing-xl);
+}
+
+.cta .btn-outline {
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  background-color: transparent;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 0.9rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cta .btn-outline:hover {
+  background-color: var(--primary);
+  color: var(--white);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.cta .btn-primary {
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  padding: 0.9rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cta .btn-primary:hover {
+  background-color: var(--primary-dark);
+  color: var(--white);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.cta-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 4rem;
+  background: rgba(66, 133, 244, 0.05);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.cta-stat {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.cta-stat:hover {
+  transform: scale(1.05);
+}
+
+.cta-stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.cta-stat-label {
+  font-size: 1rem;
+  color: var(--gray);
+  font-weight: 500;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .cta {
+    padding: 5rem 0;
+  }
+  
+  .cta h2 {
+    font-size: 2.25rem;
+  }
+  
+  .cta p {
+    font-size: 1.1rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    max-width: 300px;
+    margin: var(--spacing-xl) auto 0;
+  }
+  
+  .cta-stats {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+} 

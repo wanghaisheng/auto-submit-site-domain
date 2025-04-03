@@ -1,0 +1,242 @@
+<!-- Login/Register Modal -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    
+    <div class="auth-tabs">
+      <div class="auth-tab active" id="loginTab" data-tab="login">Sign In</div>
+      <div class="auth-tab" id="registerTab" data-tab="register">Register</div>
+    </div>
+    
+    <div class="auth-form-container">
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form active">
+        <div class="form-message error" id="loginError" style="display: none;"></div>
+        
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" placeholder="Enter your email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" placeholder="Enter your password" required>
+        </div>
+        
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary full-width">Sign In</button>
+        </div>
+        
+        <div class="form-footer">
+          <a href="#" class="forgot-password">Forgot password?</a>
+        </div>
+      </form>
+      
+      <!-- Registration Form -->
+      <form id="registerForm" class="auth-form">
+        <div class="form-message error" id="registerError" style="display: none;"></div>
+        
+        <div class="form-group">
+          <label for="registerName">Full Name</label>
+          <input type="text" id="registerName" placeholder="Enter your full name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="registerEmail">Email</label>
+          <input type="email" id="registerEmail" placeholder="Enter your email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="registerPassword">Password</label>
+          <input type="password" id="registerPassword" placeholder="Create a password" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="registerConfirmPassword">Confirm Password</label>
+          <input type="password" id="registerConfirmPassword" placeholder="Confirm your password" required>
+        </div>
+        
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary full-width">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow: auto;
+  }
+  
+  .modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+  }
+  
+  .close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--gray);
+  }
+  
+  .close-modal:hover {
+    color: var(--primary);
+  }
+  
+  /* Auth Tabs */
+  .auth-tabs {
+    display: flex;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .auth-tab {
+    padding: 1rem;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+    font-weight: 500;
+    color: var(--gray);
+    transition: all 0.3s ease;
+  }
+  
+  .auth-tab.active {
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+  }
+  
+  /* Auth Forms */
+  .auth-form {
+    display: none;
+  }
+  
+  .auth-form.active {
+    display: block;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--dark);
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .form-group input:focus {
+    border-color: var(--primary);
+    outline: none;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .form-footer {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  .forgot-password {
+    color: var(--gray);
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+  
+  .forgot-password:hover {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+  
+  .form-message {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+  }
+  
+  .form-message.error {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    border: 1px solid rgba(220, 53, 69, 0.2);
+  }
+  
+  .form-message.success {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+    border: 1px solid rgba(40, 167, 69, 0.2);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get modal elements
+    const modal = document.getElementById('loginModal')
+    const closeBtn = document.querySelector('.close-modal')
+    
+    // Get tab elements
+    const loginTab = document.getElementById('loginTab')
+    const registerTab = document.getElementById('registerTab')
+    const loginForm = document.getElementById('loginForm')
+    const registerForm = document.getElementById('registerForm')
+    
+    // Tab switching functionality
+    loginTab.addEventListener('click', function() {
+      loginTab.classList.add('active')
+      registerTab.classList.remove('active')
+      loginForm.classList.add('active')
+      registerForm.classList.remove('active')
+    })
+    
+    registerTab.addEventListener('click', function() {
+      registerTab.classList.add('active')
+      loginTab.classList.remove('active')
+      registerForm.classList.add('active')
+      loginForm.classList.remove('active')
+    })
+    
+    // Close modal when clicking the close button
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        modal.style.display = 'none'
+      })
+    }
+    
+    // Close modal when clicking outside of it
+    window.addEventListener('click', function(event) {
+      if (event.target === modal) {
+        modal.style.display = 'none'
+      }
+    })
+  })
+</script> 

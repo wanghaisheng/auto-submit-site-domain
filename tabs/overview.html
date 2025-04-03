@@ -1,0 +1,79 @@
+<div class="dashboard-header">
+  <h1>仪表板概览</h1>
+  <button class="btn btn-outline">
+    <i class="fas fa-sync-alt"></i> 刷新数据
+  </button>
+</div>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <i class="fas fa-globe"></i>
+    <h3>12</h3>
+    <p>已注册域名</p>
+  </div>
+  <div class="stat-card">
+    <i class="fas fa-link"></i>
+    <h3>1,234</h3>
+    <p>已提交URL</p>
+  </div>
+  <div class="stat-card">
+    <i class="fas fa-check-circle"></i>
+    <h3>987</h3>
+    <p>已索引URL</p>
+  </div>
+  <div class="stat-card">
+    <i class="fas fa-clock"></i>
+    <h3>5</h3>
+    <p>活跃定时任务</p>
+  </div>
+</div>
+
+<div class="dashboard-section">
+  <h2>最近活动</h2>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>日期</th>
+          <th>活动类型</th>
+          <th>详情</th>
+          <th>状态</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2023-06-15 14:30</td>
+          <td>URL提交</td>
+          <td>批量提交 - 50个URL</td>
+          <td><span class="badge success">成功</span></td>
+        </tr>
+        <tr>
+          <td>2023-06-14 09:15</td>
+          <td>域名验证</td>
+          <td>example.com</td>
+          <td><span class="badge success">成功</span></td>
+        </tr>
+        <tr>
+          <td>2023-06-13 18:45</td>
+          <td>站点地图验证</td>
+          <td>example.com/sitemap.xml</td>
+          <td><span class="badge warning">部分成功</span></td>
+        </tr>
+        <tr>
+          <td>2023-06-12 11:20</td>
+          <td>索引检查</td>
+          <td>定时任务 - 每日检查</td>
+          <td><span class="badge success">成功</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 添加一个简单的图表展示 -->
+<div class="dashboard-section">
+  <h2>索引趋势</h2>
+  <div class="chart-container">
+    <canvas id="overview-chart"></canvas>
+  </div>
+</div> 

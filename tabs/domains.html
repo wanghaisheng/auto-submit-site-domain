@@ -1,0 +1,105 @@
+<div class="dashboard-header">
+  <h1>域名管理</h1>
+  <button class="btn">
+    <i class="fas fa-plus"></i> 添加新域名
+  </button>
+</div>
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>域名</th>
+        <th>添加日期</th>
+        <th>验证状态</th>
+        <th>索引URL数</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>example.com</td>
+        <td>2023-05-10</td>
+        <td><span class="badge success">已验证</span></td>
+        <td>1,245</td>
+        <td>
+          <button class="btn btn-sm btn-outline">
+            <i class="fas fa-cog"></i>
+          </button>
+          <button class="btn btn-sm btn-danger">
+            <i class="fas fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>anothersite.com</td>
+        <td>2023-06-01</td>
+        <td><span class="badge success">已验证</span></td>
+        <td>867</td>
+        <td>
+          <button class="btn btn-sm btn-outline">
+            <i class="fas fa-cog"></i>
+          </button>
+          <button class="btn btn-sm btn-danger">
+            <i class="fas fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>newdomain.org</td>
+        <td>2023-06-12</td>
+        <td><span class="badge warning">待验证</span></td>
+        <td>0</td>
+        <td>
+          <button class="btn btn-sm btn-outline">
+            <i class="fas fa-cog"></i>
+          </button>
+          <button class="btn btn-sm btn-danger">
+            <i class="fas fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">域名验证</h2>
+  </div>
+  <div class="card-body">
+    <p>请使用以下方法之一验证您对域名的所有权：</p>
+    
+    <div class="verification-methods">
+      <div class="verification-method">
+        <h3>HTML文件验证</h3>
+        <p>下载验证文件并上传到您网站的根目录。</p>
+        <button class="btn btn-outline">下载验证文件</button>
+      </div>
+      
+      <div class="verification-method">
+        <h3>DNS记录验证</h3>
+        <p>添加下面的TXT记录到您的DNS设置。</p>
+        <div class="code-block">
+          <code>google-site-verification=12345abcde67890fghij</code>
+          <button class="btn btn-sm">
+            <i class="fas fa-copy"></i>
+          </button>
+        </div>
+      </div>
+      
+      <div class="verification-method">
+        <h3>HTML标签验证</h3>
+        <p>将以下meta标签添加到您网站首页的&lt;head&gt;部分。</p>
+        <div class="code-block">
+          <code>&lt;meta name="google-site-verification" content="12345abcde67890fghij" /&gt;</code>
+          <button class="btn btn-sm">
+            <i class="fas fa-copy"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <button class="btn btn-secondary mt-3">验证域名</button>
+  </div>
+</div> 

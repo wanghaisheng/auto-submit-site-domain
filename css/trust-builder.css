@@ -1,0 +1,384 @@
+/* Trust Builder Sections */
+.trust-builder {
+  padding: 5rem 0;
+  background-color: #f9fafc;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.trust-builder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle at 10% 10%, rgba(65, 88, 208, 0.03) 0%, rgba(200, 80, 192, 0.03) 46.35%, rgba(255, 204, 112, 0.03) 100%);
+  z-index: -1;
+}
+
+.trust-builder .container {
+  position: relative;
+  z-index: 2;
+}
+
+.trust-builder-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.trust-builder-header h2 {
+  font-size: 2.5rem;
+  color: var(--dark);
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.trust-builder-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  border-radius: 2px;
+}
+
+.trust-builder-header p {
+  font-size: 1.1rem;
+  color: var(--gray);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Visual Comparison Illustration */
+.trust-visual-comparison {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 4rem;
+  max-width: 100%;
+}
+
+.trust-comparison-illustration {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  background-color: white;
+  transition: transform 0.3s ease;
+}
+
+.trust-comparison-illustration:hover {
+  transform: scale(1.02);
+}
+
+/* Competitor Comparison */
+.competitor-comparison {
+  margin-bottom: 5rem;
+}
+
+/* Style the table differently from the main comparison table */
+.trust-builder .comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(65, 88, 208, 0.1); /* Add border */
+}
+
+.trust-builder .comparison-table th, 
+.trust-builder .comparison-table td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.trust-builder .comparison-table th {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%); /* Different gradient */
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.trust-builder .comparison-table th:first-child {
+  text-align: left;
+  border-top-left-radius: var(--border-radius);
+}
+
+.trust-builder .comparison-table th:last-child {
+  border-top-right-radius: var(--border-radius);
+}
+
+.trust-builder .comparison-table tr:last-child td {
+  border-bottom: none;
+}
+
+.trust-builder .comparison-table tr:nth-child(even) {
+  background-color: #f9fafc;
+}
+
+.trust-builder .comparison-table tr:hover {
+  background-color: #f1f3f9;
+}
+
+.trust-builder .comparison-table td:first-child {
+  text-align: left;
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.trust-builder .comparison-table i.fa-check {
+  color: #28a745;
+  font-size: 1.2rem;
+}
+
+.trust-builder .comparison-table i.fa-times {
+  color: #dc3545;
+  font-size: 1.2rem;
+}
+
+.trust-builder .comparison-table i.fa-minus {
+  color: #6c757d;
+}
+
+.trust-builder .comparison-highlight {
+  position: relative;
+}
+
+.trust-builder .comparison-highlight th:nth-child(3),
+.trust-builder .comparison-highlight td:nth-child(3) {
+  background-color: rgba(66, 133, 244, 0.05);
+  font-weight: 600;
+  position: relative;
+}
+
+.trust-builder .comparison-highlight td:nth-child(3)::after {
+  content: 'Best Choice';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary);
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.comparison-note {
+  font-size: 0.9rem;
+  color: var(--gray);
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Pain Points & Solutions */
+.pain-points {
+  margin-bottom: 2rem;
+}
+
+.pain-points-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.pain-point-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  border-top: 4px solid transparent;
+}
+
+.pain-point-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-top-color: var(--primary);
+}
+
+.pain-point-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.pain-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(66, 133, 244, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pain-icon i {
+  color: var(--primary);
+  font-size: 1.5rem;
+}
+
+.pain-point-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--dark);
+}
+
+.pain-point-body {
+  color: var(--gray);
+}
+
+.pain {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px dashed #e9ecef;
+  color: #495057;
+}
+
+.solution h4 {
+  font-size: 1.1rem;
+  color: var(--primary);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.solution h4 i {
+  color: #28a745;
+}
+
+.solution p {
+  color: var(--gray);
+}
+
+.testimonial-highlight {
+  font-style: italic;
+  color: var(--dark);
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: rgba(65, 88, 208, 0.05);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.testimonial-author {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.trust-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  max-width: 180px;
+}
+
+.trust-badge i {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.trust-badge h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.trust-badge p {
+  font-size: 0.9rem;
+  color: var(--gray);
+}
+
+@media (max-width: 992px) {
+  .pain-points-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  
+  .trust-builder .comparison-table {
+    font-size: 0.9rem;
+  }
+  
+  .trust-builder .comparison-highlight td:nth-child(3)::after {
+    display: none;
+  }
+  
+  .trust-comparison-illustration {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .trust-builder {
+    padding: 3rem 0;
+  }
+  
+  .trust-builder-header h2 {
+    font-size: 2rem;
+  }
+  
+  .pain-points-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .trust-builder .comparison-table {
+    font-size: 0.85rem;
+  }
+  
+  .trust-builder .comparison-table th, 
+  .trust-builder .comparison-table td {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .trust-badges {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .trust-comparison-illustration {
+    max-width: 100%;
+  }
+  
+  .trust-visual-comparison {
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .trust-builder .comparison-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .trust-comparison-illustration {
+    border-radius: calc(var(--border-radius) - 4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+} 
