@@ -160,6 +160,120 @@
       padding: 4rem 0;
       background: linear-gradient(135deg, #f8f9fa 0%, #e8eaed 100%);
     }
+    
+    /* Waitlist Section */
+    .waitlist {
+      padding: 4rem 0;
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .waitlist-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    
+    .waitlist-text {
+      flex: 1;
+    }
+    
+    .waitlist-text h2,
+    .waitlist-text p {
+      color: white;
+    }
+    
+    .waitlist-image {
+      flex: 1;
+    }
+    
+    .waitlist-form {
+      margin-top: 2rem;
+    }
+    
+    .waitlist-form .form-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .waitlist-form .form-group {
+      flex: 1;
+    }
+    
+    .waitlist-form input {
+      width: 100%;
+      padding: 0.75rem;
+      border: none;
+      border-radius: var(--border-radius);
+      font-family: inherit;
+      font-size: 1rem;
+    }
+    
+    .waitlist-form .btn {
+      background-color: var(--accent);
+      color: var(--dark);
+      font-weight: 600;
+    }
+    
+    .waitlist-form .btn:hover {
+      background-color: #e0a800;
+    }
+    
+    .form-note {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+    
+    .success-message {
+      background-color: rgba(52, 168, 83, 0.2);
+      color: white;
+      padding: 1rem;
+      border-radius: var(--border-radius);
+      text-align: center;
+      width: 100%;
+      font-weight: 500;
+    }
+    
+    .success-message i {
+      color: var(--secondary);
+      margin-right: 0.5rem;
+    }
+    
+    .waitlist-benefits {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .benefit-item i {
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+    
+    @media (max-width: 768px) {
+      .waitlist-content {
+        flex-direction: column;
+      }
+      
+      .waitlist-form .form-row {
+        flex-direction: column;
+      }
+      
+      .waitlist-benefits {
+        grid-template-columns: 1fr;
+      }
+    }
 
     .hero-content {
       display: flex;
@@ -719,6 +833,51 @@
       }
     }
   </style>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu toggle
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+      
+      if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+        });
+      }
+      
+      // Waitlist form submission
+      const waitlistForm = document.getElementById('waitlistForm');
+      
+      if (waitlistForm) {
+        waitlistForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          const emailInput = document.getElementById('waitlistEmail');
+          const email = emailInput.value.trim();
+          
+          if (email && isValidEmail(email)) {
+            // Here you would typically send the email to your server
+            // For demo purposes, we'll just show a success message
+            const formRow = waitlistForm.querySelector('.form-row');
+            const formNote = waitlistForm.querySelector('.form-note');
+            
+            formRow.innerHTML = '<div class="success-message"><i class="fas fa-check-circle"></i> Thank you for joining our waitlist! We\'ll be in touch soon.</div>';
+            formNote.style.display = 'none';
+            
+            // You could store the email in localStorage or send to a backend
+            console.log('Waitlist signup:', email);
+          }
+        });
+      }
+      
+      // Email validation helper
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+    });
+  </script>
 </head>
 
 <body>
@@ -732,8 +891,10 @@
         </button>
         <ul class="nav-links" id="navLinks">
           <li><a href="#features">Features</a></li>
+          <li><a href="#waitlist">Join Waitlist</a></li>
           <li><a href="#advanced-features">Advanced Features</a></li>
           <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#dual-approach">Dual-Approach</a></li>
           <li><a href="#playground">Try It</a></li>
           <li><a href="#comparison">Comparison</a></li>
           <li><a href="#pricing">Pricing</a></li>
@@ -752,13 +913,56 @@
       <div class="hero-content">
         <div class="hero-text">
           <h1>Boost Your Website's Visibility in Google Search</h1>
-          <p>Automatically submit your domains and URLs to Google Search using the "site:" operator to help with indexing. <strong>Perfect for small businesses and indie developers</strong> who want to improve their SEO without the technical complexity or expensive tools.</p>
-          <p>Stop waiting weeks for Google to find your content - get indexed faster and start driving traffic to your site today!</p>
+          <p>Automatically submit your domains and URLs to Google Search using our <strong>dual-approach strategy</strong>: direct "site:" operator submissions <em>and</em> Google Search Console API integration. <strong>Perfect for small businesses and indie developers</strong> who want unlimited submissions without the limitations of competitors who only rely on Google Search Console.</p>
+          <p>No Google account required for our "site:" method! Stop waiting weeks for Google to find your content - get indexed faster and start driving traffic to your site today!</p>
           <a href="https://github.com/heytcm/auto-submit-site-domain" class="btn">Get Started with GitHub</a>
           <a href="#playground" class="btn btn-secondary">Try the Demo</a>
         </div>
         <div class="hero-image">
           <img src="https://via.placeholder.com/600x400?text=Auto+Submit+Tool" alt="Auto Submit Site Domain Tool">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Waitlist Section -->
+  <section class="waitlist" id="waitlist">
+    <div class="container">
+      <div class="waitlist-content">
+        <div class="waitlist-text">
+          <h2>Join Our Exclusive Waitlist</h2>
+          <p>Be the first to access our premium features and receive early-bird discounts. Sign up now to get notified when we launch new tools and updates!</p>
+          <div class="waitlist-form">
+            <form id="waitlistForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <input type="email" id="waitlistEmail" placeholder="Enter your email address" required>
+                </div>
+                <button type="submit" class="btn">Join Waitlist</button>
+              </div>
+              <p class="form-note">We respect your privacy and will never share your information.</p>
+            </form>
+          </div>
+        </div>
+        <div class="waitlist-image">
+          <div class="waitlist-benefits">
+            <div class="benefit-item">
+              <i class="fas fa-bolt"></i>
+              <span>Early access to new features</span>
+            </div>
+            <div class="benefit-item">
+              <i class="fas fa-tag"></i>
+              <span>Exclusive discounts</span>
+            </div>
+            <div class="benefit-item">
+              <i class="fas fa-star"></i>
+              <span>Priority support</span>
+            </div>
+            <div class="benefit-item">
+              <i class="fas fa-gift"></i>
+              <span>Free bonus tools</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -945,6 +1149,24 @@
             <td><i class="fas fa-check check"></i> Sometimes</td>
           </tr>
           <tr>
+            <td>Dual-Approach Strategy</td>
+            <td><i class="fas fa-check check"></i> GSC API + site: operator</td>
+            <td><i class="fas fa-times times"></i> Single method only</td>
+            <td><i class="fas fa-times times"></i> GSC API only</td>
+          </tr>
+          <tr>
+            <td>Direct "site:" Submissions</td>
+            <td><i class="fas fa-check check"></i> Unlimited submissions</td>
+            <td><i class="fas fa-times times"></i> Manual only</td>
+            <td><i class="fas fa-times times"></i> Rarely available</td>
+          </tr>
+          <tr>
+            <td>Google Account Required</td>
+            <td><i class="fas fa-times check"></i> Not required for site: method</td>
+            <td><i class="fas fa-minus"></i> N/A</td>
+            <td><i class="fas fa-check times"></i> Always required</td>
+          </tr>
+          <tr>
             <td>Open Source</td>
             <td><i class="fas fa-check check"></i> 100% open source</td>
             <td><i class="fas fa-minus"></i> N/A</td>
@@ -1057,6 +1279,46 @@
           </div>
           <h3>Paid User Benefits</h3>
           <p>Lifetime updates with new features, self-deployment guide for managing unlimited domains and URLs, all at an affordable price of $5.99 USD per month (compared to RankWeek's higher pricing).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dual-Approach Strategy Section -->
+  <section class="features" id="dual-approach">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Dual-Approach Strategy</h2>
+        <p>How we outperform competitors who only rely on Google Search Console submissions</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3>Direct "site:" Operator Submissions</h3>
+          <p>Unlike competitors who only use Google Search Console API with strict daily limits, our tool leverages the "site:" operator method through browser automation to trigger Google's crawling and indexing process <strong>without any daily limits</strong>.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fab fa-google"></i>
+          </div>
+          <h3>Google Search Console API</h3>
+          <p>We also support optional Google Search Console API integration for verified properties, giving you the best of both worlds. Competitors typically rely solely on GSC API with daily limits (e.g., RankWeek offers only 6,000 pages indexed per month/200 per day).</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-user-lock"></i>
+          </div>
+          <h3>No Google Account Required</h3>
+          <p>Our "site:" operator method doesn't require associating your Google account, unlike competitors who exclusively rely on Google Search Console API. This means you can start submitting URLs immediately without complex verification processes.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-tachometer-alt"></i>
+          </div>
+          <h3>Unlimited Submissions</h3>
+          <p>While competitors are limited by Google Search Console's API quotas, our dual-approach strategy allows for unlimited submissions, making it perfect for large websites or agencies managing multiple clients.</p>
         </div>
       </div>
     </div>
