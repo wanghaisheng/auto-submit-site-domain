@@ -96,18 +96,21 @@
 
 .trust-builder .comparison-table th, 
 .trust-builder .comparison-table td {
-  padding: 1rem;
-  text-align: center;
-  border-bottom: 1px solid #eee;
+  padding: 1.8rem 1.2rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  line-height: 1.5;
+  min-height: 4rem;
+  vertical-align: middle;
 }
 
 .trust-builder .comparison-table th {
-  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%); /* Different gradient */
-  color: white;
+  background-color: #f5f7f9;
+  color: var(--dark);
   font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
+  font-size: 1.1rem;
+  position: relative;
+  padding-top: 2rem;
 }
 
 .trust-builder .comparison-table th:first-child {
@@ -163,16 +166,19 @@
 }
 
 .trust-builder .comparison-highlight td:nth-child(3)::after {
-  content: 'Best Choice';
+  content: 'Recommended';
   position: absolute;
-  top: -10px;
+  top: -12px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: var(--primary);
-  color: white;
-  font-size: 0.7rem;
-  padding: 2px 8px;
-  border-radius: 12px;
+  background-color: var(--accent);
+  color: var(--dark);
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  z-index: 10;
   white-space: nowrap;
 }
 
@@ -353,7 +359,15 @@
   
   .trust-builder .comparison-table th, 
   .trust-builder .comparison-table td {
-    padding: 0.75rem 0.5rem;
+    padding: 1.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .trust-builder .comparison-highlight td:nth-child(3)::after {
+    font-size: 0.7rem;
+    padding: 0.4rem 1rem;
+    top: -15px;
+    font-weight: 700;
   }
   
   .trust-badges {

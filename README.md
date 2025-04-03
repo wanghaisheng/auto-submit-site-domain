@@ -105,11 +105,14 @@ Detailed instructions:
 | `GOOGLE_SEARCH_LIMIT` | Max submissions per minute | 10 |
 | `DRISSIONPAGE_TIMEOUT` | Browser timeout in seconds | 30 |
 
-
-
-
 # Future Plans
 
 See [task.md](task.md) for detailed information about our future plans and roadmap.
+
+# License
+
+This project is licensed under a custom license that allows free use for personal and internal business purposes, but **prohibits** using the code to build competing commercial products. Please see the [LICENSE](LICENSE) file for full details.
+
+If you wish to use this software in a way not covered by the license, please contact us for permission.
 
 
