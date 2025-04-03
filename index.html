@@ -325,7 +325,7 @@
 
     /* Pain Points Section */
     .pain-points {
-      padding: 4rem 0;
+      padding: 5rem 0;
       background-color: var(--light);
     }
 
@@ -333,12 +333,13 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
+      margin-top: 3rem;
     }
 
     .pain-point-card {
       background-color: white;
       border-radius: var(--border-radius);
-      padding: 1.5rem;
+      padding: 2rem;
       box-shadow: var(--box-shadow);
     }
 
@@ -349,15 +350,143 @@
     }
 
     .pain-point-icon {
-      font-size: 1.5rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(234, 67, 53, 0.1);
       color: var(--danger);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin-right: 1rem;
+      font-size: 1.2rem;
     }
 
     .solution-icon {
-      font-size: 1.5rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(52, 168, 83, 0.1);
       color: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin-right: 1rem;
+      font-size: 1.2rem;
+    }
+    
+    /* Pricing Section */
+    .pricing {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e8eaed 100%);
+    }
+    
+    .pricing-plans {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .pricing-plan {
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 2rem;
+      flex: 1;
+      min-width: 280px;
+      max-width: 350px;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .pricing-plan:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(32, 33, 36, 0.15);
+    }
+    
+    .pricing-plan.featured {
+      border: 2px solid var(--primary);
+      transform: scale(1.05);
+    }
+    
+    .pricing-plan.featured:hover {
+      transform: scale(1.05) translateY(-5px);
+    }
+    
+    .plan-badge {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background-color: var(--primary);
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+    }
+    
+    .plan-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .plan-price {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 1rem 0;
+    }
+    
+    .plan-price span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--gray);
+    }
+    
+    .plan-features {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+    
+    .plan-features li {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+    }
+    
+    .plan-features i {
+      margin-right: 0.8rem;
+      font-size: 0.9rem;
+    }
+    
+    .plan-features i.fa-check {
+      color: var(--secondary);
+    }
+    
+    .plan-features i.fa-times {
+      color: var(--danger);
+    }
+    
+    .plan-note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--gray);
+      margin-top: 1rem;
+      font-weight: 500;
+    }
+    
+    .pricing-note {
+      text-align: center;
+      max-width: 800px;
+      margin: 3rem auto 0;
+      padding: 1.5rem;
+      background-color: rgba(66, 133, 244, 0.05);
+      border-radius: var(--border-radius);
+      border-left: 4px solid var(--primary);
     }
 
     /* CTA Section */
@@ -607,6 +736,7 @@
           <li><a href="#how-it-works">How It Works</a></li>
           <li><a href="#playground">Try It</a></li>
           <li><a href="#comparison">Comparison</a></li>
+          <li><a href="#pricing">Pricing</a></li>
           <li><a href="tracker.html">Tracker</a></li>
           <li><a href="batch.html">Batch Submit</a></li>
           <li><a href="reports.html">Reports</a></li>
@@ -843,27 +973,34 @@
     </div>
   </section>
 
-  <!-- Advanced Features Section -->
+  <!-- Future Plans Section -->
   <section class="features" id="advanced-features">
     <div class="container">
       <div class="section-header">
-        <h2>Advanced Features (Coming Soon)</h2>
-        <p>Powerful upcoming capabilities designed for businesses of all sizes</p>
+        <h2>Future Plans & Roadmap</h2>
+        <p>Exciting upcoming features designed to make our tool even more powerful for businesses of all sizes</p>
       </div>
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">
+            <i class="fab fa-google"></i>
+          </div>
+          <h3>Google Search Console API Integration</h3>
+          <p>While competitors typically use GSC API with daily limits (e.g., RankWeek offers 6,000 pages indexed per month/200 per day), our tool uses the "site:" operator method which has no limits, providing a great supplement to boost indexing.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
             <i class="fas fa-filter"></i>
           </div>
-          <h3>URL Count Limiting</h3>
-          <p>Set maximum URL submission limits per domain to prioritize your most important content and optimize resource usage.</p>
+          <h3>Domain Management Improvements</h3>
+          <p>Add URL count limit per domain, domain blacklist/whitelist configuration, and support reading target domains from a file instead of Cloudflare API for more flexible domain management.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">
             <i class="fas fa-code-branch"></i>
           </div>
           <h3>Advanced GSC Integration</h3>
-          <p>Submit non-indexed URLs directly through Google Search Console API or use browser automation for verified properties.</p>
+          <p>Submit non-indexed URLs directly through Google Search Console API or use browser automation for verified properties to maximize indexing efficiency.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">
@@ -876,15 +1013,22 @@
           <div class="feature-icon">
             <i class="fas fa-sitemap"></i>
           </div>
-          <h3>Sitemap Submission</h3>
-          <p>Automatically submit your sitemaps directly to Google Search Console for more efficient crawling and indexing.</p>
+          <h3>Advanced Submission Features</h3>
+          <p>Submit sitemaps directly to Google Search Console and support for millions of URLs by splitting into 10,000-piece batches across multiple workflows for enterprise-scale operations.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3>Expanded Search Engine Support</h3>
+          <p>Add submission to Bing and other search engines via API or browser automation to maximize your website's visibility across multiple search platforms.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">
             <i class="fas fa-server"></i>
           </div>
-          <h3>Self-Deployment Guide</h3>
-          <p>Premium documentation for paid users on how to deploy the tool on your own infrastructure for maximum control and privacy.</p>
+          <h3>Additional Domain Provider Support</h3>
+          <p>Add support for Namecheap, GoDaddy, and other domain providers beyond Cloudflare to make our tool accessible to more users regardless of their domain registrar.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">
@@ -906,6 +1050,13 @@
           </div>
           <h3>Batch Submission</h3>
           <p>Submit multiple URLs at once and schedule automated submissions to improve your website's visibility in Google Search with our powerful batch processing tool.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-crown"></i>
+          </div>
+          <h3>Paid User Benefits</h3>
+          <p>Lifetime updates with new features, self-deployment guide for managing unlimited domains and URLs, all at an affordable price of $5.99 USD per month (compared to RankWeek's higher pricing).</p>
         </div>
       </div>
     </div>
@@ -967,6 +1118,92 @@
           </div>
           <p>Our intelligent rate limiting system with adaptive delays and request randomization prevents triggering CAPTCHAs, ensuring smooth, uninterrupted operation even during large-scale submissions.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <h2>Flexible Pricing Plans</h2>
+        <p>Choose the plan that fits your business needs and budget</p>
+      </div>
+      <div class="pricing-plans">
+        <div class="pricing-plan">
+          <div class="plan-header">
+            <h3>Free</h3>
+            <div class="plan-price">$0</div>
+            <p>Perfect for small websites</p>
+          </div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> Unlimited site: operator submissions</li>
+            <li><i class="fas fa-check"></i> Basic Cloudflare integration</li>
+            <li><i class="fas fa-check"></i> Simple sitemap parsing</li>
+            <li><i class="fas fa-check"></i> Standard rate limiting</li>
+            <li><i class="fas fa-check"></i> Basic logging</li>
+            <li><i class="fas fa-times"></i> Advanced features</li>
+          </ul>
+          <a href="https://github.com/heytcm/auto-submit-site-domain" class="btn btn-secondary">Get Started Free</a>
+        </div>
+        <div class="pricing-plan">
+          <div class="plan-header">
+            <h3>Starter</h3>
+            <div class="plan-price">$9<span>/month</span></div>
+            <p>For growing websites</p>
+          </div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> Everything in Free plan</li>
+            <li><i class="fas fa-check"></i> Full Cloudflare integration</li>
+            <li><i class="fas fa-check"></i> Advanced sitemap parsing</li>
+            <li><i class="fas fa-check"></i> Smart rate limiting</li>
+            <li><i class="fas fa-check"></i> Basic Google Search Console support</li>
+            <li><i class="fas fa-check"></i> Detailed logging</li>
+            <li><i class="fas fa-times"></i> Enterprise features</li>
+          </ul>
+          <a href="#" class="btn btn-secondary">Subscribe Now</a>
+          <p class="plan-note">Save with annual billing</p>
+        </div>
+        <div class="pricing-plan featured">
+          <div class="plan-badge">Most Popular</div>
+          <div class="plan-header">
+            <h3>Professional</h3>
+            <div class="plan-price">$29<span>/month</span></div>
+            <p>For businesses serious about SEO</p>
+          </div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> Everything in Starter plan</li>
+            <li><i class="fas fa-check"></i> Advanced GSC integration</li>
+            <li><i class="fas fa-check"></i> Domain filtering options</li>
+            <li><i class="fas fa-check"></i> URL count limiting</li>
+            <li><i class="fas fa-check"></i> Sitemap direct submission</li>
+            <li><i class="fas fa-check"></i> Self-deployment guide</li>
+            <li><i class="fas fa-check"></i> Priority support</li>
+          </ul>
+          <a href="#" class="btn">Subscribe Now</a>
+          <p class="plan-note">Most popular choice for businesses</p>
+        </div>
+        <div class="pricing-plan">
+          <div class="plan-header">
+            <h3>Enterprise</h3>
+            <div class="plan-price">$59<span>/month</span></div>
+            <p>For large-scale operations</p>
+          </div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> Everything in Professional plan</li>
+            <li><i class="fas fa-check"></i> Enterprise-scale support</li>
+            <li><i class="fas fa-check"></i> Custom integration options</li>
+            <li><i class="fas fa-check"></i> Advanced analytics</li>
+            <li><i class="fas fa-check"></i> Dedicated account manager</li>
+            <li><i class="fas fa-check"></i> White-label options</li>
+            <li><i class="fas fa-check"></i> Lifetime updates</li>
+          </ul>
+          <a href="#" class="btn btn-secondary">Contact Sales</a>
+          <p class="plan-note">Custom solutions available</p>
+        </div>
+      </div>
+      <div class="pricing-note">
+        <p><strong>Transparent pricing with no hidden fees.</strong> While competitors charge similar rates with strict limits (e.g., 6,000 pages indexed per month/200 per day), our plans offer exceptional value with our unique site: operator method that has no submission limits. Choose the plan that best fits your needs and scale as your business grows.</p>
       </div>
     </div>
   </section>

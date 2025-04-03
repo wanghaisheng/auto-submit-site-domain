@@ -157,6 +157,34 @@ auto-submit-site-domain/
 1. Create initial Python scripts
 2. Test each component separately
 3. Integrate into full workflow
+
+## Future Plans
+
+- **Google Search Console API Integration**: While competitors typically use GSC API with daily limits (e.g., RankWeek offers 6,000 pages indexed per month/200 per day), our tool uses the "site:" operator method which has no limits, providing a great supplement to boost indexing.
+
+- **Domain Management Improvements**:
+  - Add URL count limit per domain
+  - Add domain blacklist configuration
+  - Add domain whitelist configuration
+  - Support reading target domains from a file instead of Cloudflare API
+
+- **Advanced Submission Features**:
+  - Submit non-indexed URLs through Google Search Console API
+  - Use DrissionPage to submit inside Google Search Console
+  - Add sitemap submission to Google Search Console
+  - Support for millions of URLs by splitting into 10,000-piece batches across multiple workflows
+
+- **Expanded Search Engine Support**:
+  - Add submission to Bing and other search engines via API or browser automation
+
+- **Additional Domain Provider Support**:
+  - Add support for Namecheap, GoDaddy, and other domain providers beyond Cloudflare
+
+- **Paid User Benefits**:
+  - Lifetime updates with new features
+  - Self-deployment guide for managing unlimited domains and URLs
+  - Premium pricing at $5.99 USD per month (compared to RankWeek's higher pricing)
+
 ```
 
 This version adds:
@@ -164,5 +192,4 @@ This version adds:
 - Implementation timeline
 - File structure visualization
 - Specific action items for each component
-
-Would you like me to create any of the Python script files mentioned in the task breakdown?
+- Detailed future plans and roadmap
