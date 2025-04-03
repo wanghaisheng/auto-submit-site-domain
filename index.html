@@ -63,6 +63,8 @@
   <link rel="stylesheet" href="css/enhanced-comparison.css">
   <link rel="stylesheet" href="css/trust-builder.css">
   <link rel="stylesheet" href="css/roadmap.css">
+  <link rel="stylesheet" href="css/domain-providers.css">
+  <link rel="stylesheet" href="css/contact.css">
 </head>
 
 <body>
@@ -78,10 +80,12 @@
           <li><a href="#features">Features</a></li>
           <li><a href="#how-it-works">How It Works</a></li>
           <li><a href="#playground">Try It</a></li>
-          <li><a href="#comparison">Feature Comparison</a></li>
+          <!-- <li><a href="#comparison">Feature Comparison</a></li> -->
           <li><a href="#pricing">Pricing</a></li>
+          <!-- <li><a href="#domain-providers">Domain Providers</a></li> -->
           <li><a href="#trust-builder">Why Choose Us</a></li>
           <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
           <li class="mobile-only"><a href="#sign-in" id="mobileSignIn">Sign In</a></li>
         </ul>
         <div class="nav-auth">
@@ -1795,6 +1799,153 @@ ${limitMessage}
           }
         });
       }
+    });
+  </script>
+
+  <!-- Supported Domain Providers Section -->
+  <section class="domain-providers" id="domain-providers">
+    <div class="container">
+      <div class="section-header">
+        <h2>Supported Domain Providers</h2>
+        <p>Our tool integrates with all major domain providers to ensure comprehensive coverage for your websites</p>
+      </div>
+      <div class="providers-grid">
+        <div class="provider-card">
+          <div class="provider-logo">
+            <i class="fab fa-cloudflare"></i>
+          </div>
+          <h3>Cloudflare</h3>
+          <p>Automatic domain discovery and integration with Cloudflare API</p>
+        </div>
+        <div class="provider-card">
+          <div class="provider-logo">
+            <i class="fas fa-server"></i>
+          </div>
+          <h3>Namecheap</h3>
+          <p>Full support for Namecheap domains with API integration</p>
+        </div>
+        <div class="provider-card">
+          <div class="provider-logo">
+            <i class="fas fa-globe"></i>
+          </div>
+          <h3>GoDaddy</h3>
+          <p>Seamless integration with GoDaddy domain management</p>
+        </div>
+        <div class="provider-card">
+          <div class="provider-logo">
+            <i class="fab fa-aws"></i>
+          </div>
+          <h3>AWS Route53</h3>
+          <p>Support for domains hosted on Amazon Web Services</p>
+        </div>
+        <div class="provider-card">
+          <div class="provider-logo">
+            <i class="fab fa-digital-ocean"></i>
+          </div>
+          <h3>DigitalOcean</h3>
+          <p>Integration with DigitalOcean DNS management</p>
+        </div>
+        <div class="provider-card">
+          <div class="provider-logo">
+            <i class="fas fa-network-wired"></i>
+          </div>
+          <h3>Google Domains</h3>
+          <p>Full support for domains registered through Google</p>
+        </div>
+        <div class="provider-card">
+          <div class="provider-logo">
+            <i class="fas fa-server"></i>
+          </div>
+          <h3>Bluehost</h3>
+          <p>Integration with Bluehost domain management</p>
+        </div>
+        <div class="provider-card">
+          <div class="provider-logo">
+            <i class="fas fa-plus-circle"></i>
+          </div>
+          <h3>Custom Domains</h3>
+          <p>Support for any domain with manual configuration</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Us Section -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <h2>Contact Us</h2>
+        <p>Have questions or need assistance? We're here to help!</p>
+      </div>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Get in Touch</h3>
+          <p>Our team is dedicated to providing exceptional support. Whether you have questions about our services, need technical assistance, or want to provide feedback, we're here to listen and help.</p>
+          <div class="contact-methods">
+            <div class="contact-method">
+              <i class="fas fa-envelope"></i>
+              <span>support@rankdaily.shopconna.com</span>
+            </div>
+            <div class="contact-method">
+              <i class="fas fa-clock"></i>
+              <span>Response time: Within 24 hours</span>
+            </div>
+            <div class="contact-method">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Global support available</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3>Send Us a Message</h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="contactName">Your Name</label>
+              <input type="text" id="contactName" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Email Address</label>
+              <input type="email" id="contactEmail" placeholder="Enter your email address" required>
+            </div>
+            <div class="form-group">
+              <label for="contactSubject">Subject</label>
+              <select id="contactSubject" required>
+                <option value="" disabled selected>Select a subject</option>
+                <option value="general">General Inquiry</option>
+                <option value="support">Technical Support</option>
+                <option value="billing">Billing Question</option>
+                <option value="feature">Feature Request</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" placeholder="Type your message here..." required></textarea>
+            </div>
+            <div class="form-submit">
+              <button type="submit" class="btn">Send Message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Contact form submission handler
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('contactName').value;
+      const email = document.getElementById('contactEmail').value;
+      const subject = document.getElementById('contactSubject').value;
+      const message = document.getElementById('contactMessage').value;
+      
+      // Here you would typically send this data to your backend
+      // For now, we'll just show an alert
+      alert(`Thank you, ${name}! Your message has been received. We'll respond to ${email} as soon as possible.`);
+      
+      // Reset the form
+      this.reset();
     });
   </script>
 </body>

@@ -1,0 +1,132 @@
+/* Contact Section Styles */
+.contact {
+  background-color: var(--white);
+  padding: var(--spacing-xxl) 0;
+}
+
+.contact .section-header {
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-info {
+  padding: var(--spacing-lg);
+}
+
+.contact-info h3 {
+  margin-bottom: var(--spacing-md);
+  color: var(--primary);
+}
+
+.contact-info p {
+  margin-bottom: var(--spacing-lg);
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+.contact-methods {
+  margin-top: var(--spacing-lg);
+}
+
+.contact-method {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.contact-method i {
+  font-size: 1.2rem;
+  color: var(--primary);
+  margin-right: var(--spacing-md);
+  width: 24px;
+  text-align: center;
+}
+
+.contact-form {
+  background-color: var(--light);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-xl);
+  box-shadow: var(--box-shadow);
+}
+
+.contact-form h3 {
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--light-gray);
+  border-radius: var(--border-radius);
+  font-family: var(--font-family);
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.form-submit {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+}
+
+.form-submit button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-xl);
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.form-submit button:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-info {
+    order: 2;
+  }
+  
+  .contact-form {
+    order: 1;
+    margin-bottom: var(--spacing-lg);
+  }
+}
