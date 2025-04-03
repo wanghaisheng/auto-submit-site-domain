@@ -1,7 +1,7 @@
 /* Enhanced Pricing Section Styles */
 .pricing {
-  padding: 6rem 0;
-  background-color: var(--white);
+  background-color: var(--light);
+  padding: var(--section-padding);
   position: relative;
   overflow: hidden;
 }
@@ -127,7 +127,7 @@
 
 .pricing-plans {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 1.5rem;
   margin-top: 2rem;
   opacity: 0;
@@ -309,14 +309,21 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
   .pricing-plans {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
   }
   
   .pricing-plan.featured {
     grid-column: span 1;
+  }
+}
+
+@media (max-width: 992px) {
+  .pricing-plans {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
 }
 

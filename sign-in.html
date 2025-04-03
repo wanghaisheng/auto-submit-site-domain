@@ -6,32 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Sign in to your Auto Submit Site Domain account to manage your website indexing">
-  <meta name="keywords" content="sign in, login, auto submit, website indexing, account access">
-  <meta name="author" content="Auto Submit Site Domain">
+  <meta name="description" content="Sign in to rankdaily - Access your account to manage your website submissions">
+  <meta name="keywords" content="sign in, login, rankdaily, SEO, google indexing">
+  <meta name="author" content="rankdaily">
   <meta http-equiv="Content-Language" content="en">
 
   <!-- Canonical Link -->
   <link rel="canonical" href="https://rankdaily.shopconna.com/sign-in.html" />
 
   <!-- Open Graph for Social Media -->
-  <meta property="og:title" content="Sign In - Auto Submit Site Domain">
-  <meta property="og:description" content="Sign in to your Auto Submit Site Domain account to manage your website indexing">
+  <meta property="og:title" content="Sign In - rankdaily">
+  <meta property="og:description" content="Access your rankdaily account and manage your website submissions for faster Google indexing">
   <meta property="og:image" content="https://rankdaily.shopconna.com/images/og-image.jpg">
   <meta property="og:url" content="https://rankdaily.shopconna.com/sign-in.html">
   <meta property="og:type" content="website">
 
-  <!-- Twitter Card Meta Tags -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Sign In - Auto Submit Site Domain">
-  <meta name="twitter:description" content="Sign in to your Auto Submit Site Domain account to manage your website indexing">
+  <meta name="twitter:title" content="Sign In - rankdaily">
+  <meta name="twitter:description" content="Access your rankdaily account and manage your website submissions for faster Google indexing">
   <meta name="twitter:image" content="https://rankdaily.shopconna.com/images/twitter-card.jpg">
 
   <!-- Favicon -->
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="images/favicon.svg">
 
-  <title>Sign In - Auto Submit Site Domain</title>
+  <title>Sign In - rankdaily</title>
 
   <!-- CSS Files -->
   <link rel="stylesheet" href="css/base.css">
@@ -242,78 +242,78 @@
 <body>
   <!-- Header -->
   <header>
-    <nav>
-      <div class="container">
-        <a href="index.html" class="logo"><i class="fas fa-search"></i> Auto Submit Site Domain</a>
-        <ul class="nav-links" id="navLinks">
+    <div class="container">
+      <nav>
+        <a href="index.html" class="logo"><i class="fas fa-search"></i> rankdaily</a>
+        <ul class="nav-links">
           <li><a href="index.html#features">Features</a></li>
           <li><a href="index.html#how-it-works">How It Works</a></li>
           <li><a href="index.html#pricing">Pricing</a></li>
-          <li><a href="index.html#faq">FAQ</a></li>
         </ul>
-        <div class="nav-auth">
-          <a href="sign-in.html" id="signInBtn" class="sign-in-btn">Sign In</a>
+        <div class="auth-buttons">
+          <a href="sign-up.html" class="btn btn-outline">Sign Up</a>
         </div>
-        <div class="mobile-menu-toggle" id="menuToggle">
+        <div class="menu-toggle">
           <i class="fas fa-bars"></i>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <div class="signin-container">
-      <div class="signin-form-container">
-        <div class="signin-logo">
-          <i class="fas fa-search"></i>
+    <section class="signin-section">
+      <div class="container">
+        <div class="signin-container">
+          <div class="signin-content">
+            <h1>Welcome Back</h1>
+            <p>Sign in to rankdaily to monitor and manage your URL submissions.</p>
+            
+            <div id="signinMessage" class="form-message"></div>
+            
+            <form id="signinForm">
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-container">
+                  <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                  <span class="toggle-password" onclick="togglePasswordVisibility('password')">
+                    <i class="fas fa-eye"></i>
+                  </span>
+                </div>
+                <div class="forgot-password">
+                  <a href="forgot-password.html">Forgot Password?</a>
+                </div>
+              </div>
+              
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Sign In</button>
+              </div>
+              
+              <div class="signin-divider">
+                <span>OR</span>
+              </div>
+              
+              <div class="social-signin">
+                <button type="button" class="btn google-btn">
+                  <i class="fab fa-google"></i> Sign in with Google
+                </button>
+                <button type="button" class="btn github-btn">
+                  <i class="fab fa-github"></i> Sign in with GitHub
+                </button>
+              </div>
+              
+              <div class="form-footer">
+                <p>Don't have an account? <a href="sign-up.html">Sign Up</a></p>
+              </div>
+            </form>
+          </div>
         </div>
-        
-        <h2 class="form-title">Sign In to Your Account</h2>
-        
-        <div id="signinMessage" class="form-message"></div>
-        
-        <form id="signinForm">
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="password">Password</label>
-            <div class="password-container">
-              <input type="password" id="password" name="password" placeholder="Enter your password" required>
-              <span class="toggle-password" onclick="togglePasswordVisibility('password')">
-                <i class="fas fa-eye"></i>
-              </span>
-            </div>
-            <div class="forgot-password">
-              <a href="forgot-password.html">Forgot Password?</a>
-            </div>
-          </div>
-          
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Sign In</button>
-          </div>
-          
-          <div class="signin-divider">
-            <span>OR</span>
-          </div>
-          
-          <div class="social-signin">
-            <button type="button" class="btn google-btn">
-              <i class="fab fa-google"></i> Sign in with Google
-            </button>
-            <button type="button" class="btn github-btn">
-              <i class="fab fa-github"></i> Sign in with GitHub
-            </button>
-          </div>
-          
-          <div class="form-footer">
-            <p>Don't have an account? <a href="sign-up.html">Sign Up</a></p>
-          </div>
-        </form>
       </div>
-    </div>
+    </section>
   </main>
 
   <!-- Footer -->
@@ -321,7 +321,7 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-column">
-          <h3>Auto Submit Site Domain</h3>
+          <h3>rankdaily</h3>
           <p>Boost your website's visibility in search engines by automatically submitting your pages to Google.</p>
           <div class="social-links">
             <a href="https://github.com/heytcm/auto-submit-site-domain" target="_blank"><i class="fab fa-github"></i></a>
@@ -356,7 +356,7 @@
         </select>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2024 Auto Submit Site Domain. All rights reserved.</p>
+        <p>&copy; 2024 rankdaily. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -365,8 +365,8 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Mobile menu toggle
-      const menuToggle = document.getElementById('menuToggle');
-      const navLinks = document.getElementById('navLinks');
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
       
       menuToggle.addEventListener('click', function() {
         navLinks.classList.toggle('active');

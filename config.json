@@ -11,5 +11,5 @@
   "license_key": "",
   "subscription_plan": "free",
   "enable_cloudflare_worker": false,
-  "cloudflare_worker_url": "https://auto-submit.your-worker.workers.dev"
+  "cloudflare_worker_url": "https://rankdaily.shopconna.com/workers/auth"
 }
