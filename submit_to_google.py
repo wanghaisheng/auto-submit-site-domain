@@ -241,7 +241,7 @@ def submit_via_browser(urls, index_db, log_file):
     co.set_argument('--disable-popup-blocking')
     co.set_argument('--disable-blink-features=AutomationControlled')
     co.set_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36')
-    co.set_page_load_timeout(DRISSIONPAGE_TIMEOUT)
+    co.set_timeouts(base=DRISSIONPAGE_TIMEOUT)
     
     # Initialize browser
     page = ChromiumPage(co)
