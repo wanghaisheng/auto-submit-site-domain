@@ -247,8 +247,8 @@ def submit_via_browser(urls, index_db, log_file):
     
     # Initialize browser
     # page = ChromiumPage(co)
-    page=setup_chrome()
-    
+    browser=setup_chrome()
+    page=browser.latest_tab
     successful = 0
     failed = 0
     skipped = 0

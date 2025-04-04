@@ -70,6 +70,74 @@
   <link rel="stylesheet" href="css/tabs.css">
   <link rel="stylesheet" href="css/filters.css">
   
+  <!-- Mobile Responsive Fixes -->
+  <style>
+    @media (max-width: 767px) {
+      .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box;
+      }
+      
+      table {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      
+      /* Make the comparison table more mobile friendly */
+      #comparison .comparison-table {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      
+      /* For comparison tables, ensure they're fully visible */
+      thead th, tbody td {
+        min-width: 80px; /* Ensure columns have enough width for content */
+        white-space: normal; /* Allow text to wrap */
+      }
+      
+      /* Highlight the currently viewed column */
+      tbody td:nth-child(2) {
+        background-color: rgba(65, 88, 208, 0.05);
+      }
+      
+      /* Ensure content doesn't overflow screen width */
+      body {
+        overflow-x: hidden;
+        width: 100%;
+      }
+      
+      /* Fix for any fixed width elements */
+      img, video, iframe {
+        max-width: 100%;
+        height: auto;
+      }
+      
+      /* Improve section padding on mobile */
+      section {
+        padding: 40px 0;
+      }
+      
+      /* Adjust font sizes for better readability on mobile */
+      h1 {
+        font-size: 28px;
+      }
+      
+      h2 {
+        font-size: 24px;
+      }
+      
+      p {
+        font-size: 16px;
+      }
+    }
+  </style>
+  
   <!-- JavaScript Files -->
   <script src="js/filters.js" defer></script>
 </head>

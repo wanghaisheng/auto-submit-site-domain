@@ -86,7 +86,7 @@ def main():
     
     try:
         browser = setup_chrome()
-        keywords = get_keywords()
+        # keywords = get_keywords()
         
             
     except Exception as e:
