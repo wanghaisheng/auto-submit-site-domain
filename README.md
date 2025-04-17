@@ -116,3 +116,7 @@ This project is licensed under a custom license that allows free use for persona
 If you wish to use this software in a way not covered by the license, please contact us for permission.
 
 
+
+
+
+add support to https://www.bing.com/webmasters/pubhub?siteUrl=https://38smile.heytcm.com/&source=bwtcard
