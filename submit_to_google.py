@@ -9,6 +9,15 @@ import re
 from pathlib import Path
 import sys
 from scripts.getbrowser import setup_chrome
+import logging
+
+# Set up logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s %(levelname)s %(message)s',
+    handlers=[logging.StreamHandler(), logging.FileHandler('submit_to_google.log', encoding='utf-8')]
+)
+logger = logging.getLogger(__name__)
 
 # Import Google Search Console module
 try:
@@ -18,6 +27,7 @@ except ImportError:
     GSC_AVAILABLE = False
     print("Google Search Console API not available. Install required packages with:")
     print("pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib")
+    logger.warning("Google Search Console API not available. Install required packages with: google-api-python-client google-auth-httplib2 google-auth-oauthlib")
 
 load_dotenv()  # Load environment variables
 
@@ -27,10 +37,12 @@ def load_config():
     if config_path.exists():
         try:
             with open(config_path, 'r') as f:
+                logger.info("Loaded configuration from config.json")
                 return json.load(f)
         except json.JSONDecodeError:
-            print("Error reading config file. Using default configuration.")
-    
+            logger.error("Error reading config file. Using default configuration.")
+    else:
+        logger.warning("config.json not found. Using default configuration.")
     # Default configuration
     return {
         "domain_whitelist": [],
@@ -69,7 +81,7 @@ def load_index_database():
             with open(db_path, 'r') as f:
                 return json.load(f)
         except json.JSONDecodeError:
-            print("Error reading database file. Creating new database.")
+            logger.error("Error reading database file. Creating new database.")
     
     # Create new database if file doesn't exist or is corrupted
     return {}
@@ -89,7 +101,7 @@ def check_indexed_status(page, url):
     
     # Check for CAPTCHA or blocking
     if "unusual traffic" in page.html.lower() or "captcha" in page.html.lower():
-        print("Detected CAPTCHA or unusual traffic warning.")
+        logger.error("Detected CAPTCHA or unusual traffic warning.")
         return None, None
     
     # Check for "no results found" indicators
@@ -107,26 +119,26 @@ def check_indexed_status(page, url):
             if match:
                 result_count = int(match.group(1).replace(',', ''))
     except Exception as e:
-        print(f"Error extracting result count: {str(e)}")
+        logger.error(f"Error extracting result count: {str(e)}")
     
     return True, result_count
 
 def submit_via_gsc_api(urls, index_db, log_file):
-    """Submit URLs to Google using the Search Console API"""
+    logger.info(f"Submitting {len(urls)} URLs via Google Search Console API")
     if not GSC_AVAILABLE:
-        print("Google Search Console API not available. Falling back to browser method.")
+        logger.warning("Google Search Console API not available. Falling back to browser method.")
         return submit_via_browser(urls, index_db, log_file)
     
     # Initialize Google Search Console API
     gsc = GoogleSearchConsole()
     if not gsc.is_initialized():
-        print("Failed to initialize Google Search Console API. Falling back to browser method.")
+        logger.error("Failed to initialize Google Search Console API. Falling back to browser method.")
         return submit_via_browser(urls, index_db, log_file)
     
     # Get sites from GSC
     sites = gsc.get_sites()
     if not sites:
-        print("No sites found in Google Search Console. Falling back to browser method.")
+        logger.warning("No sites found in Google Search Console. Falling back to browser method.")
         return submit_via_browser(urls, index_db, log_file)
     
     # Create a mapping of domains to site URLs
@@ -136,7 +148,7 @@ def submit_via_gsc_api(urls, index_db, log_file):
         domain = site_url.replace('https://', '').replace('http://', '').rstrip('/')
         site_map[domain] = site_url
     
-    print(f"Found {len(sites)} sites in Google Search Console")
+    logger.info(f"Found {len(sites)} sites in Google Search Console")
     
     successful = 0
     failed = 0
@@ -148,6 +160,7 @@ def submit_via_gsc_api(urls, index_db, log_file):
     
     for i, url in enumerate(urls, 1):
         try:
+            logger.info(f"Submitting URL to GSC: {url}")
             # Extract domain from URL
             domain = url.split('/')[2] if '//' in url else url.split('/')[0]
             
@@ -201,6 +214,7 @@ def submit_via_gsc_api(urls, index_db, log_file):
             time.sleep(get_random_delay(REQUEST_DELAY))
             
         except Exception as e:
+            logger.error(f"Exception during GSC submission for {url}: {e}")
             error_msg = f"Failed to submit {url}: {str(e)}"
             print(error_msg)
             log_file.write(f"{datetime.datetime.now()} - ERROR: {error_msg}\n")
@@ -223,6 +237,7 @@ def submit_via_gsc_api(urls, index_db, log_file):
                     print(log_message)
                     log_file.write(f"{datetime.datetime.now()} - {log_message}\n")
             except Exception as e:
+                logger.error(f"Error submitting sitemap for {domain}: {e}")
                 error_msg = f"Error submitting sitemap for {domain}: {str(e)}"
                 print(error_msg)
                 log_file.write(f"{datetime.datetime.now()} - ERROR: {error_msg}\n")
@@ -230,7 +245,7 @@ def submit_via_gsc_api(urls, index_db, log_file):
     return successful, failed, skipped, indexed
 
 def submit_via_browser(urls, index_db, log_file):
-    """Submit URLs to Google using DrissionPage browser"""
+    logger.info(f"Submitting {len(urls)} URLs via browser automation")
     # Configure browser options
     # co = ChromiumOptions()
     # co.set_argument('--disable-gpu')
@@ -256,6 +271,7 @@ def submit_via_browser(urls, index_db, log_file):
     
     for i, url in enumerate(urls, 1):
         try:
+            logger.info(f"Submitting URL via browser: {url}")
             # Check if URL is already in database and indexed
             current_time = datetime.datetime.now()
             if url in index_db and index_db[url].get('indexed', False):
@@ -276,6 +292,7 @@ def submit_via_browser(urls, index_db, log_file):
             
             # Handle CAPTCHA detection
             if is_indexed is None:
+                logger.error("Detected CAPTCHA or unusual traffic warning. Pausing for longer...")
                 error_msg = "Detected CAPTCHA or unusual traffic warning. Pausing for longer..."
                 print(error_msg)
                 log_file.write(f"{current_time} - ERROR: {error_msg}\n")
@@ -312,6 +329,7 @@ def submit_via_browser(urls, index_db, log_file):
                 
                 # Check if we hit a CAPTCHA after submission
                 if "unusual traffic" in page.html.lower() or "captcha" in page.html.lower():
+                    logger.error("Detected CAPTCHA or unusual traffic warning after submission. Pausing for longer...")
                     error_msg = "Detected CAPTCHA or unusual traffic warning after submission. Pausing for longer..."
                     print(error_msg)
                     log_file.write(f"{current_time} - ERROR: {error_msg}\n")
@@ -340,6 +358,7 @@ def submit_via_browser(urls, index_db, log_file):
                 time.sleep(delay)
                 
         except Exception as e:
+            logger.error(f"Exception during browser submission for {url}: {e}")
             error_msg = f"Failed to submit {url}: {str(e)}"
             print(error_msg)
             log_file.write(f"{datetime.datetime.now()} - ERROR: {error_msg}\n")
@@ -352,7 +371,7 @@ def submit_via_browser(urls, index_db, log_file):
     return successful, failed, skipped, indexed
 
 def submit_to_google():
-    """Main function to submit URLs to Google"""
+    logger.info("Starting the Google submission process...")
     # Load URLs from file
     with open('urls.txt', 'r') as f:
         urls = [line.strip() for line in f.readlines()]
@@ -395,6 +414,7 @@ def submit_to_google():
     
     # Save the updated index database
     save_index_database(index_db)
+    logger.info("Google submission process finished.")
 
 if __name__ == '__main__':
     submit_to_google()
