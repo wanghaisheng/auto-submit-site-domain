@@ -366,7 +366,7 @@ def submit_via_browser(urls, index_db, log_file):
             time.sleep(get_random_delay(REQUEST_DELAY))
     
     # Close the browser
-    page.quit()
+    browser.quit()
     
     return successful, failed, skipped, indexed
 
