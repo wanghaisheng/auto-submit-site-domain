@@ -1,5 +1,5 @@
 {
-  "domain_whitelist": ["heytcm.com"],
+  "domain_whitelist": ["feelingchart.heytcm.com"],
   "domain_blacklist": [],
   "use_domain_file": false,
   "domain_file_path": "domains_list.txt",
