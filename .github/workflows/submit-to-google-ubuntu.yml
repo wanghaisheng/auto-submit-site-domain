@@ -1,7 +1,7 @@
-name: Submit to Search Engines windows
+name: Submit to Search Engines-ubuntu
 on:
-  schedule:
-    - cron: '0 12 * * *'  # Runs daily at 12:00 UTC
+  # schedule:
+    # - cron: '0 12 * * *'  # Runs daily at 12:00 UTC
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
@@ -22,20 +22,15 @@ jobs:
       
       - name: Create directories for logs and reports
         run: |
-          mkdir logs
-          mkdir reports
+          mkdir -p logs
+          mkdir -p reports
           
       - name: Verify subscription status
         id: verify_subscription
         env:
           LICENSE_KEY: ${{ secrets.LICENSE_KEY || '' }}
-        shell: pwsh
         run: |
-          try {
-            $status = python -c "from subscription_verifier import SubscriptionVerifier; verifier = SubscriptionVerifier(); status = verifier.verify_license(); print('License status:', status['valid'], '\nPlan:', status['plan'])"
-          } catch {
-            Write-Host "Running in free mode"
-          }
+          python -c "from subscription_verifier import SubscriptionVerifier; verifier = SubscriptionVerifier(); status = verifier.verify_license(); print(f'License status: {status[\"valid\"]}\nPlan: {status[\"plan\"]}')" || echo "Running in free mode"
         continue-on-error: true
       
       - name: Fetch domains from providers
@@ -55,34 +50,24 @@ jobs:
           REQUEST_DELAY: ${{ secrets.REQUEST_DELAY || '15' }}
           DRISSIONPAGE_TIMEOUT: ${{ secrets.DRISSIONPAGE_TIMEOUT || '30' }}
           LICENSE_KEY: ${{ secrets.LICENSE_KEY || '' }}
-        shell: pwsh
         run: |
           # Fetch domains from Cloudflare
           python cloudflare_fetcher.py
-
+          
           # Fetch domains from Namecheap if credentials are provided
-          if ($env:NAMECHEAP_API_KEY -and $env:NAMECHEAP_USERNAME) {
-            Write-Host "Fetching domains from Namecheap..."
-            try {
-              python -c "from namecheap_fetcher import NamecheapDomainFetcher; NamecheapDomainFetcher().get_domains()"
-            } catch {
-              Write-Host "Namecheap fetching failed"
-            }
-          }
-
+          if [ -n "$NAMECHEAP_API_KEY" ] && [ -n "$NAMECHEAP_USERNAME" ]; then
+            echo "Fetching domains from Namecheap..."
+            python -c "from namecheap_fetcher import NamecheapDomainFetcher; NamecheapDomainFetcher().get_domains()" || echo "Namecheap fetching failed"
+          fi
+          
           # Fetch domains from GoDaddy if credentials are provided
-          if ($env:GODADDY_API_KEY -and $env:GODADDY_API_SECRET) {
-            Write-Host "Fetching domains from GoDaddy..."
-            try {
-              python -c "from godaddy_fetcher import GoDaddyDomainFetcher; GoDaddyDomainFetcher().get_domains()"
-            } catch {
-              Write-Host "GoDaddy fetching failed"
-            }
-          }
-
-          Write-Host "Domain fetching completed. Logging results to logs/domain_fetch.log"
-          $date = Get-Date -Format yyyyMMdd
-          if (Test-Path domains.txt) { Copy-Item domains.txt "logs/domains_$date.txt" -ErrorAction SilentlyContinue }
+          if [ -n "$GODADDY_API_KEY" ] && [ -n "$GODADDY_API_SECRET" ]; then
+            echo "Fetching domains from GoDaddy..."
+            python -c "from godaddy_fetcher import GoDaddyDomainFetcher; GoDaddyDomainFetcher().get_domains()" || echo "GoDaddy fetching failed"
+          fi
+          
+          echo "Domain fetching completed. Logging results to logs/domain_fetch.log"
+          cp domains.txt logs/domains_$(date +%Y%m%d).txt 2>/dev/null || :
         continue-on-error: true
         
       - name: Parse sitemaps for URLs
@@ -91,12 +76,10 @@ jobs:
           MAX_URLS_PER_RUN: ${{ secrets.MAX_URLS_PER_RUN || '100' }}
           REQUEST_DELAY: ${{ secrets.REQUEST_DELAY || '2' }}
           LICENSE_KEY: ${{ secrets.LICENSE_KEY || '' }}
-        shell: pwsh
         run: |
           python sitemap_parser.py
-          Write-Host "Sitemap parsing completed. Logging results to logs/sitemap_parse.log"
-          $date = Get-Date -Format yyyyMMdd
-          if (Test-Path urls.txt) { Copy-Item urls.txt "logs/urls_$date.txt" -ErrorAction SilentlyContinue }
+          echo "Sitemap parsing completed. Logging results to logs/sitemap_parse.log"
+          cp urls.txt logs/urls_$(date +%Y%m%d).txt 2>/dev/null || :
         continue-on-error: true
         
       - name: Submit URLs to Search Engines
@@ -114,34 +97,24 @@ jobs:
           GOOGLE_SERVICE_ACCOUNT_CLIENT_EMAIL: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_CLIENT_EMAIL || '' }}
           # License key for premium features
           LICENSE_KEY: ${{ secrets.LICENSE_KEY || '' }}
-        shell: pwsh
         run: |
           # Submit URLs to Google
           python submit_to_google.py
           
           # Submit URLs to Bing if API key is provided
-          if ($env:BING_API_KEY) {
-            Write-Host "Submitting URLs to Bing..."
-            try {
-              python -c "from bing_search_console import BingWebmasterTools; import urllib.parse; urls = Get-Content urls.txt; if ($urls) { $first_url = $urls[0]; $parsed_url = [System.Uri]$first_url; $site_url = $($parsed_url.Scheme + '://' + $parsed_url.Host); BingWebmasterTools().batch_submit_urls($site_url, $urls) }"
-            } catch {
-              Write-Host "Bing submission failed"
-            }
-          }
+          if [ -n "$BING_API_KEY" ]; then
+            echo "Submitting URLs to Bing..."
+            python -c "from bing_search_console import BingWebmasterTools; import urllib.parse; urls = open('urls.txt').read().splitlines(); if urls: first_url = urls[0]; parsed_url = urllib.parse.urlparse(first_url); site_url = f'{parsed_url.scheme}://{parsed_url.netloc}'; BingWebmasterTools().batch_submit_urls(site_url, urls)" || echo "Bing submission failed"
+          fi
           
           # Submit URLs to Yandex if API key is provided
-          if ($env:YANDEX_API_KEY) {
-            Write-Host "Submitting URLs to Yandex..."
-            try {
-              python -c "from yandex_search_console import YandexWebmasterTools; yandex = YandexWebmasterTools(); $sites = yandex.get_sites(); if ($sites) { $host_id = $sites[0].get('host_id'); yandex.batch_submit_urls($host_id, (Get-Content urls.txt)) }"
-            } catch {
-              Write-Host "Yandex submission failed"
-            }
-          }
+          if [ -n "$YANDEX_API_KEY" ]; then
+            echo "Submitting URLs to Yandex..."
+            python -c "from yandex_search_console import YandexWebmasterTools; yandex = YandexWebmasterTools(); sites = yandex.get_sites(); if sites: host_id = sites[0].get('host_id'); yandex.batch_submit_urls(host_id, open('urls.txt').read().splitlines())" || echo "Yandex submission failed"
+          fi
           
-          Write-Host "URL submission completed. Logging results to logs/"
-          $date = Get-Date -Format yyyyMMdd
-          if (Test-Path submission_log_*.txt) { Copy-Item submission_log_*.txt "logs/submission_log_$date.txt" -ErrorAction SilentlyContinue }
+          echo "URL submission completed. Logging results to logs/"
+          cp submission_log_*.txt logs/ 2>/dev/null || :
         continue-on-error: true
         
       - name: Upload logs and results
