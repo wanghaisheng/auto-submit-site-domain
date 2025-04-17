@@ -152,6 +152,7 @@ jobs:
             domains.txt
             domains.json
             urls.txt
+            index_database.json
             submission_log_*.txt
             logs/*.log
             reports/*.json

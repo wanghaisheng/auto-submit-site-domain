@@ -126,6 +126,7 @@ jobs:
             domains.json
             urls.txt
             submission_log_*.txt
+            index_database.json
             logs/*.log
             reports/*.json
           retention-days: 30
