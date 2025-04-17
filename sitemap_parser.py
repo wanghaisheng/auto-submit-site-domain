@@ -97,9 +97,9 @@ def find_sitemap_urls(domain):
     sitemap_paths = [
         'sitemap.xml',
         'sitemap_index.xml',
-        'sitemap/sitemap.xml',
-        'wp-sitemap.xml',
-        'sitemaps/sitemap.xml'
+        # 'sitemap/sitemap.xml',
+        # 'wp-sitemap.xml',
+        # 'sitemaps/sitemap.xml'
     ]
     
     found_sitemaps = []
@@ -130,6 +130,16 @@ def find_sitemap_urls(domain):
     
     return found_sitemaps
 
+def filter_domain(domain, whitelist, blacklist):
+    """Return True if domain passes whitelist/blacklist filter"""
+    if whitelist:
+        if not any(domain.endswith(wl) for wl in whitelist):
+            return False
+    if blacklist:
+        if any(domain.endswith(bl) for bl in blacklist):
+            return False
+    return True
+
 def parse_sitemaps():
     # Load configuration
     config = load_config()
@@ -138,6 +148,11 @@ def parse_sitemaps():
     
     with open('domains.txt', 'r') as f:
         domains = [line.strip() for line in f.readlines()]
+
+    # Apply whitelist/blacklist filtering
+    whitelist = config.get("domain_whitelist", [])
+    blacklist = config.get("domain_blacklist", [])
+    domains = [d for d in domains if filter_domain(d, whitelist, blacklist)]
     
     all_urls = []
     domain_url_map = {}  # Map domains to their URLs
@@ -262,7 +277,7 @@ if __name__ == "__main__":
     total_url_limit = config.get("total_url_limit", TOTAL_URL_LIMIT)  # Get total URL limit from config or use env var
     split_large_domains = config.get("split_large_domains", False)
     max_urls_per_piece = config.get("max_urls_per_piece", 10000)
-    
+
     # Load domains from file
     try:
         with open('domains.txt', 'r') as f:
@@ -270,8 +285,13 @@ if __name__ == "__main__":
     except FileNotFoundError:
         print("domains.txt not found. Please run cloudflare_fetcher.py first.")
         exit(1)
-    
-    print(f"Loaded {len(domains)} domains from domains.txt")
+
+    # Apply whitelist/blacklist filtering
+    whitelist = config.get("domain_whitelist", [])
+    blacklist = config.get("domain_blacklist", [])
+    domains = [d for d in domains if filter_domain(d, whitelist, blacklist)]
+
+    print(f"Loaded {len(domains)} domains from domains.txt (after whitelist/blacklist filtering)")
     
     # Process each domain
     all_urls = []
