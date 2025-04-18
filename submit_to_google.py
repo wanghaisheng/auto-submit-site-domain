@@ -79,10 +79,12 @@ def load_index_database():
     if db_path.exists():
         try:
             with open(db_path, 'r') as f:
+                logger.info("Loaded index_database.json from cache or previous run.")
                 return json.load(f)
         except json.JSONDecodeError:
             logger.error("Error reading database file. Creating new database.")
-    
+    else:
+        logger.info("index_database.json not found. Creating new database.")
     # Create new database if file doesn't exist or is corrupted
     return {}
 

@@ -158,3 +158,16 @@ jobs:
             reports/*.json
           retention-days: 30
           if-no-files-found: warn
+      
+      - name: Cache domains, URLs, sitemaps, and index database
+        id: cache-data
+        uses: actions/cache@v3
+        with:
+          path: |
+            domains.txt
+            urls.txt
+            index_database.json
+            sitemaps/
+          key: ${{ runner.os }}-data-${{ hashFiles('domains.txt', 'urls.txt', 'index_database.json', 'sitemaps/**') }}
+          restore-keys: |
+            ${{ runner.os }}-data-

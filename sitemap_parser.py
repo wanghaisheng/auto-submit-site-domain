@@ -42,6 +42,28 @@ def is_sitemap_url(url):
     """Check if a URL is likely a sitemap based on its name or extension"""
     return 'sitemap' in url.lower() or url.endswith('.xml')
 
+import hashlib
+
+def get_file_hash(content):
+    return hashlib.md5(content).hexdigest()
+
+def save_and_compare_sitemap(sitemap_url, content):
+    sitemaps_dir = Path('sitemaps')
+    sitemaps_dir.mkdir(exist_ok=True)
+    filename = sitemaps_dir / (sitemap_url.replace('https://', '').replace('http://', '').replace('/', '_'))
+    hash_file = filename.with_suffix('.hash')
+    new_hash = get_file_hash(content)
+    old_hash = None
+    if hash_file.exists():
+        old_hash = hash_file.read_text()
+    if old_hash == new_hash:
+        print(f"No change in sitemap: {sitemap_url}")
+        return False  # No need to re-parse
+    filename.write_bytes(content)
+    hash_file.write_text(new_hash)
+    print(f"Sitemap updated: {sitemap_url}")
+    return True  # Sitemap changed, need to parse
+
 def extract_urls_from_sitemap(sitemap_url, visited_sitemaps=None, all_urls=None):
     """Recursively extract URLs from sitemaps, including nested sitemaps"""
     if visited_sitemaps is None:
@@ -57,6 +79,9 @@ def extract_urls_from_sitemap(sitemap_url, visited_sitemaps=None, all_urls=None)
     try:
         response = requests.get(sitemap_url, timeout=15)
         response.raise_for_status()
+        content = response.content
+        if not save_and_compare_sitemap(sitemap_url, content):
+            return all_urls  # Skip parsing if not changed
         
         # Check if it's a gzipped sitemap
         if sitemap_url.endswith('.gz'):
@@ -198,6 +223,28 @@ def parse_sitemaps():
             if url_limit_per_domain > 0 and len(domain_urls_list) > url_limit_per_domain:
                 print(f"Limiting URLs for {domain} to {url_limit_per_domain} (from {len(domain_urls_list)})")
                 domain_urls_list = domain_urls_list[:url_limit_per_domain]
+            
+            domain_url_map[domain] = domain_urls_list
+            
+            # Add URLs to all_urls, respecting the total URL limit
+            if total_url_limit > 0:
+                # Calculate how many more URLs we can add without exceeding the limit
+                remaining_capacity = total_url_limit - len(all_urls)
+                if remaining_capacity <= 0:
+                    # We've already reached the limit
+                    continue
+                elif len(domain_urls_list) > remaining_capacity:
+                    # We can only add some of the URLs from this domain
+                    print(f"Adding {remaining_capacity} of {len(domain_urls_list)} URLs from {domain} to reach total limit of {total_url_limit}")
+                    all_urls.extend(domain_urls_list[:remaining_capacity])
+                    print(f"Reached total URL limit of {total_url_limit}. Stopping.")
+                    break
+                else:
+                    # We can add all URLs from this domain
+                    all_urls.extend(domain_urls_list)
+            else:
+                # No total URL limit, add all URLs
+                all_urls.extend(domain_urls_list)
             
             domain_url_map[domain] = domain_urls_list
             
